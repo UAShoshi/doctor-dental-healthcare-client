@@ -24,7 +24,7 @@ const NavBar = () => {
   </>
   return (
     <>
-      <div className="navbar shadow-sm bg-base-100 fixed z-10 font-bold">
+      <div className="navbar shadow-sm bg-base-100 fixed z-10 container mx-auto font-bold">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +44,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn font-bold">Button</a>
+          <a className="btn font-bold bg-[#5F6FFF] text-white rounded-3xl"><Link to={"/login"}>Create Account</Link></a>
         </div>
       </div>
     </>

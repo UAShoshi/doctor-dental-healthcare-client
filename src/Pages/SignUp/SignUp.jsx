@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import uthentication1 from "../../assets/author/images1.png"
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 
@@ -11,8 +13,17 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const {createUser} = useContext(AuthContext)
+
   const onSubmit = (data) => {
-    console.log(data)
+    console.log(data);
+    createUser(data.email, data.password)
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      
+    })
   };
 
   return (
@@ -33,9 +44,22 @@ const SignUp = () => {
               <input type="email" {...register("email", { required: true })} name="email" className="input" placeholder="" />
               {errors.email && <span className="text-red-600 font-semibold">Email is required</span>}
               <label className="label font-semibold">Password</label>
-              <input type="password" {...register("password", { required: true, maxLength: 20, minLength: 6 })} name="password" className="input" placeholder="" />
+              <input type="password" {...register("password", { 
+                required: true,
+                maxLength: 20, 
+                minLength: 6,
+                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})} name="password" className="input" placeholder="" />
               {errors.password?.type === "required" && (
                 <p className="text-red-600 font-semibold">Password is required</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-600 font-semibold">Password must be 6 characters</p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-red-600 font-semibold">Password must be less than 20 characters</p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-600 font-semibold">Password must have one Uppercase, one lowar case, one number and one special character.</p>
               )}
               <input className="btn btn-neutral font-bold bg-[#5F6FFF] mt-4" type="submit" value="Create account" />
             </fieldset>

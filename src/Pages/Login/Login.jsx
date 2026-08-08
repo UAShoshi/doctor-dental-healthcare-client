@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import uthentication1 from "../../assets/author/images1.png"
+import Swal from "sweetalert2";
 
 
 
@@ -19,7 +20,11 @@ const Login = () => {
     .then( result =>{
       const user = result.user;
       console.log(user);
-      
+      Swal.fire({
+  title: "User login successful!",
+  icon: "success",
+  draggable: true
+});
     })
     
   }

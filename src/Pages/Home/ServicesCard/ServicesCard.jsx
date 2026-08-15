@@ -8,7 +8,7 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 const ServicesCard = () => {
     return (
-        <div className='mt-20 ml-20'>
+        <div className='mt-20 md:ml-20 ml-5'>
             <div className="space-y-6">
                 <div className="badge badge-soft bg-base-400 uppercase">Our services</div>
                 <h1 className="text-4xl font-semibold">Gentle Care for Young Smiles</h1>
@@ -25,8 +25,8 @@ const ServicesCard = () => {
                         <p>Our dental fixing service And professional solutions for broken,
                             chipped, or missing teeth, ensuring a healthy, confident smile with advanced treatments.</p>
                         <div className="card-actions justify-items-center">
-                            <button className="btn btn-link text-black font-bold 
-                                        text-[16px] my-5">Read More <HiOutlineArrowRight className="ml-3 mt-1"></HiOutlineArrowRight></button>
+                            <button><Link to="/servicesdetail" className="btn btn-link text-black font-bold 
+                                        text-[16px] my-5">Read More <HiOutlineArrowRight className="ml-3 mt-1"></HiOutlineArrowRight></Link></button>
                         </div>
                     </div>
                 </div>
@@ -40,8 +40,8 @@ const ServicesCard = () => {
                         <h2 className="card-title py-5 text-2xl">Cosmetic Dentistry</h2>
                         <p>Cosmetic dentistry mainly concerns improving the appearance of your teeth, including whitening & cleaning …</p>
                         <div className="card-actions justify-items-center">
-                            <button className="btn btn-link text-black font-bold 
-                                        text-[16px] my-5">Read More <HiOutlineArrowRight className="ml-3 mt-1"></HiOutlineArrowRight></button>
+                            <button><Link to="/servicesdetail" className="btn btn-link text-black font-bold 
+                                        text-[16px] my-5">Read More <HiOutlineArrowRight className="ml-3 mt-1"></HiOutlineArrowRight></Link></button>
                         </div>
                     </div>
                 </div>
@@ -56,8 +56,8 @@ const ServicesCard = () => {
                         <h2 className="card-title py-5 text-2xl">Dental Implants</h2>
                         <p>Dental implants replace the missing tooth by implanting artificial roots into the jaw under surgical …</p>
                         <div className="card-actions justify-items-center">
-                            <button className="btn btn-link text-black font-bold 
-                                        text-[16px] my-5">Read More <HiOutlineArrowRight className="ml-3 mt-1"></HiOutlineArrowRight></button>
+                            <button><Link to="/servicesdetail" className="btn btn-link text-black font-bold 
+                                        text-[16px] my-5">Read More <HiOutlineArrowRight className="ml-3 mt-1"></HiOutlineArrowRight></Link></button>
                         </div>
                     </div>
                 </div>

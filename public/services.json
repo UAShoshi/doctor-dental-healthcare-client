@@ -1,0 +1,224 @@
+[
+  {
+    "_id": "service001",
+    "serviceImage": "https://i.ibb.co.com/svM1qbLj/service-img1.jpg",
+    "serviceName": "Dental Fixing Service",
+     "serviceList": [
+      "Dental Fixing Service",
+      "Cosmetic Dentistry",
+      "Dental Implants",
+      "Routine Dental Exam",
+      "Teeth Whitening",
+      "Dental Fillings"
+    ],
+    "serviceDescription": "Our dental fixing service And professional solutions for broken, chipped, or missing teeth, ensuring a healthy, confident smile with advanced treatments.",
+    "serviceParagraph": "Dental fixing is a restorative dental service designed to repair damaged, broken, decayed, or weakened teeth and restore their natural function and appearance. Our dental fixing treatments are carefully planned according to each patient’s individual oral health needs, ensuring comfortable and effective care. Depending on the condition of your teeth, treatment may include dental fillings, crowns, bridges, veneers, or other restorative solutions. We believe that every patient deserves personalized attention and clear information about their treatment options. Our experienced dental team focuses on patient comfort, safety, and long-lasting results throughout every stage of the procedure. We use modern dental techniques and quality materials to provide reliable treatments that help improve both oral health and confidence.Regular dental checkups and proper oral hygiene are also important for maintaining the results of dental fixing. We educate patients about healthy dental habits and preventive care to reduce future problems. Our goal is to help you achieve stronger, healthier teeth and a confident smile through professional, compassionate, and individualized dental care tailored to your needs for a healthier and brighter future.",
+    "questionsAnswers": [
+      {
+        "question": "What is dental fixing?",
+        "answer": "Dental fixing is a dental treatment used to repair or restore damaged, broken, or missing teeth and improve their function and appearance."
+      },
+      {
+        "question": "When do I need dental fixing?",
+        "answer": "ou may need dental fixing if you have a cracked, broken, damaged, or missing tooth, or if you experience difficulty chewing or discomfort."
+      },
+      {
+        "question": "Is dental fixing painful?",
+        "answer": "Most dental fixing procedures are performed with local anesthesia, so you should feel little or no pain during the treatment. Some mild sensitivity may occur afterward."
+      },
+      {
+        "question": "How long does a dental fixing procedure take?",
+        "answer": "The treatment time depends on the condition of your tooth and the type of fixing required. Some procedures can be completed in one visit, while others may require multiple appointments."
+      },
+      {
+        "question": "How long does dental fixing last?",
+        "answer": "With proper oral hygiene and regular dental checkups, dental restorations can last for many years. Their lifespan depends on the treatment type, materials used, and your oral care habits."
+      }
+    ]
+  },
+  {
+    "_id": "service002",
+    "serviceImage": "https://i.ibb.co.com/wNXZFLR9/service-img2.jpg",
+    "serviceName": "Cosmetic Dentistry",
+     "serviceList": [
+      "Dental Fixing Service",
+      "Cosmetic Dentistry",
+      "Dental Implants",
+      "Routine Dental Exam",
+      "Teeth Whitening",
+      "Dental Fillings"
+    ],
+    "serviceDescription": "Cosmetic dentistry mainly concerns improving the appearance of your teeth, including whitening & cleaning …",
+    "serviceParagraph": "Cosmetic dentistry focuses on improving the appearance, shape, color, and overall beauty of your smile while supporting good oral health. We understand that every patient has unique dental concerns and personal goals, so our treatments are carefully planned to provide natural-looking and personalized results. Our cosmetic dentistry services may include teeth whitening, dental veneers, tooth bonding, crowns, and complete smile makeovers. Our experienced dental team is committed to providing comfortable, safe, and high-quality cosmetic care. We take time to understand your expectations, examine your dental condition, and explain suitable treatment options before beginning any procedure. By using modern dental techniques and quality materials, we aim to create beautiful results that complement your facial features and give you greater confidence in your smile. We believe that a healthy smile is an important part of overall well-being and self-confidence. Along with cosmetic treatments, we encourage patients to maintain proper oral hygiene and attend regular dental checkups. Our team provides helpful guidance on caring for your teeth and maintaining your treatment results for as long as possible. Whether you want a brighter smile or are looking to improve the appearance of damaged or uneven teeth, our cosmetic dentistry services are designed to help you achieve a confident, attractive, and naturally beautiful smile with compassionate care and personalized attention.",
+    "questionsAnswers": [
+      {
+        "question": "What is cosmetic dentistry?",
+        "answer": "Cosmetic dentistry focuses on improving the appearance of your teeth, smile, and overall dental aesthetics."
+      },
+      {
+        "question": "What cosmetic dental treatments are available?",
+        "answer": "Common treatments include teeth whitening, dental veneers, tooth bonding, crowns, and smile makeovers."
+      },
+      {
+        "question": "Is cosmetic dentistry painful?",
+        "answer": "Most cosmetic dental procedures are comfortable and minimally invasive. Local anesthesia may be used when necessary."
+      },
+      {
+        "question": "How long do cosmetic dental treatments take?",
+        "answer": "Treatment time depends on the procedure. Some treatments can be completed in a single visit, while others may require multiple appointments."
+      },
+      {
+        "question": "How long do cosmetic dental results last?",
+        "answer": "The results can last for several years with proper oral hygiene, regular dental checkups, and appropriate care."
+      }
+    ]
+  },
+  {
+    "_id": "service003",
+    "serviceImage": "https://i.ibb.co.com/TqtZLLFG/service-img3.jpg",
+    "serviceName": "Dental Implants",
+     "serviceList": [
+      "Dental Fixing Service",
+      "Cosmetic Dentistry",
+      "Dental Implants",
+      "Routine Dental Exam",
+      "Teeth Whitening",
+      "Dental Fillings"
+    ],
+    "serviceDescription": "Dental implants replace the missing tooth by implanting artificial roots into the jaw under surgical …",
+    "serviceParagraph": "Dental implants are a modern and reliable solution for replacing missing teeth and restoring both the function and appearance of your smile. Our dental implant service is designed to provide patients with strong, natural-looking replacement teeth that can improve chewing, speaking, and overall oral comfort. Each treatment is carefully planned according to the patient’s dental condition, bone health, and individual needs. Our experienced dental team uses modern techniques and quality materials to provide safe, comfortable, and effective implant treatment. The process generally involves placing a dental implant into the jawbone, allowing it to heal and integrate with the bone, and then attaching a custom-made dental crown or replacement tooth. We carefully explain each stage of the procedure so patients can make confident and informed decisions. Patient comfort and safety are among our highest priorities. We provide personalized care from the initial consultation through treatment and follow-up appointments. We also guide patients about proper oral hygiene and aftercare to support successful healing and long-lasting results. With proper care and regular dental checkups, dental implants can provide a durable solution for missing teeth. Our goal is to help every patient restore their smile, improve oral function, and feel confident again through professional, compassionate, and personalized dental implant care.",
+    "questionsAnswers": [
+      {
+        "question": "What are dental implants?",
+        "answer": "Dental implants are artificial tooth roots placed into the jawbone to support replacement teeth such as crowns, bridges, or dentures."
+      },
+      {
+        "question": "Who is a good candidate for dental implants?",
+        "answer": "People with one or more missing teeth and sufficient jawbone health may be suitable candidates. A dentist can evaluate your oral health to determine the best option."
+      },
+      {
+        "question": "Is getting a dental implant painful?",
+        "answer": "The procedure is performed under local anesthesia, so discomfort during treatment is usually minimal. Some swelling or soreness may occur during recovery."
+      },
+      {
+        "question": "How long do dental implants last?",
+        "answer": "With proper oral hygiene and regular dental checkups, dental implants can last many years and, in some cases, a lifetime."
+      },
+      {
+        "question": "How long does the dental implant process take?",
+        "answer": "The complete process can take several months, depending on healing time, bone condition, and whether additional procedures are needed."
+      }
+    ]
+  },
+  {
+    "_id": "service004",
+    "serviceImage": "https://i.ibb.co.com/mFJfVxB4/dental-exam.jpg",
+    "serviceName": "Routine Dental Exam",
+     "serviceList": [
+      "Dental Fixing Service",
+      "Cosmetic Dentistry",
+      "Dental Implants",
+      "Routine Dental Exam",
+      "Teeth Whitening",
+      "Dental Fillings"
+    ],
+    "serviceDescription": "Periodontal therapy is technically all about restoring the diseased or damaged tissues to an original …",
+    "serviceParagraph": "A routine dental exam is an essential part of maintaining healthy teeth, gums, and overall oral health. Our routine dental exam service focuses on identifying potential dental problems early and helping patients maintain a clean, healthy, and confident smile. During each examination, our dental team carefully checks the teeth, gums, mouth, and surrounding areas for signs of cavities, gum disease, plaque buildup, tooth damage, and other oral health concerns. We believe that prevention is better than extensive treatment. Regular dental examinations allow us to detect problems at an early stage, when they are often easier and more comfortable to manage. Depending on your dental condition, we may recommend professional cleaning, dental X-rays, or additional treatments when necessary. Our experienced dental team provides a comfortable and welcoming environment for patients of all ages. We take time to listen to your concerns, explain our findings, and provide personalized recommendations based on your oral health needs. We also educate patients about proper brushing, flossing, nutrition, and other healthy habits that support long-term dental wellness. Regular dental exams can help prevent serious dental problems and maintain your smile for years to come. Our goal is to provide reliable preventive care and help every patient enjoy healthier teeth, stronger gums, and better overall oral health through compassionate and professional dental services.",
+    "questionsAnswers": [
+      {
+        "question": "What is a routine dental exam?",
+        "answer": "A routine dental exam is a regular checkup where a dentist examines your teeth, gums, and overall oral health to identify potential problems early."
+      },
+      {
+        "question": "How often should I have a dental exam?",
+        "answer": "Most people should have a dental exam every six months. However, your dentist may recommend a different schedule based on your oral health needs."
+      },
+      {
+        "question": "What happens during a routine dental exam?",
+        "answer": "The dentist checks for cavities, gum disease, plaque buildup, tooth damage, and other oral health concerns. X-rays may also be recommended when necessary."
+      },
+      {
+        "question": "Is a routine dental exam painful?",
+        "answer": "No. A routine dental exam is generally quick and painless. You may experience minor discomfort during certain parts of the examination if your teeth or gums are sensitive."
+      },
+      {
+        "question": "Why are regular dental exams important?",
+        "answer": "Regular exams help detect dental problems early, maintain healthy teeth and gums, and prevent more serious and costly dental issues in the future."
+      }
+    ]
+  },
+  {
+    "_id": "service005",
+    "serviceImage": "https://i.ibb.co.com/FLg2JB1F/Teeth-Whitening.png",
+    "serviceName": "Teeth Whitening",
+    "serviceList": [
+      "Dental Fixing Service",
+      "Cosmetic Dentistry",
+      "Dental Implants",
+      "Routine Dental Exam",
+      "Teeth Whitening",
+      "Dental Fillings"
+    ],
+    "serviceDescription": "Our dentists will clean up your teeth, conduct a thorough check before covering the teeth with a new …",
+    "serviceParagraph": "Teeth whitening is a popular cosmetic dental treatment designed to brighten your smile and reduce stains or discoloration caused by food, drinks, aging, and everyday habits. Our teeth whitening service provides a safe and effective way to achieve a noticeably brighter smile while maintaining a natural appearance. We carefully assess each patient’s teeth and oral health before recommending the most suitable whitening approach. Our professional dental team focuses on providing comfortable, personalized, and high-quality whitening care. We use modern dental techniques and professional-grade products to help improve tooth color while minimizing potential sensitivity. Before treatment, we explain the procedure, expected results, and aftercare instructions so you can feel confident and comfortable throughout the process. We understand that every smile is different, which is why whitening results may vary from person to person. Our team provides personalized guidance based on your existing tooth color, dental condition, and cosmetic goals. We also recommend proper brushing, regular dental checkups, and avoiding excessive consumption of staining foods and beverages to help maintain your brighter smile. Whether you are preparing for a special occasion or simply want to feel more confident about your smile, our teeth whitening service can help you achieve a cleaner, fresher, and brighter appearance. Our goal is to provide professional care and beautiful, natural-looking results that help you smile with greater confidence every day.",
+    "questionsAnswers": [
+      {
+        "question": "What is teeth whitening?",
+        "answer": "Teeth whitening is a cosmetic dental treatment that helps remove stains and discoloration, making your teeth look brighter and improving your smile."
+      },
+      {
+        "question": "Is teeth whitening safe?",
+        "answer": "Professional teeth whitening is generally safe when performed or recommended by a dental professional. Some people may experience temporary tooth sensitivity."
+      },
+      {
+        "question": "How long does teeth whitening take?",
+        "answer": "The treatment time depends on the whitening method used. Professional in-office whitening can often be completed in a single appointment."
+      },
+      {
+        "question": "How long do teeth whitening results last?",
+        "answer": "Results can last for several months or longer, depending on your diet, oral hygiene, and lifestyle habits. Regular dental care can help maintain your brighter smile."
+      },
+      {
+        "question": "Can everyone get their teeth whitened?",
+        "answer": "Most adults can benefit from teeth whitening, but it may not be suitable for everyone. A dental examination can help determine whether whitening is appropriate for you."
+      }
+    ]
+  },
+  {
+    "_id": "service006",
+    "serviceImage": "https://i.ibb.co.com/kCjqM6J/dental-filling.png",
+    "serviceName": "Dental Fillings",
+     "serviceList": [
+      "Dental Fixing Service",
+      "Cosmetic Dentistry",
+      "Dental Implants",
+      "Routine Dental Exam",
+      "Teeth Whitening",
+      "Dental Fillings"
+    ],
+    "serviceDescription": "This is an essential service to help patients avoid cavities, gum disease, enamel wear, etc. & keep the …",
+    "serviceParagraph": "Dental fillings are a common and effective restorative dental treatment used to repair teeth affected by cavities, decay, small fractures, or minor damage. Our dental fillings service focuses on restoring the natural shape, strength, and function of damaged teeth while helping prevent further deterioration. We carefully examine each patient’s teeth and recommend the most appropriate filling treatment based on their individual oral health needs. Our experienced dental team uses modern techniques and quality dental materials to provide comfortable, precise, and reliable treatment. During the procedure, the damaged portion of the tooth is carefully removed, the area is cleaned, and the tooth is restored with a suitable filling material. We take special care to ensure that the filling fits properly and feels natural when you bite and chew. Patient comfort and safety are our top priorities. We explain the treatment process clearly and answer any questions before beginning the procedure. Our team also provides helpful advice about brushing, flossing, diet, and regular dental checkups to help protect your teeth and prevent future cavities. A dental filling can help preserve a natural tooth and avoid more extensive dental treatment when decay is detected early. Our goal is to provide personalized, compassionate, and professional dental care that restores damaged teeth, improves oral function, and helps every patient maintain a healthy, comfortable, and confident smile for years to come.",
+    "questionsAnswers": [
+      {
+        "question": "What is a dental filling?",
+        "answer": "A dental filling is a treatment used to repair a tooth damaged by decay or a small fracture and restore its normal shape and function."
+      },
+      {
+        "question": "Is getting a dental filling painful?",
+        "answer": "Dental fillings are usually performed with local anesthesia, making the procedure comfortable for most patients. Mild sensitivity may occur temporarily afterward."
+      },
+      {
+        "question": "How long does a dental filling take?",
+        "answer": "A filling can often be completed in one appointment. The exact treatment time depends on the size and location of the cavity."
+      },
+      {
+        "question": "How long do dental fillings last?",
+        "answer": "Dental fillings can last for many years with proper oral hygiene and regular dental checkups. Their lifespan depends on the material used and your oral care habits."
+      },
+      {
+        "question": "Why are dental fillings important?",
+        "answer": "Fillings stop the progression of tooth decay, restore the tooth's function, and help prevent further damage or the need for more extensive treatment."
+      }
+    ]
+  }
+]

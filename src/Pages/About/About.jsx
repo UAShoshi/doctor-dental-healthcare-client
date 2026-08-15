@@ -24,7 +24,7 @@ const About = () => {
                     <div className="hero-content flex-col lg:flex-row gap-14">
                         <img
                             src={about1}
-                            className="max-w-sm rounded-lg shadow-2xl"
+                            className="md:max-w-sm rounded-lg shadow-2xl"
                         />
                         <div>
                             <p className="pb-12">
@@ -51,7 +51,7 @@ const About = () => {
                 <div className="hero-content gap-10 flex-col lg:flex-row-reverse">
                     <img
                         src={aboutImg2}
-                        className="max-w-md rounded-lg shadow-2xl"
+                        className="md:max-w-md rounded-lg shadow-2xl"
                     />
                     <div className="space-y-8">
                         <h1 className="text-5xl font-semibold">Our Story</h1>
@@ -60,7 +60,7 @@ const About = () => {
                             comprehensive range of dental services to meet your needs, <br /> from routine cleanings and 
                             exams to advanced treatments like dental implants and orthodontics.
                         </p>
-                        <div className="flex gap-5 w-80">
+                        <div className="md:flex gap-5 md:w-80">
                             <img className="rounded-3xl" src={aboutImg3} alt="" />
                             <img className="rounded-3xl" src={aboutImg4} alt="" />
                         </div>
@@ -74,20 +74,20 @@ const About = () => {
                 <div className="hero bg-base-200 mb-10 p-10">
                     <div className="hero-content gap-0 flex-col lg:flex-row">
 
-                        <div className="border-r-0 border-2 border-gray-400 p-12">
+                        <div className="border-2 border-gray-400 md:p-12 p-3">
                             <h1 className="text-2xl font-bold">Efficiency:</h1>
                             <p className="py-6">
                                 Streamlined appointment scheduling
                                 that fits into your busy lifestyle.
                             </p>
                         </div>
-                        <div className="border-r-0 border-2 border-gray-400 p-12">
+                        <div className="border-2 border-gray-400 md:p-12 p-3">
                             <h1 className="text-2xl font-bold">Convenience:</h1>
                             <p className="py-6">
                                 Access to a network of trusted healthcare professionals in your area.
                             </p>
                         </div>
-                        <div className="border-2 border-gray-400 p-12">
+                        <div className="border-2 border-gray-400 md:p-12 p-3">
                             <h1 className="text-2xl font-bold">Personalization:</h1>
                             <p className="py-6">
                                 Tailored recommendations and reminders to help you stay on top of your health.

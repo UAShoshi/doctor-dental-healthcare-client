@@ -7,13 +7,13 @@ const Contact = () => {
     return (
         <div>
             <div>
-                <Cover img={contactImg} title="CONTACT US"></Cover>
+                <Cover img={contactImg} title="CONTACT US" about="Contact us"></Cover>
             </div>
             <div className="hero bg-base-200 min-h-screen">
                 <div className="gap-20 hero-content flex-col lg:flex-row">
                     <img
                         src={contact1}
-                        className="max-w-sm rounded-lg shadow-2xl"
+                        className="md:max-w-sm rounded-lg shadow-2xl"
                     />
                     <div className="font-semibold">
                         <h1 className="text-2xl font-semibold">OUR OFFICE</h1>

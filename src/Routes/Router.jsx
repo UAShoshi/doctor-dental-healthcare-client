@@ -8,6 +8,7 @@ import Services from "../Pages/Services/Services";
 import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import ServicesDetail from "../Pages/Home/ServicesCard/ServicesDetail";
 
 
 export const router = createBrowserRouter([
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: 'services',
         element: <Services></Services>
+      },
+      {
+        path: 'servicesdetail/:id',
+        element: <ServicesDetail></ServicesDetail>
       },
       {
         path: 'contact',

@@ -8,7 +8,7 @@ const AboutCard = () => {
   <div className="hero-content flex-col gap-10 lg:flex-row-reverse">
     <img
       src={aboutCard}
-      className="max-w-lg rounded-lg shadow-2xl"
+      className="md:max-w-lg rounded-lg shadow-2xl"
     />
     <div className="space-y-6">
         <div className="badge badge-soft bg-[#cfe2ff] uppercase">about our clinic</div>
@@ -18,7 +18,7 @@ const AboutCard = () => {
         positive, stress-free dental experience. Our team combines advanced <br />dental care with a 
         compassionate, family-centered approach – helping children <br />feel safe, supported, and proud of their smiles.
       </p>
-      <button><Link to="/about" className="btn bg-[#5F6FFF] text-white rounded-xl px-10 uppercase py-6 hover:bg-[#434fbe]">About our clinic</Link></button>
+      <button><Link to="/about" className="btn bg-[#5F6FFF] text-white rounded-xl px-10 uppercase py-6 hover:bg-[#434fbe]">Learn More About Us</Link></button>
     </div>
   </div>
 </div>

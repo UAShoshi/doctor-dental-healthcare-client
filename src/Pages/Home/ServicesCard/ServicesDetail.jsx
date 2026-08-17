@@ -60,14 +60,14 @@ const ServicesDetail = () => {
 
   return (
     <div>
-      <div className='flex'>
+      <div className='flex flex-col lg:flex-row-reverse gap-10 max-w-7xl mx-auto'>
         {/* -------- First Section --------- */}
-        <div className="pt-30 px-4 py-12 mx-auto">
+        <div className="pt-30 w-full lg:w-2/3 px-4 py-12">
 
           {/* Service Name */}
           <div className="mb-16">
 
-            <h1 className="text-5xl font-semibold">
+            <h1 className="lg:text-5xl text-2xl font-semibold">
               About {service.serviceName}
             </h1>
           </div>
@@ -84,7 +84,7 @@ const ServicesDetail = () => {
           {/* Service Information */}
           <div className="space-y-5">
 
-            <h1 className="text-4xl font-semibold">
+            <h1 className="lg:text-4xl text-2xl font-semibold">
               About {service.serviceName}
             </h1>
 
@@ -97,7 +97,7 @@ const ServicesDetail = () => {
           {/* Questions & Answers */}
           <div className="mt-12">
 
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="lg:text-3xl text-xl font-bold mb-6">
               Frequently Asked Questions
             </h2>
 
@@ -110,7 +110,7 @@ const ServicesDetail = () => {
                     className="shadow-2xs border border-base-300 rounded-xl collapse bg-base-100" name="my-accordion-det-1" open
                   >
 
-                    <summary className="collapse-title text-xl font-semibold">
+                    <summary className="collapse-title md:text-xl text-md font-semibold">
                       {item.question}
                     </summary>
 
@@ -129,7 +129,7 @@ const ServicesDetail = () => {
 
         </div>
         {/* -------- Last Section -------- */}
-        <div className='pt-30 px-4 py-12 mx-auto'>
+        <div className='pt-30 w-full lg:w-1/3 px-4 py-12'>
           <div>
             <h1 className="p-4 text-center text-xl tracking-wide font-semibold pb-6">Our Services</h1>
             <ul className="list bg-base-100 rounded-box shadow-md border border-base-300">
@@ -216,9 +216,9 @@ const ServicesDetail = () => {
       </div>
 
       {/* Back Button */}
-      <div className="mt-10">
+      <div className="mt-10 px-8">
         <Link to="/services">
-          <button className="btn btn-outline mb-20">
+          <button className="btn btn-outline mb-20 hover:bg-[#5F6FFF] hover:text-white">
             ← Back to Services
           </button>
         </Link>

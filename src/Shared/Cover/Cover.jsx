@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-const Cover = ({ img, title, directions, about }) => {
+const Cover = ({ img, title, directions, about, contact, testimonials }) => {
   return (
     <div
       className="hero h-[600px]"
@@ -26,11 +26,16 @@ const Cover = ({ img, title, directions, about }) => {
                   <li>
                     <Link to="/contact">Contact Us</Link>
                   </li>
-                ) : (
+                ) : contact ? (
                   <li>
                     <Link to="/about">About Us</Link>
                   </li>
-                )
+                ) : testimonials ? ( <li>
+                    <Link to="/priceing">Priceing</Link>
+                  </li>
+                ) :  <li>
+                    <Link to="/testimonials">Testimonials</Link>
+                  </li>
               }
             </ul>
           </div>

@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "testimonial001",
+    "patientName": "Sarah Ahmed",
+    "patientImage": "https://i.pravatar.cc/150?img=47",
+    "serviceName": "Dental Fixing Service",
+    "rating": 5,
+    "textTestimonial": "The dental fixing service was excellent. The doctor explained everything clearly and made me feel comfortable throughout the treatment."
+  },
+  {
+    "_id": "testimonial002",
+    "patientName": "John Smith",
+    "patientImage": "https://i.pravatar.cc/150?img=12",
+    "serviceName": "Cosmetic Dentistry Service",
+    "rating": 5,
+    "textTestimonial": "I am very happy with my smile after the cosmetic dentistry treatment. The results look natural and beautiful."
+  },
+  {
+    "_id": "testimonial003",
+    "patientName": "Emily Wilson",
+    "patientImage": "https://i.pravatar.cc/150?img=32",
+    "serviceName": "Dental Implants Service",
+    "rating": 5,
+    "textTestimonial": "My dental implant treatment was smooth and professional. The staff were friendly and the final result exceeded my expectations."
+  },
+  {
+    "_id": "testimonial004",
+    "patientName": "Michael Brown",
+    "patientImage": "https://i.pravatar.cc/150?img=11",
+    "serviceName": "Routine Dental Exam Service",
+    "rating": 5,
+    "textTestimonial": "The routine dental exam was quick and thorough. The dentist carefully checked my teeth and provided helpful advice."
+  },
+  {
+    "_id": "testimonial005",
+    "patientName": "Olivia Martin",
+    "patientImage": "https://i.pravatar.cc/150?img=44",
+    "serviceName": "Teeth Whitening Service",
+    "rating": 5,
+    "textTestimonial": "I loved my teeth whitening experience. My teeth look much brighter, and the treatment was comfortable and professional."
+  },
+  {
+    "_id": "testimonial006",
+    "patientName": "David Johnson",
+    "patientImage": "https://i.pravatar.cc/150?img=68",
+    "serviceName": "Dental Fillings Service",
+    "rating": 5,
+    "textTestimonial": "The dental filling procedure was painless and very comfortable. The dentist did an amazing job restoring my tooth."
+  },
+  {
+    "_id": "testimonial007",
+    "patientName": "Sophia Williams",
+    "patientImage": "https://i.pravatar.cc/150?img=49",
+    "serviceName": "Dental Fixing Service",
+    "rating": 4,
+    "textTestimonial": "I received excellent care from the dental team. My broken tooth was fixed perfectly and the whole experience was stress-free."
+  },
+  {
+    "_id": "testimonial008",
+    "patientName": "Daniel Taylor",
+    "patientImage": "https://i.pravatar.cc/150?img=13",
+    "serviceName": "Cosmetic Dentistry Service",
+    "rating": 5,
+    "textTestimonial": "The cosmetic dentistry treatment completely improved my smile. The dentist was skilled, friendly, and very attentive."
+  },
+  {
+    "_id": "testimonial009",
+    "patientName": "Emma Anderson",
+    "patientImage": "https://i.pravatar.cc/150?img=45",
+    "serviceName": "Teeth Whitening Service",
+    "rating": 5,
+    "textTestimonial": "Amazing service and wonderful results. My teeth are noticeably whiter, and I am very confident with my smile now."
+  }
+]

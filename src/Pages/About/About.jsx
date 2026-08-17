@@ -12,7 +12,7 @@ const About = () => {
     return (
         <div>
             <div>
-                <Cover img={aboutImg} title="ABOUT US"></Cover>
+                <Cover img={aboutImg} title="ABOUT US" contact="About Us"></Cover>
             </div>
             <div className="text-center my-20">
                 <h1 className="font-bold text-5xl pb-5">

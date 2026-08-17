@@ -9,6 +9,8 @@ import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import ServicesDetail from "../Pages/Home/ServicesCard/ServicesDetail";
+import Testimonials from "../Pages/Home/Testimonials/Testimonials";
+import Priceing from "../Pages/Home/Home/Priceing/Priceing";
 
 
 export const router = createBrowserRouter([
@@ -35,7 +37,15 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact></Contact>
-      }, 
+      },
+      {
+        path:'testimonials',
+        element:<Testimonials></Testimonials>
+      } ,
+      {
+        path:'priceing',
+        element:<Priceing></Priceing>
+      },
       {
         path: 'login',
         element: <Login></Login>

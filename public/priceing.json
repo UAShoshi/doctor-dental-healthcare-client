@@ -1,0 +1,158 @@
+[
+  {
+    "_id": "pricing001",
+    "serviceName": "Dental Checkup",
+    "serviceImage": "https://i.ibb.co.com/8gYqJxM/dental-checkup.png",
+    "price": 105,
+    "description": "Complete dental examination to keep your teeth and gums healthy.",
+    "features": [
+      {
+        "name": "Complete Oral Examination",
+        "price": 30
+      },
+      {
+        "name": "Gum Health Check",
+        "price": 20
+      },
+      {
+        "name": "Dental X-Ray",
+        "price": 40
+      },
+      {
+        "name": "Treatment Recommendation",
+        "price": 15
+      }
+    ],
+    "buttonText": "Book Appointment"
+  },
+  {
+    "_id": "pricing002",
+    "serviceName": "Teeth Whitening",
+    "serviceImage": "https://i.ibb.co.com/4Z6QY9p/teeth-whitening.png",
+    "price": 150,
+    "description": "Professional teeth whitening treatment for a brighter and confident smile.",
+    "features": [
+      {
+        "name": "Professional Whitening",
+        "price": 60
+      },
+      {
+        "name": "Stain Removal",
+        "price": 35
+      },
+      {
+        "name": "Smile Enhancement",
+        "price": 30
+      },
+      {
+        "name": "Aftercare Guidance",
+        "price": 25
+      }
+    ],
+    "buttonText": "Book Appointment"
+  },
+  {
+    "_id": "pricing003",
+    "serviceName": "Dental Filling",
+    "serviceImage": "https://i.ibb.co.com/Y7kqvKQ/dental-filling.png",
+    "price": 130,
+    "description": "Restore damaged teeth and protect them from further decay.",
+    "features": [
+      {
+        "name": "Cavity Treatment",
+        "price": 35
+      },
+      {
+        "name": "Tooth Restoration",
+        "price": 40
+      },
+      {
+        "name": "Quality Filling Material",
+        "price": 30
+      },
+      {
+        "name": "Pain Management",
+        "price": 25
+      }
+    ],
+    "buttonText": "Book Appointment"
+  },
+  {
+    "_id": "pricing004",
+    "serviceName": "Dental Implants",
+    "serviceImage": "https://i.ibb.co.com/6ZJ5KxH/dental-implant.png",
+    "price": 700,
+    "description": "Advanced dental implant treatment for replacing missing teeth.",
+    "features": [
+      {
+        "name": "Implant Consultation",
+        "price": 100
+      },
+      {
+        "name": "Implant Placement",
+        "price": 350
+      },
+      {
+        "name": "Natural Looking Crown",
+        "price": 180
+      },
+      {
+        "name": "Post Treatment Care",
+        "price": 70
+      }
+    ],
+    "buttonText": "Book Appointment"
+  },
+  {
+    "_id": "pricing005",
+    "serviceName": "Cosmetic Dentistry",
+    "serviceImage": "https://i.ibb.co.com/9H4PqYd/cosmetic-dentistry.png",
+    "price": 500,
+    "description": "Improve the appearance of your teeth and create a beautiful smile.",
+    "features": [
+      {
+        "name": "Smile Design",
+        "price": 100
+      },
+      {
+        "name": "Teeth Reshaping",
+        "price": 120
+      },
+      {
+        "name": "Dental Veneers",
+        "price": 220
+      },
+      {
+        "name": "Cosmetic Consultation",
+        "price": 60
+      }
+    ],
+    "buttonText": "Book Appointment"
+  },
+  {
+    "_id": "pricing006",
+    "serviceName": "Root Canal Treatment",
+    "serviceImage": "https://i.ibb.co.com/3FQwYxP/root-canal.png",
+    "price": 350,
+    "description": "Effective root canal treatment to save infected or damaged teeth.",
+    "features": [
+      {
+        "name": "Infection Removal",
+        "price": 80
+      },
+      {
+        "name": "Root Canal Cleaning",
+        "price": 100
+      },
+      {
+        "name": "Tooth Protection",
+        "price": 90
+      },
+      {
+        "name": "Follow-up Consultation",
+        "price": 80
+      }
+    ],
+    "buttonText": "Book Appointment"
+  }
+]

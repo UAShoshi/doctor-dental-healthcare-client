@@ -23,8 +23,8 @@ const NavBar = () => {
         <summary>Pages</summary>
         <ul className="p-2 bg-base-100 w-40 z-1">
           <li><a>Team</a></li>
-          <li><a>Pricing</a></li>
-          <li><a>Testimonial</a></li>
+          <li><NavLink to={"/priceing"}>Priceing</NavLink></li>
+          <li><NavLink to={"/testimonials"}>Testimonials</NavLink></li>
           <li><a>Faq</a></li>
           <li><a>404</a></li>
         </ul>

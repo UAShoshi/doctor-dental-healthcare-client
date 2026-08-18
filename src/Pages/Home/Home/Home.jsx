@@ -2,8 +2,8 @@ import AboutCard from "../AboutCard/AboutCard";
 import Banner from "../Banner/Banner";
 import ServicesCard from "../ServicesCard/ServicesCard";
 import Works from "../Works/Works";
-import Speciality from "./Speciality/Speciality";
-import TestimonialsCard from "./TestimonialsCard/TestimonialsCard";
+import Speciality from "../Speciality/Speciality";
+import TestimonialsCard from "../TestimonialsCard/TestimonialsCard";
 
 
 const Home = () => {

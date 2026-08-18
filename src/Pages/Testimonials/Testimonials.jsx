@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AllTestimonials from './AllTestimonials';
-import Cover from '../../../Shared/Cover/Cover';
-import TestimonialCover from '../../../assets/author/Testimonial-cover.jpg';
+import TestimonialCover from '../../assets/author/Testimonial-cover.jpg';
+import Cover from '../../Shared/Cover/Cover';
 // import AllTestimonials from './AllTestimonials';
 
 const Testimonials = () => {
@@ -18,7 +18,7 @@ const Testimonials = () => {
     return (
         <div>
             <div>
-                <Cover img={TestimonialCover} title="TESTIMONIALS" Priceing="Testimonials"></Cover>
+                <Cover img={TestimonialCover} title="TESTIMONIALS" priceing="Testimonials"></Cover>
             </div>
             <section className="py-20">
                 <div className="container flex flex-col items-center mx-auto mb-12 md:p-10 md:px-12">

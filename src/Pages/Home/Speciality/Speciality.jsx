@@ -1,10 +1,9 @@
-
-import img1 from "../../../../assets/speciality/General_physician.jpg"
-import img2 from "../../../../assets/speciality/Gynecologist.jpg"
-import img3 from "../../../../assets/speciality/Dermatologist.jpg"
-import img4 from "../../../../assets/speciality/Pediatricians.jpg"
-import img5 from "../../../../assets/speciality/Neurologist.jpg"
-import img6 from "../../../../assets/speciality/Gastroenterologist.jpg"
+import img1 from "../../../assets/speciality/General_physician.jpg";
+import img2 from "../../../assets/speciality/Gynecologist.jpg";
+import img3 from "../../../assets/speciality/Dermatologist.jpg";
+import img4 from "../../../assets/speciality/Pediatricians.jpg";
+import img5 from "../../../assets/speciality/Neurologist.jpg";
+import img6 from "../../../assets/speciality/Gastroenterologist.jpg";
 
 const Speciality = () => {
     return (

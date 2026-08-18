@@ -9,8 +9,9 @@ import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import ServicesDetail from "../Pages/Home/ServicesCard/ServicesDetail";
-import Testimonials from "../Pages/Home/Testimonials/Testimonials";
-import Priceing from "../Pages/Home/Home/Priceing/Priceing";
+import Testimonials from "../Pages/Testimonials/Testimonials";
+import Priceing from "../Pages/Priceing/Priceing";
+import Doctors from "../Pages/Doctors/Doctors";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: 'servicesdetail/:id',
         element: <ServicesDetail></ServicesDetail>
+      },
+      {
+        path: 'doctors',
+        element: <Doctors></Doctors>
       },
       {
         path: 'contact',

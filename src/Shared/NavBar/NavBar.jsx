@@ -22,15 +22,15 @@ const NavBar = () => {
       <details>
         <summary>Pages</summary>
         <ul className="p-2 bg-base-100 w-40 z-1">
-          <li><a>Team</a></li>
+          <li><NavLink to={"/doctors"}>Our Doctors</NavLink></li>
           <li><NavLink to={"/priceing"}>Priceing</NavLink></li>
           <li><NavLink to={"/testimonials"}>Testimonials</NavLink></li>
-          <li><a>Faq</a></li>
+          <li><a>Blog</a></li>
           <li><a>404</a></li>
         </ul>
       </details>
     </li>
-    <li><a>Blog</a></li>
+    <li><a>Shop</a></li>
     <li><NavLink to={"/contact"}>Contact</NavLink></li>
   </>
   return (

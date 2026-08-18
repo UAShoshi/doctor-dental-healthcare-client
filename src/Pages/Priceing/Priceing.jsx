@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Cover from '../../../../Shared/Cover/Cover';
-import PriceingCover from '../../../../assets/author/Priceing-cover.jpg';
+import PriceingCover from '../../assets/author/Priceing-cover.jpg';
 import AllPriceing from './AllPriceing';
+import Cover from '../../Shared/Cover/Cover';
 
 const Priceing = () => {
     const [priceing, setPriceing] = useState([]);

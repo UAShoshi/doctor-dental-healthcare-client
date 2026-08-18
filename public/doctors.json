@@ -1,0 +1,164 @@
+[
+  {
+    "_id": "doctor001",
+    "doctorImage": "https://i.ibb.co.com/WpFP8w2R/doctor1.png",
+    "doctorName": "Sarah Ahmed",
+    "specialization": "General Dentist",
+    "phone": "+880 1712-345678",
+    "email": "sarah.ahmed@example.com",
+    "location": "Dhaka, Bangladesh",
+    "qualification": "BDS, DDS",
+    "hospital": "Smile Dental Care",
+    "availableDays": [
+      "Saturday",
+      "Monday",
+      "Wednesday"
+    ],
+    "availableTime": [
+      "10:00 AM - 12:00 PM",
+      "2:00 PM - 4:00 PM",
+      "6:00 PM - 8:00 PM"
+    ],
+    "educationExperience": {
+      "education": "BDS from Dhaka Dental College",
+      "boardCertification": "Bangladesh Dental Council Certified",
+      "fieldOfExpertise": "General and Preventive Dentistry",
+      "yearsOfPractice": "8 Years"
+    }
+  },
+  {
+    "_id": "doctor002",
+    "doctorImage": "https://i.ibb.co.com/pjfzsqb6/doctor2.png",
+    "doctorName": "Mohammad Rahman",
+    "specialization": "Cosmetic Dentist",
+    "phone": "+880 1812-456789",
+    "email": "mohammad.rahman@example.com",
+    "location": "Chattogram, Bangladesh",
+    "qualification": "BDS, FCPS",
+    "hospital": "Dental Health Center",
+    "availableDays": [
+      "Sunday",
+      "Tuesday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "9:00 AM - 11:00 AM",
+      "1:00 PM - 3:00 PM",
+      "5:00 PM - 7:00 PM"
+    ],
+    "educationExperience": {
+      "education": "BDS from Chittagong Medical University",
+      "boardCertification": "FCPS in Dental Surgery",
+      "fieldOfExpertise": "Cosmetic and Aesthetic Dentistry",
+      "yearsOfPractice": "10 Years"
+    }
+  },
+  {
+    "_id": "doctor003",
+    "doctorImage": "https://i.ibb.co.com/6jzkBxM/doctor3.jpg",
+    "doctorName": "Nusrat Jahan",
+    "specialization": "Orthodontist",
+    "phone": "+880 1912-567890",
+    "email": "nusrat.jahan@example.com",
+    "location": "Dhaka, Bangladesh",
+    "qualification": "BDS, MS",
+    "hospital": "Bright Smile Dental Clinic",
+    "availableDays": [
+      "Saturday",
+      "Tuesday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "10:00 AM - 12:00 PM",
+      "3:00 PM - 5:00 PM",
+      "6:00 PM - 8:00 PM"
+    ],
+    "educationExperience": {
+      "education": "BDS from Dhaka Dental College",
+      "boardCertification": "MS in Orthodontics",
+      "fieldOfExpertise": "Braces and Teeth Alignment",
+      "yearsOfPractice": "7 Years"
+    }
+  },
+  {
+    "_id": "doctor004",
+    "doctorImage": "https://i.ibb.co.com/qF1Fx960/doctor4.jpg",
+    "doctorName": "Tanvir Hasan",
+    "specialization": "Dental Surgeon",
+    "phone": "+880 1612-678901",
+    "email": "tanvir.hasan@example.com",
+    "location": "Sylhet, Bangladesh",
+    "qualification": "BDS, FCPS",
+    "hospital": "City Dental Hospital",
+    "availableDays": [
+      "Sunday",
+      "Monday",
+      "Wednesday"
+    ],
+    "availableTime": [
+      "9:00 AM - 11:00 AM",
+      "2:00 PM - 4:00 PM",
+      "6:00 PM - 8:00 PM"
+    ],
+    "educationExperience": {
+      "education": "BDS from Sylhet Dental College",
+      "boardCertification": "FCPS in Oral and Dental Surgery",
+      "fieldOfExpertise": "Dental Surgery and Oral Procedures",
+      "yearsOfPractice": "12 Years"
+    }
+  },
+  {
+    "_id": "doctor005",
+    "doctorImage": "https://i.ibb.co.com/N2NHTG5d/doctor5.jpg",
+    "doctorName": "Farzana Akter",
+    "specialization": "Pediatric Dentist",
+    "phone": "+880 1512-789012",
+    "email": "farzana.akter@example.com",
+    "location": "Rajshahi, Bangladesh",
+    "qualification": "BDS, MDS",
+    "hospital": "Kids Dental Care",
+    "availableDays": [
+      "Saturday",
+      "Monday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "10:00 AM - 12:00 PM",
+      "1:00 PM - 3:00 PM",
+      "5:00 PM - 7:00 PM"
+    ],
+    "educationExperience": {
+      "education": "BDS from Rajshahi Dental College",
+      "boardCertification": "MDS in Pediatric Dentistry",
+      "fieldOfExpertise": "Children's Dental Care",
+      "yearsOfPractice": "6 Years"
+    }
+  },
+  {
+    "_id": "doctor006",
+    "doctorImage": "https://i.ibb.co.com/5hMcGbHN/doctor6.jpg",
+    "doctorName": "Imran Kabir",
+    "specialization": "Dental Implant Specialist",
+    "phone": "+880 1312-890123",
+    "email": "imran.kabir@example.com",
+    "location": "Khulna, Bangladesh",
+    "qualification": "BDS, DDS",
+    "hospital": "Advanced Dental Clinic",
+    "availableDays": [
+      "Sunday",
+      "Tuesday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "9:30 AM - 11:30 AM",
+      "2:00 PM - 4:00 PM",
+      "6:00 PM - 8:00 PM"
+    ],
+    "educationExperience": {
+      "education": "BDS from Khulna Dental College",
+      "boardCertification": "DDS in Implant Dentistry",
+      "fieldOfExpertise": "Dental Implants and Oral Surgery",
+      "yearsOfPractice": "9 Years"
+    }
+  }
+]

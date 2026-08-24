@@ -12,6 +12,7 @@ import ServicesDetail from "../Pages/Home/ServicesCard/ServicesDetail";
 import Testimonials from "../Pages/Testimonials/Testimonials";
 import Priceing from "../Pages/Priceing/Priceing";
 import Doctors from "../Pages/Doctors/Doctors";
+import DoctorsDetail from "../Pages/Doctors/DoctorsDetail";
 
 
 export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: 'doctors',
         element: <Doctors></Doctors>
+      },
+      {
+        path: 'doctorsdetail/:id',
+        element: <DoctorsDetail></DoctorsDetail>
       },
       {
         path: 'contact',

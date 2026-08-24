@@ -1,7 +1,7 @@
 [
   {
     "_id": "doctor001",
-    "doctorImage": "https://i.ibb.co.com/WpFP8w2R/doctor1.png",
+    "doctorImage": "https://i.ibb.co.com/TqKF7Rzg/doctor1.png",
     "doctorName": "Sarah Ahmed",
     "specialization": "General Dentist",
     "phone": "+880 1712-345678",
@@ -28,7 +28,7 @@
   },
   {
     "_id": "doctor002",
-    "doctorImage": "https://i.ibb.co.com/pjfzsqb6/doctor2.png",
+    "doctorImage": "https://i.ibb.co.com/99DZS4YD/doctor2.png",
     "doctorName": "Mohammad Rahman",
     "specialization": "Cosmetic Dentist",
     "phone": "+880 1812-456789",
@@ -55,7 +55,7 @@
   },
   {
     "_id": "doctor003",
-    "doctorImage": "https://i.ibb.co.com/6jzkBxM/doctor3.jpg",
+    "doctorImage": "https://i.ibb.co.com/r20Dcmb2/doctor3.png",
     "doctorName": "Nusrat Jahan",
     "specialization": "Orthodontist",
     "phone": "+880 1912-567890",
@@ -109,7 +109,7 @@
   },
   {
     "_id": "doctor005",
-    "doctorImage": "https://i.ibb.co.com/N2NHTG5d/doctor5.jpg",
+    "doctorImage": "https://i.ibb.co.com/FLQvT3HL/doctor5.png",
     "doctorName": "Farzana Akter",
     "specialization": "Pediatric Dentist",
     "phone": "+880 1512-789012",
@@ -136,7 +136,7 @@
   },
   {
     "_id": "doctor006",
-    "doctorImage": "https://i.ibb.co.com/5hMcGbHN/doctor6.jpg",
+    "doctorImage": "https://i.ibb.co.com/VWDY47gW/doctor6.png",
     "doctorName": "Imran Kabir",
     "specialization": "Dental Implant Specialist",
     "phone": "+880 1312-890123",

@@ -24,7 +24,7 @@ const AllDoctors = ({ doctor }) => {
                     </figure>
                     <div className="py-6 flex justify-between items-center">
                         <div className="card-actions">
-                            <button><Link to={`/doctorsdetail/${_id}`} className="uppercase flex justify-baseline">Open Profile<GoArrowDownRight className="text-xl"></GoArrowDownRight></Link></button>
+                            <button><Link to={`/doctorsdetail/${_id}`} className="uppercase flex justify-baseline font-medium transition delay-150 duration-700 ease-in-out hover:-translate-y-1 hover:scale-110 ...">Open Profile<GoArrowDownRight className="text-xl"></GoArrowDownRight></Link></button>
                         </div>
                         <div className="text-2xl flex gap-2">
                             <button className="hover:bg-gray-300 p-2 rounded-full bg-[#DADEFF]"><TiSocialLinkedin></TiSocialLinkedin></button>

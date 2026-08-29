@@ -11,13 +11,19 @@
     "hospital": "Smile Dental Care",
     "availableDays": [
       "Saturday",
+      "Sunday",
       "Monday",
-      "Wednesday"
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
     ],
     "availableTime": [
       "10:00 AM - 12:00 PM",
+      " --- ",
       "2:00 PM - 4:00 PM",
-      "6:00 PM - 8:00 PM"
+      " --- ",
+      "6:00 PM - 8:00 PM",
+      " --- "
     ],
     "educationExperience": {
       "education": "BDS from Dhaka Dental College",
@@ -37,13 +43,19 @@
     "qualification": "BDS, FCPS",
     "hospital": "Dental Health Center",
     "availableDays": [
+      "Saturday",
       "Sunday",
+      "Monday",
       "Tuesday",
+      "Wednesday",
       "Thursday"
     ],
     "availableTime": [
+      " --- ",
       "9:00 AM - 11:00 AM",
+      " --- ",
       "1:00 PM - 3:00 PM",
+      " --- ",
       "5:00 PM - 7:00 PM"
     ],
     "educationExperience": {
@@ -65,12 +77,18 @@
     "hospital": "Bright Smile Dental Clinic",
     "availableDays": [
       "Saturday",
+      "Sunday",
+      "Monday",
       "Tuesday",
+      "Wednesday",
       "Thursday"
     ],
     "availableTime": [
       "10:00 AM - 12:00 PM",
+      " --- ",
+      " --- ",
       "3:00 PM - 5:00 PM",
+      " --- ",
       "6:00 PM - 8:00 PM"
     ],
     "educationExperience": {
@@ -91,14 +109,20 @@
     "qualification": "BDS, FCPS",
     "hospital": "City Dental Hospital",
     "availableDays": [
+      "Saturday",
       "Sunday",
       "Monday",
-      "Wednesday"
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
     ],
     "availableTime": [
+      " --- ",
       "9:00 AM - 11:00 AM",
       "2:00 PM - 4:00 PM",
-      "6:00 PM - 8:00 PM"
+      " --- ",
+      "6:00 PM - 8:00 PM",
+      " --- "
     ],
     "educationExperience": {
       "education": "BDS from Sylhet Dental College",
@@ -119,12 +143,18 @@
     "hospital": "Kids Dental Care",
     "availableDays": [
       "Saturday",
+      "Sunday",
       "Monday",
+      "Tuesday",
+      "Wednesday",
       "Thursday"
     ],
     "availableTime": [
       "10:00 AM - 12:00 PM",
+      " --- ",
       "1:00 PM - 3:00 PM",
+      " --- ",
+      " --- ",
       "5:00 PM - 7:00 PM"
     ],
     "educationExperience": {
@@ -145,13 +175,19 @@
     "qualification": "BDS, DDS",
     "hospital": "Advanced Dental Clinic",
     "availableDays": [
+      "Saturday",
       "Sunday",
+      "Monday",
       "Tuesday",
+      "Wednesday",
       "Thursday"
     ],
     "availableTime": [
+      " --- ",
       "9:30 AM - 11:30 AM",
+      " --- ",
       "2:00 PM - 4:00 PM",
+      " --- ",
       "6:00 PM - 8:00 PM"
     ],
     "educationExperience": {

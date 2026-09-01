@@ -1,39 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Cover from '../../Shared/Cover/Cover';
-import DoctorsCover from '../../assets/team/doctor-cover.jpg';
-import AppointmentImg from '../../assets/team/Appointment.jpg';
-import AllDoctors from './AllDoctors';
+import AppointmentImg from '../../assets/team/Appointment.jpg'
 
-const Doctors = () => {
-    const [doctors, setDoctors] = useState([]);
-
-    useEffect(() => {
-        fetch('doctors.json')
-            .then(res => res.json())
-            .then(data =>
-                setDoctors(data));
-    }, [])
-
+const Appointment = () => {
     return (
         <div>
-            <div>
-                <Cover img={DoctorsCover} title="OUR DOCTORS" doctors="Our Doctors "></Cover>
-            </div>
-            <div className="text-center pt-20">
-                <h1 className="text-4xl font-semibold py-5">Our Doctors</h1>
-                <p>At our Pediatric Dentistry & Orthodontics Clinic, we believe every child <br />deserves a positive, stress-free dental experience.
-                </p>
-            </div>
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-20'>
-                {doctors.map(doctor => (
-                    <AllDoctors
-                        key={doctor._id}
-                        doctor={doctor}
-                    />
-                ))}
-            </div>
             {/* ---- Book an Appointment ---- */}
-            <div className="hero bg-base-200 min-h-screen mt-20">
+            <div className="hero bg-base-200 min-h-screen pt-30 pb-30">
                 <div className="w-full hero-content flex-col lg:flex-row gap-20">
                     <img
                         alt=""
@@ -150,4 +121,4 @@ const Doctors = () => {
     );
 };
 
-export default Doctors;
+export default Appointment;

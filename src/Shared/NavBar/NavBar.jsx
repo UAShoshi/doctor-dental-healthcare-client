@@ -25,8 +25,9 @@ const NavBar = () => {
           <li><NavLink to={"/doctors"}>Our Doctors</NavLink></li>
           <li><NavLink to={"/priceing"}>Priceing</NavLink></li>
           <li><NavLink to={"/testimonials"}>Testimonials</NavLink></li>
-          <li><a>Blog</a></li>
-          <li><a>404</a></li>
+          <li><NavLink to={"/blogs"}>Blog</NavLink></li>
+          {/* <li><NavLink to={"/appointment"}>Appointment</NavLink></li> */}
+          <li><NavLink to={"/errorpage"}>404</NavLink></li>
         </ul>
       </details>
     </li>
@@ -47,7 +48,7 @@ const NavBar = () => {
               {navOption}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">DentCare Hub</a>
+          <a className="btn btn-ghost text-xl"><Link to={"/"}>DentCare</Link></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

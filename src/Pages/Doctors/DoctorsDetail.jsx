@@ -206,6 +206,16 @@ const DoctorsDetail = () => {
           </form>
         </div>
       </div>
+
+       {/* Back Button */}
+
+                <div className="mt-10 px-8">
+        <Link to="/doctors">
+          <button className="btn btn-outline mb-20 hover:bg-[#5F6FFF] hover:text-white">
+            ← Back to Our Doctors
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

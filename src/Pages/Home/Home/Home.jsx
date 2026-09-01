@@ -2,8 +2,9 @@ import AboutCard from "../AboutCard/AboutCard";
 import Banner from "../Banner/Banner";
 import ServicesCard from "../ServicesCard/ServicesCard";
 import Works from "../Works/Works";
-import Speciality from "../Speciality/Speciality";
+import SpecialDoctors from "../SpecialDoctors/SpecialDoctors";
 import TestimonialsCard from "../TestimonialsCard/TestimonialsCard";
+import Appointment from "../../Appointment/Appointment";
 
 
 const Home = () => {
@@ -12,9 +13,10 @@ const Home = () => {
             <Banner></Banner>
             <AboutCard></AboutCard>
             <ServicesCard></ServicesCard>
-            <Speciality></Speciality>
+            <SpecialDoctors></SpecialDoctors>
             <TestimonialsCard></TestimonialsCard>
             <Works></Works>
+            <Appointment></Appointment>
         </div>
     );
 };

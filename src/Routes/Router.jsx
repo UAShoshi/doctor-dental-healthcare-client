@@ -13,12 +13,18 @@ import Testimonials from "../Pages/Testimonials/Testimonials";
 import Priceing from "../Pages/Priceing/Priceing";
 import Doctors from "../Pages/Doctors/Doctors";
 import DoctorsDetail from "../Pages/Doctors/DoctorsDetail";
+import Blogs from "../Pages/Blogs/Blogs";
+import BlogsDetails from "../Pages/Blogs/BlogsDetails";
+import Appointment from "../Pages/Appointment/Appointment";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
+    loader: ErrorPage,
     children:[
       {
         path: '/',
@@ -34,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'servicesdetail/:id',
-        element: <ServicesDetail></ServicesDetail>
+        element: <ServicesDetail></ServicesDetail>,
       },
       {
         path: 'doctors',
@@ -49,12 +55,24 @@ export const router = createBrowserRouter([
         element: <Contact></Contact>
       },
       {
+        path: 'Appointment',
+        element: <Appointment></Appointment>
+      },
+      {
         path:'testimonials',
         element:<Testimonials></Testimonials>
       } ,
       {
         path:'priceing',
         element:<Priceing></Priceing>
+      },
+      {
+        path: 'blogs',
+        element: <Blogs></Blogs>
+      },
+      {
+        path: 'blogsdetails/:id',
+        element: <BlogsDetails></BlogsDetails>
       },
       {
         path: 'login',

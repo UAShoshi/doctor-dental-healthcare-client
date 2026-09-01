@@ -1,6 +1,6 @@
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Cover from "../../Shared/Cover/Cover";
-import servicesCover from "../../assets/service/service-img4.jpg";
+import ServicesCover from "../../assets/service/service-img4.jpg";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AllServices from "./AllServices";
@@ -20,7 +20,7 @@ const Services = () => {
     return (
         <div>
             <div>
-                <Cover img={servicesCover} title="OUR SERVICES" directions="Services"></Cover>
+                <Cover img={ServicesCover} title="OUR SERVICES" directions="Services"></Cover>
             </div>
             <div className="text-center mt-20">
                 <h1 className="text-3xl font-bold py-5">All Types of Dental Services</h1>

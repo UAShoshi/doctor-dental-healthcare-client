@@ -527,8 +527,8 @@ const Checkout = () => {
 
                                     <label
                                         className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition ${paymentMethod === "cash"
-                                                ? "border-sky-500 bg-sky-50"
-                                                : "border-slate-200 hover:border-sky-300"
+                                            ? "border-sky-500 bg-sky-50"
+                                            : "border-slate-200 hover:border-sky-300"
                                             }`}
                                     >
 
@@ -562,8 +562,8 @@ const Checkout = () => {
 
                                     <label
                                         className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition ${paymentMethod === "card"
-                                                ? "border-sky-500 bg-sky-50"
-                                                : "border-slate-200 hover:border-sky-300"
+                                            ? "border-sky-500 bg-sky-50"
+                                            : "border-slate-200 hover:border-sky-300"
                                             }`}
                                     >
 
@@ -597,8 +597,8 @@ const Checkout = () => {
 
                                     <label
                                         className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition ${paymentMethod === "mobile"
-                                                ? "border-sky-500 bg-sky-50"
-                                                : "border-slate-200 hover:border-sky-300"
+                                            ? "border-sky-500 bg-sky-50"
+                                            : "border-slate-200 hover:border-sky-300"
                                             }`}
                                     >
 

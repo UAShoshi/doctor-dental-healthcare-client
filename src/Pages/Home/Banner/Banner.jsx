@@ -12,27 +12,27 @@ import img4 from "../../../assets/hero/intro-img4.png"
 
 const Banner = () => {
 
-    return (
-        <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-        <SwiperSlide><img src={img4} alt="" /></SwiperSlide>
-      </Swiper>
-    );
+  return (
+    <Swiper
+      spaceBetween={30}
+      centeredSlides={true}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Autoplay, Pagination, Navigation]}
+      className="mySwiper"
+    >
+      <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
+      <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
+      <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
+      <SwiperSlide><img src={img4} alt="" /></SwiperSlide>
+    </Swiper>
+  );
 };
 
 export default Banner;

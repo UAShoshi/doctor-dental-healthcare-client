@@ -8,8 +8,8 @@ const Priceing = () => {
 
     useEffect(() => {
         fetch('priceing.json')
-        .then(res => res.json())
-        .then(data => setPriceing(data));
+            .then(res => res.json())
+            .then(data => setPriceing(data));
     }, [])
 
     return (
@@ -24,12 +24,12 @@ const Priceing = () => {
                         <span className="">We treat every patient as an individual and create treatment plans to fit your specific needs.</span>
                     </div>
                     <div className="container grid lg:grid-cols-3 md:grid-cols-2 mx-auto gap-4 lg:px-10">
-                           {priceing.map(price => (
-                    <AllPriceing
-                        key={price._id}
-                        price={price}
-                    />
-                ))}
+                        {priceing.map(price => (
+                            <AllPriceing
+                                key={price._id}
+                                price={price}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>

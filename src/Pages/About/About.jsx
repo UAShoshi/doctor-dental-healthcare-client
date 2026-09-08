@@ -56,8 +56,8 @@ const About = () => {
                     <div className="space-y-8">
                         <h1 className="text-5xl font-semibold">Our Story</h1>
                         <p>
-                            We believe that everyone deserves a healthy, beautiful smile. That’s why <br /> we offer a 
-                            comprehensive range of dental services to meet your needs, <br /> from routine cleanings and 
+                            We believe that everyone deserves a healthy, beautiful smile. That’s why <br /> we offer a
+                            comprehensive range of dental services to meet your needs, <br /> from routine cleanings and
                             exams to advanced treatments like dental implants and orthodontics.
                         </p>
                         <div className="md:flex gap-5 md:w-80">

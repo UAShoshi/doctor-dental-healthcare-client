@@ -14,16 +14,16 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const {createUser} = useContext(AuthContext)
+  const { createUser } = useContext(AuthContext)
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password)
-    .then(result =>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      
-    })
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+      })
   };
 
   return (
@@ -44,11 +44,12 @@ const SignUp = () => {
               <input type="email" {...register("email", { required: true })} name="email" className="input" placeholder="" />
               {errors.email && <span className="text-red-600 font-semibold">Email is required</span>}
               <label className="label font-semibold">Password</label>
-              <input type="password" {...register("password", { 
+              <input type="password" {...register("password", {
                 required: true,
-                maxLength: 20, 
+                maxLength: 20,
                 minLength: 6,
-                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})} name="password" className="input" placeholder="" />
+                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+              })} name="password" className="input" placeholder="" />
               {errors.password?.type === "required" && (
                 <p className="text-red-600 font-semibold">Password is required</p>
               )}

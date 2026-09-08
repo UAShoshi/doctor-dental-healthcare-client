@@ -148,12 +148,12 @@ const DoctorsDetail = () => {
             <h2 className='text-5xl font-semibold py-10'>Working Shifts</h2>
             <div className="bg-base-100 grid grid-cols-1 md:grid-cols-3 gap-5">
               {doctor.availableDays.map((day, index) => (
-              <div 
-              key={index}
-              className="card-body items-center text-center rounded-xl shadow-md bg-base-200 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 ...">
-                <h2 className="card-title">{day}</h2>
-                <p>{doctor.availableTime[index]}</p>
-              </div>
+                <div
+                  key={index}
+                  className="card-body items-center text-center rounded-xl shadow-md bg-base-200 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 ...">
+                  <h2 className="card-title">{day}</h2>
+                  <p>{doctor.availableTime[index]}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -207,9 +207,9 @@ const DoctorsDetail = () => {
         </div>
       </div>
 
-       {/* Back Button */}
+      {/* Back Button */}
 
-                <div className="mt-10 px-8">
+      <div className="mt-10 px-8">
         <Link to="/doctors">
           <button className="btn btn-outline mb-20 hover:bg-[#5F6FFF] hover:text-white">
             ← Back to Our Doctors

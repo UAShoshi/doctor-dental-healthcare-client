@@ -10,27 +10,27 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const {signIn} = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
 
-  const handleLogin = event =>{
+  const handleLogin = event => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
     signIn(email, password)
-    .then( result =>{
-      const user = result.user;
-      console.log(user);
-      Swal.fire({
-  title: "User login successful!",
-  icon: "success",
-  draggable: true
-});
-    })
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          title: "User login successful!",
+          icon: "success",
+          draggable: true
+        });
+      })
 
     navigate("/");
-    
+
   }
   return (
     <div>
@@ -51,8 +51,8 @@ const Login = () => {
                 <input className="btn btn-neutral font-bold bg-[#5F6FFF] mt-4" type="submit" value="login" />
               </fieldset>
             </form>
-             <p className="text-center pb-10">New here? <Link to="/signup" 
-             className="text-[#5F6FFF] underline">Create account</Link></p>
+            <p className="text-center pb-10">New here? <Link to="/signup"
+              className="text-[#5F6FFF] underline">Create account</Link></p>
           </div>
         </div>
       </div>

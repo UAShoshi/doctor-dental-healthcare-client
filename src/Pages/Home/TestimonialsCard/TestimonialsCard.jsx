@@ -6,10 +6,10 @@ const TestimonialsCard = () => {
         <div>
             <section className="py-2 mt-20 md:ml-20 ml-5">
                 <div className="space-y-6">
-                <div className="badge badge-soft bg-base-400 uppercase">Parents’ Testimonials</div>
-                <h1 className="text-4xl font-semibold">What Families Say About Us</h1>
-                <button><Link to="/testimonials" className="btn bg-[#434fbe] text-white rounded-xl px-10 uppercase py-6 hover:bg-[#5F6FFF]">view all reviews</Link></button>
-            </div>
+                    <div className="badge badge-soft bg-base-400 uppercase">Parents’ Testimonials</div>
+                    <h1 className="text-4xl font-semibold">What Families Say About Us</h1>
+                    <button><Link to="/testimonials" className="btn bg-[#434fbe] text-white rounded-xl px-10 uppercase py-6 hover:bg-[#5F6FFF]">view all reviews</Link></button>
+                </div>
                 <div className="container grid lg:grid-cols-3 md:grid-cols-2 mx-auto lg:px-10">
                     <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
                         <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12">
@@ -19,7 +19,7 @@ const TestimonialsCard = () => {
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="2 star" />
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="3 star" />
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="4 star" />
-                                    <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="5 star" defaultChecked/>
+                                    <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="5 star" defaultChecked />
                                 </div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 text-gray-400">
                                     <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
@@ -45,7 +45,7 @@ const TestimonialsCard = () => {
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="2 star" />
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="3 star" />
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="4 star" />
-                                    <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="5 star" defaultChecked/>
+                                    <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="5 star" defaultChecked />
                                 </div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 text-gray-400">
                                     <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
@@ -71,7 +71,7 @@ const TestimonialsCard = () => {
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="2 star" />
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="3 star" />
                                     <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="4 star" />
-                                    <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="5 star" defaultChecked/>
+                                    <input type="radio" name="" className="mask mask-star-2 bg-orange-400" aria-label="5 star" defaultChecked />
                                 </div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 text-gray-400">
                                     <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>

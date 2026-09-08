@@ -36,32 +36,32 @@ const Contact = () => {
                     <h1 className="font-bold text-5xl pb-5">Ask a Question</h1>
                     <p>If you have any questions, you can contact us. Please, fill out the form below.</p>
                 </div>
-              <section className="py-10">
-				<div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 gap-10">
-					<div className="py-6 md:py-0 md:px-6">
-                        <img src={contactUs} alt="" />
-					</div>
-					<form noValidate="" className="space-y-6">
-						<div>
-							<label htmlFor="name" className="text-sm font-bold"></label>
-							<input id="name" type="text" placeholder="Your Name*" className="input w-full p-3 py-8 rounded dark:bg-gray-100" />
-						</div>
-						<div>
-							<label htmlFor="email" className="text-sm font-bold"></label>
-							<input id="email" type="email" placeholder="Your Mail*" className="input w-full p-3 py-8 rounded dark:bg-gray-100" />
-						</div>
-                        <div>
-                            <label htmlFor="phone" className="text-sm font-bold"></label>
-                            <input type="phone" placeholder="Phone" className="input w-full p-3 py-8 rounded dark:bg-gray-100" />
+                <section className="py-10">
+                    <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 gap-10">
+                        <div className="py-6 md:py-0 md:px-6">
+                            <img src={contactUs} alt="" />
                         </div>
-						<div>
-							<label htmlFor="message" className="text-sm font-bold"></label>
-							<textarea id="message" rows="6" placeholder="Your Message..." className="textarea w-full p-10 rounded dark:bg-gray-100"></textarea>
-						</div>
-						<button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded bg-[#5F6FFF] text-white btn">Send Message</button>
-					</form>
-				</div>
-			</section>
+                        <form noValidate="" className="space-y-6">
+                            <div>
+                                <label htmlFor="name" className="text-sm font-bold"></label>
+                                <input id="name" type="text" placeholder="Your Name*" className="input w-full p-3 py-8 rounded dark:bg-gray-100" />
+                            </div>
+                            <div>
+                                <label htmlFor="email" className="text-sm font-bold"></label>
+                                <input id="email" type="email" placeholder="Your Mail*" className="input w-full p-3 py-8 rounded dark:bg-gray-100" />
+                            </div>
+                            <div>
+                                <label htmlFor="phone" className="text-sm font-bold"></label>
+                                <input type="phone" placeholder="Phone" className="input w-full p-3 py-8 rounded dark:bg-gray-100" />
+                            </div>
+                            <div>
+                                <label htmlFor="message" className="text-sm font-bold"></label>
+                                <textarea id="message" rows="6" placeholder="Your Message..." className="textarea w-full p-10 rounded dark:bg-gray-100"></textarea>
+                            </div>
+                            <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded bg-[#5F6FFF] text-white btn">Send Message</button>
+                        </form>
+                    </div>
+                </section>
             </div>
         </div>
     );

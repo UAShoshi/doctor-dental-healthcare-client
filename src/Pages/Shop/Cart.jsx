@@ -80,48 +80,48 @@ const Cart = () => {
 
     const handleApplyCoupon = () => {
 
-    const code = couponCode.trim().toUpperCase();
+        const code = couponCode.trim().toUpperCase();
 
-    if (!code) {
-        setCouponMessage("Please enter a coupon code.");
-        setCouponApplied(false);
-        setDiscountPercent(0);
+        if (!code) {
+            setCouponMessage("Please enter a coupon code.");
+            setCouponApplied(false);
+            setDiscountPercent(0);
 
-        return;
-    }
+            return;
+        }
 
-    if (coupons[code]) {
+        if (coupons[code]) {
 
-        const discount = coupons[code];
+            const discount = coupons[code];
 
-        setCouponCode(code);
-        setDiscountPercent(discount);
-        setCouponApplied(true);
+            setCouponCode(code);
+            setDiscountPercent(discount);
+            setCouponApplied(true);
 
-        setCouponMessage(
-            `Coupon applied successfully! You saved ${discount}%.`
-        );
+            setCouponMessage(
+                `Coupon applied successfully! You saved ${discount}%.`
+            );
 
-        // Save coupon
-        localStorage.setItem("couponCode", code);
-        localStorage.setItem("discountPercent", discount);
-        localStorage.setItem("couponApplied", "true");
+            // Save coupon
+            localStorage.setItem("couponCode", code);
+            localStorage.setItem("discountPercent", discount);
+            localStorage.setItem("couponApplied", "true");
 
-    } else {
+        } else {
 
-        setDiscountPercent(0);
-        setCouponApplied(false);
+            setDiscountPercent(0);
+            setCouponApplied(false);
 
-        setCouponMessage(
-            "Invalid coupon code. Please try again."
-        );
+            setCouponMessage(
+                "Invalid coupon code. Please try again."
+            );
 
-        // Remove old coupon
-        localStorage.removeItem("couponCode");
-        localStorage.removeItem("discountPercent");
-        localStorage.removeItem("couponApplied");
-    }
-};
+            // Remove old coupon
+            localStorage.removeItem("couponCode");
+            localStorage.removeItem("discountPercent");
+            localStorage.removeItem("couponApplied");
+        }
+    };
 
 
     return (

@@ -46,7 +46,7 @@ const Shop = () => {
 
         navigate("/cart");
     };
-          // পরে এখানে CartContext এর addToCart() ব্যবহার করবে        
+    // পরে এখানে CartContext এর addToCart() ব্যবহার করবে        
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20">

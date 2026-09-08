@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const AllDoctors = ({ doctor }) => {
-    const {_id, doctorImage, doctorName, specialization,
+    const { _id, doctorImage, doctorName, specialization,
         // phone, email, location, qualification, hospital
     }
         = doctor;

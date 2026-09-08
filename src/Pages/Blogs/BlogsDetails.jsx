@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 
 const BlogsDetails = () => {
 
-     const { id } = useParams();
+  const { id } = useParams();
 
   const [blogs, setBlogs] = useState([]);
   const [blog, setBlog] = useState(null);
@@ -93,8 +93,8 @@ const BlogsDetails = () => {
     .slice(0, 3);
 
 
-    return (
-          <div className="bg-slate-50 min-h-screen">
+  return (
+    <div className="bg-slate-50 min-h-screen">
 
       {/* =====================================================
           BREADCRUMB
@@ -349,7 +349,7 @@ const BlogsDetails = () => {
                   TAGS
               ================================================== */}
 
-                <div className="mt-10 pt-8 border-t border-slate-200">
+              <div className="mt-10 pt-8 border-t border-slate-200">
 
                 <div className="flex flex-wrap items-center gap-3">
 
@@ -684,7 +684,7 @@ const BlogsDetails = () => {
       </section>
 
     </div>
-    );
+  );
 };
 
 export default BlogsDetails;

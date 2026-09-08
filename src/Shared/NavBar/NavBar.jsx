@@ -60,22 +60,22 @@ const NavBar = () => {
 
           {
             user ? <>
-                  <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                      <div className="w-10 rounded-full">
-                        <img
-                          alt="Tailwind CSS Navbar component"
-                          src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                      </div>
-                    </div>
-                    <ul
-                      tabIndex="-1"
-                      className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                      <li><a><NavLink to={"/my-profile"}>My Profile</NavLink></a></li>
-                      <li><a><NavLink to={"/my-appointments"}>My Appointments</NavLink></a></li>
-                      <li><a onClick={handleLogOut}>LogOut</a></li>
-                    </ul>
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt="Tailwind CSS Navbar component"
+                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                   </div>
+                </div>
+                <ul
+                  tabIndex="-1"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                  <li><a><NavLink to={"/my-profile"}>My Profile</NavLink></a></li>
+                  <li><a><NavLink to={"/my-appointments"}>My Appointments</NavLink></a></li>
+                  <li><a onClick={handleLogOut}>LogOut</a></li>
+                </ul>
+              </div>
             </> : <>
               <a className="btn font-bold bg-[#5F6FFF] text-white lg:btn-md btn-sm rounded-3xl hover:bg-[#434fbe]"><Link to={"/login"}>
                 Create Account</Link></a></>

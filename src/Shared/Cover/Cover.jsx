@@ -30,21 +30,21 @@ const Cover = ({ img, title, directions, about, contact, testimonials, priceing,
                   <li>
                     <Link to="/about">About Us</Link>
                   </li>
-                ) : testimonials ? ( <li>
-                    <Link to="/priceing">Priceing</Link>
-                  </li>
-                ) : priceing ? ( <li>
-                    <Link to="/testimonials">Testimonials</Link>
-                  </li>
-                ) :  doctors ? (<li>
-                    <Link to="/doctors">Our Doctors</Link>
-                  </li>
-                ) :  blogs ? (<li>
-                    <Link to="/blogs">Our Blogs</Link>
-                  </li>
-                ) :  <li>
-                    <Link to="/shop">Dental Care Shop</Link>
-                  </li>
+                ) : testimonials ? (<li>
+                  <Link to="/priceing">Priceing</Link>
+                </li>
+                ) : priceing ? (<li>
+                  <Link to="/testimonials">Testimonials</Link>
+                </li>
+                ) : doctors ? (<li>
+                  <Link to="/doctors">Our Doctors</Link>
+                </li>
+                ) : blogs ? (<li>
+                  <Link to="/blogs">Our Blogs</Link>
+                </li>
+                ) : <li>
+                  <Link to="/shop">Dental Care Shop</Link>
+                </li>
               }
             </ul>
           </div>

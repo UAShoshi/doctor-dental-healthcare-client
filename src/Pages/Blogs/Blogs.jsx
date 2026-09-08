@@ -6,12 +6,12 @@ import BlogsCover from '../../assets/blog/cover-img.jpg';
 const Blogs = () => {
 
     const [blogs, setBlogs] = useState([]);
-    
-        useEffect(() => {
-            fetch('blogs.json')
-                .then(res => res.json())
-                .then(data => setBlogs(data));
-        }, [])
+
+    useEffect(() => {
+        fetch('blogs.json')
+            .then(res => res.json())
+            .then(data => setBlogs(data));
+    }, [])
 
 
     return (
@@ -24,7 +24,7 @@ const Blogs = () => {
                 <p>Explore our dental care blog for helpful tips, expert advice, and the latest oral health information.</p>
             </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5'>
-                  {blogs.map(blog => (
+                {blogs.map(blog => (
                     <AllBlogs
                         key={blog._id}
                         blog={blog}

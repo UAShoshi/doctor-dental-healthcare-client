@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import uthentication1 from "../../assets/author/images1.png"
 import Swal from "sweetalert2";
 
 
 
 const Login = () => {
+
+  const navigate = useNavigate();
 
   const {signIn} = useContext(AuthContext);
 
@@ -26,6 +28,8 @@ const Login = () => {
   draggable: true
 });
     })
+
+    navigate("/");
     
   }
   return (

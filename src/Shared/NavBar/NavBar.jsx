@@ -31,7 +31,8 @@ const NavBar = () => {
         </ul>
       </details>
     </li>
-    <li><a>Shop</a></li>
+    {/* <li><a>Shop</a></li> */}
+    <li><NavLink to={"/shop"}>Shop</NavLink></li>
     <li><NavLink to={"/contact"}>Contact</NavLink></li>
   </>
   return (

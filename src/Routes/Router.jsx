@@ -17,6 +17,10 @@ import Blogs from "../Pages/Blogs/Blogs";
 import BlogsDetails from "../Pages/Blogs/BlogsDetails";
 import Appointment from "../Pages/Appointment/Appointment";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Shop from "../Pages/Shop/Shop";
+import Cart from "../Pages/Shop/Cart";
+import Checkout from "../Pages/Shop/Checkout";
+import OrderSuccess from "../Pages/Shop/OrderSuccess";
 
 
 export const router = createBrowserRouter([
@@ -73,6 +77,22 @@ export const router = createBrowserRouter([
       {
         path: 'blogsdetails/:id',
         element: <BlogsDetails></BlogsDetails>
+      },
+      {
+        path: 'shop',
+        element: <Shop></Shop>
+      },
+      {
+        path: 'cart',
+        element: <Cart></Cart>
+      },
+      {
+        path: 'checkout',
+        element: <Checkout></Checkout>
+      },
+      {
+        path: 'order-success',
+        element: <OrderSuccess></OrderSuccess>
       },
       {
         path: 'login',

@@ -97,20 +97,6 @@ const SpecialDoctors = () => {
                 <button><Link to="/doctors" className="btn bg-[#434fbe] text-white rounded-xl px-10 uppercase py-6 hover:bg-[#5F6FFF]">view all Doctors</Link></button>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             {/* <div className="flex flex-wrap mt-16 mb-28 gap-8 justify-center">
                 <div>
                     <div className="avatar">

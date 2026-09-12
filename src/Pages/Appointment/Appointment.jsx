@@ -1,122 +1,510 @@
-import AppointmentImg from '../../assets/team/Appointment.jpg'
+import { useContext, useState } from 'react';
+import AppointmentImg from '../../assets/team/Appointment.jpg';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Appointment = () => {
+
+    const { user } = useContext(AuthContext);
+
+    const [formData, setFormData] = useState({
+        serviceName: "",
+        doctorName: "",
+        name: "",
+        phone: "",
+        date: "",
+        hour: "",
+        minute: ""
+    });
+
+
+    // Doctor list from your original Appointment page
+    const doctors = [
+        {
+            doctorId: "doctor01",
+            doctorName: "Sarah Ahmed",
+            doctorImage: "/doctors/doctor1.jpg"
+        },
+        {
+            doctorId: "doctor02",
+            doctorName: "Mohammad Rahman",
+            doctorImage: "/doctors/doctor2.jpg"
+        },
+        {
+            doctorId: "doctor03",
+            doctorName: "Nusrat Jahan",
+            doctorImage: "/doctors/doctor3.jpg"
+        },
+        {
+            doctorId: "doctor04",
+            doctorName: "Tanvir Hasan",
+            doctorImage: "/doctors/doctor4.jpg"
+        },
+        {
+            doctorId: "doctor05",
+            doctorName: "Farzana Akter",
+            doctorImage: "/doctors/doctor5.jpg"
+        },
+        {
+            doctorId: "doctor06",
+            doctorName: "Imran Kabir",
+            doctorImage: "/doctors/doctor6.jpg"
+        }
+    ];
+
+
+    // -----------------------------
+    // Handle Input Change
+    // -----------------------------
+
+    const handleChange = (event) => {
+
+        const { name, value } = event.target;
+
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+
+    };
+
+
+    // -----------------------------
+    // Make Appointment
+    // -----------------------------
+
+    const handleSubmit = (event) => {
+
+        event.preventDefault();
+
+
+        // Check Login
+
+        if (!user) {
+
+            Swal.fire({
+                title: "Please Login",
+                text: "You need to login before booking an appointment.",
+                icon: "warning"
+            });
+
+            return;
+        }
+
+
+        // Find selected doctor
+
+        const selectedDoctor = doctors.find(
+            doctor => doctor.doctorName === formData.doctorName
+        );
+
+
+        if (!selectedDoctor) {
+
+            Swal.fire({
+                title: "Select Doctor",
+                text: "Please select a doctor.",
+                icon: "warning"
+            });
+
+            return;
+        }
+
+
+        // Create time
+
+        const appointmentTime =
+            `${formData.hour}:${formData.minute}`;
+
+
+        // Create appointment
+
+        const newAppointment = {
+
+            _id: `appointment-${Date.now()}`,
+
+            userId: user.uid,
+
+            userName:
+                formData.name ||
+                user.displayName ||
+                "DentalCare User",
+
+            userEmail: user.email,
+
+            phone: formData.phone,
+
+            doctorId: selectedDoctor.doctorId,
+
+            doctorName: selectedDoctor.doctorName,
+
+            doctorImage: selectedDoctor.doctorImage,
+
+            serviceName: formData.serviceName,
+
+            date: formData.date,
+
+            time: appointmentTime,
+
+            status: "Pending",
+
+            notes: "Appointment booked from website"
+
+        };
+
+
+        // Get old appointments
+
+        const existingAppointments =
+            JSON.parse(
+                localStorage.getItem("appointments")
+            ) || [];
+
+
+        // Add new appointment
+
+        const updatedAppointments = [
+            ...existingAppointments,
+            newAppointment
+        ];
+
+
+        // Save appointment
+
+        localStorage.setItem(
+            "appointments",
+            JSON.stringify(updatedAppointments)
+        );
+
+
+        // Success message
+
+        Swal.fire({
+            title: "Appointment Booked!",
+            text: "Your appointment has been booked successfully.",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+
+
+        // Reset form
+
+        setFormData({
+            serviceName: "",
+            doctorName: "",
+            name: "",
+            phone: "",
+            date: "",
+            hour: "",
+            minute: ""
+        });
+
+    };
+
+
     return (
         <div>
+
             {/* ---- Book an Appointment ---- */}
+
             <div className="hero bg-base-200 min-h-screen pt-30 pb-30">
+
                 <div className="w-full hero-content flex-col lg:flex-row gap-20">
+
                     <img
                         alt=""
                         src={AppointmentImg}
                         className="w-1/2 rounded-lg shadow-2xl"
                     />
+
+
                     {/* ---- form ---- */}
+
                     <div className='w-1/2 mx-auto'>
+
                         <div className="text-center">
-                            <h1 className="font-semibold text-2xl pb-5">Book an Appointment</h1>
-                            <p className='pb-20'>Our experienced team strives to provide a positive, stress-free <br />experience.</p>
+
+                            <h1 className="font-semibold text-2xl pb-5">
+                                Book an Appointment
+                            </h1>
+
+                            <p className='pb-20'>
+                                Our experienced team strives to provide a positive, stress-free <br />
+                                experience.
+                            </p>
+
                         </div>
 
-                        <form noValidate="" className="space-y-6">
+
+                        <form
+                            onSubmit={handleSubmit}
+                            noValidate=""
+                            className="space-y-6"
+                        >
+
+                            {/* Services + Doctor */}
+
                             <div className='flex gap-3'>
+
                                 <fieldset className="fieldset w-full">
-                                    <legend className="text-sm mb-2 uppercase">Services</legend>
-                                    <select defaultValue="Pick a browser" className="select p-7 rounded-xl border-0">
-                                        <option disabled={true}>Select Service</option>
-                                        <option>Dental Fixing Service</option>
-                                        <option>Cosmetic Dentistry</option>
-                                        <option>Dental Implants</option>
-                                        <option>Routine Dental Exam</option>
-                                        <option>Teeth Whitening</option>
-                                        <option>Dental Fillings</option>
+
+                                    <legend className="text-sm mb-2 uppercase">
+                                        Services
+                                    </legend>
+
+                                    <select
+                                        name="serviceName"
+                                        value={formData.serviceName}
+                                        onChange={handleChange}
+                                        className="select p-7 rounded-xl border-0"
+                                        required
+                                    >
+
+                                        <option value="" disabled>
+                                            Select Service
+                                        </option>
+
+                                        <option value="Dental Fixing Service">
+                                            Dental Fixing Service
+                                        </option>
+
+                                        <option value="Cosmetic Dentistry">
+                                            Cosmetic Dentistry
+                                        </option>
+
+                                        <option value="Dental Implants">
+                                            Dental Implants
+                                        </option>
+
+                                        <option value="Routine Dental Exam">
+                                            Routine Dental Exam
+                                        </option>
+
+                                        <option value="Teeth Whitening">
+                                            Teeth Whitening
+                                        </option>
+
+                                        <option value="Dental Fillings">
+                                            Dental Fillings
+                                        </option>
+
                                     </select>
+
                                 </fieldset>
+
+
+                                {/* Doctor */}
+
                                 <fieldset className="fieldset w-full">
-                                    <legend className="text-sm mb-2 uppercase">Doctor</legend>
-                                    <select className="select p-7 rounded-xl border-0">
-                                        <option disabled={true}>Select Doctor</option>
-                                        <option>Sarah Ahmed</option>
-                                        <option>Mohammad Rahman</option>
-                                        <option>Nusrat Jahan</option>
-                                        <option>Tanvir Hasan</option>
-                                        <option>Farzana Akter</option>
-                                        <option>Imran Kabir</option>
+
+                                    <legend className="text-sm mb-2 uppercase">
+                                        Doctor
+                                    </legend>
+
+                                    <select
+                                        name="doctorName"
+                                        value={formData.doctorName}
+                                        onChange={handleChange}
+                                        className="select p-7 rounded-xl border-0"
+                                        required
+                                    >
+
+                                        <option value="" disabled>
+                                            Select Doctor
+                                        </option>
+
+
+                                        {/* Your 6 Doctors */}
+
+                                        {doctors.map(doctor => (
+
+                                            <option
+                                                key={doctor.doctorId}
+                                                value={doctor.doctorName}
+                                            >
+                                                {doctor.doctorName}
+                                            </option>
+
+                                        ))}
+
                                     </select>
+
                                 </fieldset>
+
                             </div>
+
+
+                            {/* Name + Phone */}
+
                             <div className='flex gap-3'>
+
                                 <fieldset className="fieldset w-full">
-                                    <label htmlFor="name" className="text-sm mb-2">YOUR NAME *</label>
-                                    <input id="name" type="text" placeholder="Your Full Name*" className="input p-7 rounded-xl border-0" />
+
+                                    <label
+                                        htmlFor="name"
+                                        className="text-sm mb-2"
+                                    >
+                                        YOUR NAME *
+                                    </label>
+
+                                    <input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        placeholder="Your Full Name*"
+                                        className="input p-7 rounded-xl border-0"
+                                        required
+                                    />
+
                                 </fieldset>
+
+
                                 <fieldset className="fieldset w-full">
-                                    <label htmlFor="phone" className="text-sm mb-2">YOUR PHONE</label>
-                                    <input type="phone" placeholder="Your Phone" className="input p-7 rounded-xl border-0" />
+
+                                    <label
+                                        htmlFor="phone"
+                                        className="text-sm mb-2"
+                                    >
+                                        YOUR PHONE
+                                    </label>
+
+                                    <input
+                                        id="phone"
+                                        name="phone"
+                                        type="tel"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="Your Phone"
+                                        className="input p-7 rounded-xl border-0"
+                                    />
+
                                 </fieldset>
+
                             </div>
+
+
+                            {/* Date + Time */}
+
                             <div className='flex gap-3'>
+
                                 <fieldset className="fieldset w-full">
-                                    <label htmlFor="message" className="text-sm mb-2">DATE</label>
-                                    <input type="date" placeholder="Select Date" className="input p-7 rounded-xl border-0" />
+
+                                    <label
+                                        htmlFor="date"
+                                        className="text-sm mb-2"
+                                    >
+                                        DATE
+                                    </label>
+
+                                    <input
+                                        id="date"
+                                        name="date"
+                                        type="date"
+                                        value={formData.date}
+                                        onChange={handleChange}
+                                        className="input p-7 rounded-xl border-0"
+                                        required
+                                    />
+
                                 </fieldset>
+
+
+                                {/* Time */}
+
                                 <div className='w-full'>
-                                    <legend className="text-sm mb-2 uppercase">Time</legend>
+
+                                    <legend className="text-sm mb-2 uppercase">
+                                        Time
+                                    </legend>
+
+
                                     <div className='flex gap-3'>
+
+                                        {/* Hour */}
+
                                         <fieldset className="fieldset w-1/2">
-                                            <select defaultValue="Pick a browser" className="select p-7 rounded-xl border-0">
-                                                <option disabled={true}>Select</option>
-                                                <option>00</option>
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
-                                                <option>04</option>
-                                                <option>05</option>
-                                                <option>06</option>
-                                                <option>07</option>
-                                                <option>08</option>
-                                                <option>09</option>
-                                                <option>10</option>
+
+                                            <select
+                                                name="hour"
+                                                value={formData.hour}
+                                                onChange={handleChange}
+                                                className="select p-7 rounded-xl border-0"
+                                                required
+                                            >
+
+                                                <option value="" disabled>
+                                                    Hour
+                                                </option>
+
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+
                                             </select>
+
                                         </fieldset>
+
+
+                                        {/* Minute */}
+
                                         <fieldset className="fieldset w-1/2">
-                                            <select defaultValue="Pick a browser" className="select p-7 rounded-xl border-0">
-                                                <option disabled={true}>Select</option>
-                                                <option>00</option>
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
-                                                <option>04</option>
-                                                <option>05</option>
-                                                <option>06</option>
-                                                <option>07</option>
-                                                <option>08</option>
-                                                <option>09</option>
-                                                <option>10</option>
-                                                <option>00</option>
-                                                <option>11</option>
-                                                <option>12</option>
-                                                <option>13</option>
-                                                <option>14</option>
-                                                <option>15</option>
-                                                <option>16</option>
-                                                <option>17</option>
-                                                <option>18</option>
-                                                <option>19</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>50</option>
+
+                                            <select
+                                                name="minute"
+                                                value={formData.minute}
+                                                onChange={handleChange}
+                                                className="select p-7 rounded-xl border-0"
+                                                required
+                                            >
+
+                                                <option value="" disabled>
+                                                    Min
+                                                </option>
+
+                                                <option value="00">00</option>
+                                                <option value="15">15</option>
+                                                <option value="30">30</option>
+                                                <option value="45">45</option>
+
                                             </select>
+
                                         </fieldset>
+
                                     </div>
+
                                 </div>
+
                             </div>
-                            <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded btn bg-[#5F6FFF] text-white hover:bg-[#434fbe]">Make an Appointment</button>
+
+
+                            {/* Submit */}
+
+                            <button
+                                type="submit"
+                                className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded btn bg-[#5F6FFF] text-white hover:bg-[#434fbe]"
+                            >
+                                Make an Appointment
+                            </button>
+
                         </form>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     );
 };

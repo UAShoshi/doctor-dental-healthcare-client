@@ -22,16 +22,54 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
-        Swal.fire({
-          title: "User login successful!",
-          icon: "success",
-          draggable: true
-        });
+
+         // users.json থেকে user information নেওয়া
+        fetch("/data/users.json")
+          .then(res => res.json())
+          .then(users => {
+
+            // Login করা email দিয়ে user খুঁজবে
+            const currentUser = users.find(
+              item => item.email === user.email
+            );
+
+            console.log("Current User:", currentUser);
+
+            // User পাওয়া না গেলে
+            if (!currentUser) {
+              Swal.fire({
+                title: "User information not found!",
+                icon: "error",
+              });
+
+              return;
+            }
+
+            Swal.fire({
+              title: "User login successful!",
+              icon: "success",
+              draggable: true
+            });
+
+            // Role অনুযায়ী Dashboard এ পাঠাবে
+            if (currentUser.role === "admin") {
+              navigate("/admin");
+            } else {
+              navigate("/dashboard");
+            }
+
+          });
       })
+      .catch(error => {
+        console.log(error);
 
-    navigate("/");
-
-  }
+        Swal.fire({
+          title: "Login failed!",
+          text: error.message,
+          icon: "error",
+        });
+      });
+  };
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">

@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "user01",
+    "uid": "firebase-user-001",
+    "name": "Aymon",
+    "email": "aymon@gmail.com",
+    "role": "user",
+    "phone": "01700000001",
+    "image": "/users/user1.jpg",
+    "address": "Chittagong, Bangladesh",
+    "createdAt": "2026-09-01"
+  },
+  {
+    "_id": "user02",
+    "uid": "firebase-user-002",
+    "name": "Nusrat Jahan",
+    "email": "nusrat@gmail.com",
+    "role": "user",
+    "phone": "01700000002",
+    "image": "/users/user2.jpg",
+    "address": "Dhaka, Bangladesh",
+    "createdAt": "2026-09-02"
+  },
+  {
+    "_id": "user03",
+    "uid": "firebase-user-003",
+    "name": "Rahim Ahmed",
+    "email": "rahim@gmail.com",
+    "role": "user",
+    "phone": "01700000003",
+    "image": "/users/user3.jpg",
+    "address": "Sylhet, Bangladesh",
+    "createdAt": "2026-09-03"
+  },
+  {
+    "_id": "admin01",
+    "uid": "firebase-admin-001",
+    "name": "DentalCare Admin",
+    "email": "admin@gmail.com",
+    "role": "admin",
+    "phone": "01700000000",
+    "image": "/users/admin.jpg",
+    "address": "Chittagong, Bangladesh",
+    "createdAt": "2026-09-01"
+  }
+]

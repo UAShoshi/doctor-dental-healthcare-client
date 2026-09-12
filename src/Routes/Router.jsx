@@ -6,8 +6,10 @@ import Home from "../Pages/Home/Home/Home";
 import About from "../Pages/About/About";
 import Services from "../Pages/Services/Services";
 import Contact from "../Pages/Contact/Contact";
+
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+
 import ServicesDetail from "../Pages/Home/ServicesCard/ServicesDetail";
 import Testimonials from "../Pages/Testimonials/Testimonials";
 import Priceing from "../Pages/Priceing/Priceing";
@@ -21,6 +23,17 @@ import Shop from "../Pages/Shop/Shop";
 import Cart from "../Pages/Shop/Cart";
 import Checkout from "../Pages/Shop/Checkout";
 import OrderSuccess from "../Pages/Shop/OrderSuccess";
+
+
+import Dashboard from "../Layout/Dashboard";
+import UserDashboard from "../Pages/Dashboard/UserDashboard";
+import MyAppointments from "../Pages/Dashboard/MyAppointments";
+import MyOrders from "../Pages/Dashboard/MyOrders";
+import Admin from "../Layout/Admin";
+import AdminDashboard from "../Pages/Admin/AdminDashboard";
+import ManageUsers from "../Pages/Admin/ManageUsers";
+import ManageDoctors from "../Pages/Admin/ManageDoctors";
+import ManageAppointmentsOrders from "../Pages/Admin/ManageAppointmentsOrders";
 
 
 export const router = createBrowserRouter([
@@ -59,7 +72,7 @@ export const router = createBrowserRouter([
         element: <Contact></Contact>
       },
       {
-        path: 'Appointment',
+        path: 'appointment',
         element: <Appointment></Appointment>
       },
       {
@@ -103,5 +116,49 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>
       }
     ]
+  },
+
+   // USER DASHBOARD
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: '/dashboard',
+        element: <UserDashboard></UserDashboard>,
+      },
+      {
+        path: "myappointments",
+        element: <MyAppointments></MyAppointments>,
+      },
+      {
+        path: "orders",
+        element: <MyOrders></MyOrders>,
+      },
+    ],
+  },
+
+  // ADMIN DASHBOARD
+  {
+    path: "/admin",
+    element: <Admin></Admin>,
+    children: [
+      {
+        path: "/admin",
+        element: <AdminDashboard></AdminDashboard>,
+      },
+      {
+        path: "users",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "doctors",
+        element: <ManageDoctors></ManageDoctors>,
+      },
+      {
+        path: "manage-appointments-orders",
+        element: <ManageAppointmentsOrders></ManageAppointmentsOrders>,
+      },
+    ],
   },
 ]);

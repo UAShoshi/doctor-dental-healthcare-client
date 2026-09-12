@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "user01",
+    "name": "Aymon",
+    "email": "aymon@gmail.com",
+    "role": "user"
+  },
+  {
+    "_id": "user02",
+    "name": "Nusrat Jahan",
+    "email": "nusrat@gmail.com",
+    "role": "user"
+  },
+  {
+    "_id": "admin01",
+    "name": "DentalCare Admin",
+    "email": "admin@gmail.com",
+    "role": "admin"
+  }
+]

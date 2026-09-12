@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "appointment01",
+    "userId": "user01",
+    "userName": "Aymon",
+    "userEmail": "aymon@gmail.com",
+    "doctorId": "doctor01",
+    "doctorName": "Dr. Sarah Ahmed",
+    "doctorImage": "/doctors/doctor1.jpg",
+    "serviceName": "Dental Checkup",
+    "date": "2026-09-12",
+    "time": "10:00 AM - 11:00 AM",
+    "status": "Confirmed",
+    "notes": "Regular dental checkup"
+  },
+  {
+    "_id": "appointment02",
+    "userId": "user01",
+    "userName": "Aymon",
+    "userEmail": "aymon@gmail.com",
+    "doctorId": "doctor02",
+    "doctorName": "Dr. James Wilson",
+    "doctorImage": "/doctors/doctor2.jpg",
+    "serviceName": "Teeth Whitening",
+    "date": "2026-09-18",
+    "time": "02:00 PM - 03:00 PM",
+    "status": "Pending",
+    "notes": "Teeth whitening consultation"
+  },
+  {
+    "_id": "appointment03",
+    "userId": "user02",
+    "userName": "Nusrat Jahan",
+    "userEmail": "nusrat@gmail.com",
+    "doctorId": "doctor03",
+    "doctorName": "Dr. Emily Carter",
+    "doctorImage": "/doctors/doctor3.jpg",
+    "serviceName": "Dental Filling",
+    "date": "2026-09-20",
+    "time": "06:00 PM - 07:00 PM",
+    "status": "Completed",
+    "notes": "Tooth filling treatment"
+  },
+  {
+    "_id": "appointment04",
+    "userId": "user03",
+    "userName": "Rahim Ahmed",
+    "userEmail": "rahim@gmail.com",
+    "doctorId": "doctor04",
+    "doctorName": "Dr. Michael Brown",
+    "doctorImage": "/doctors/doctor4.jpg",
+    "serviceName": "Dental Implant",
+    "date": "2026-09-22",
+    "time": "11:00 AM - 12:00 PM",
+    "status": "Confirmed",
+    "notes": "Dental implant consultation"
+  },
+  {
+    "_id": "appointment05",
+    "userId": "user02",
+    "userName": "Nusrat Jahan",
+    "userEmail": "nusrat@gmail.com",
+    "doctorId": "doctor05",
+    "doctorName": "Dr. Olivia Martin",
+    "doctorImage": "/doctors/doctor5.jpg",
+    "serviceName": "Routine Dental Exam",
+    "date": "2026-09-25",
+    "time": "03:00 PM - 04:00 PM",
+    "status": "Pending",
+    "notes": "Routine dental examination"
+  }
+]

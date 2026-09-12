@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "appointment01",
+    "userId": "user01",
+    "userName": "Aymon",
+    "userEmail": "aymon@gmail.com",
+    "doctorId": "doctor01",
+    "doctorName": "Dr. Sarah Ahmed",
+    "doctorImage": "/doctors/doctor1.jpg",
+    "serviceName": "Dental Checkup",
+    "date": "2026-09-12",
+    "time": "10:00 AM - 11:00 AM",
+    "status": "Confirmed",
+    "notes": "Regular dental checkup"
+  },
+  {
+    "_id": "appointment02",
+    "userId": "user01",
+    "userName": "Aymon",
+    "userEmail": "aymon@gmail.com",
+    "doctorId": "doctor02",
+    "doctorName": "Dr. James Wilson",
+    "doctorImage": "/doctors/doctor2.jpg",
+    "serviceName": "Teeth Whitening",
+    "date": "2026-09-18",
+    "time": "02:00 PM - 03:00 PM",
+    "status": "Pending",
+    "notes": "Teeth whitening consultation"
+  }
+]

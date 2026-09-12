@@ -1,108 +1,177 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-    ArrowLeft,
-    ArrowRight,
-    CheckCircle,
-    Lock,
-    MapPin,
-    CreditCard,
-    ShoppingBag,
-} from "lucide-react";
-
-import { useCart } from "../../Provider/CartProvider";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useCart } from "../../Provider/CartProvider";
 
 
 const Checkout = () => {
 
     const navigate = useNavigate();
 
-    // ================= CART =================
-
     const { cart } = useCart();
 
-
-    // ================= COUPON =================
-
-    const [couponCode] = useState(() => {
-        return localStorage.getItem("couponCode") || "";
-    });
-
-    const [discountPercent] = useState(() => {
-        return Number(localStorage.getItem("discountPercent")) || 0;
-    });
-
-    const [couponApplied] = useState(() => {
-        return localStorage.getItem("couponApplied") === "true";
-    });
+    const { user } = useContext(AuthContext);
 
 
-    // ================= CUSTOMER INFO =================
+    // ================= FORM DATA =================
 
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
+
+        name: user?.displayName || "",
+
+        email: user?.email || "",
+
         phone: "",
+
         address: "",
+
         city: "",
+
         postalCode: "",
+
     });
 
 
     // ================= PAYMENT =================
 
-    const [paymentMethod, setPaymentMethod] = useState("cash");
+    const [paymentMethod, setPaymentMethod] =
+        useState("Cash on Delivery");
 
 
-    // ================= CART CALCULATION =================
-    // Same calculation as Cart.jsx
+    // ================= COUPON =================
 
-    const subtotal = cart.reduce(
-        (total, item) =>
-            total + item.price * item.quantity,
-        0
-    );
+    const [couponCode, setCouponCode] =
+        useState("");
 
+    const [couponApplied, setCouponApplied] =
+        useState(false);
 
-    // Same discount calculation as Cart.jsx
-
-    const discount =
-        (subtotal * discountPercent) / 100;
+    const [discountPercent, setDiscountPercent] =
+        useState(0);
 
 
-    // Same delivery fee as Cart.jsx
-
-    const deliveryFee =
-        cart.length > 0 ? 100 : 0;
-
-
-    // Same final total as Cart.jsx
-
-    const total =
-        subtotal - discount + deliveryFee;
-
-
-    // ================= INPUT CHANGE =================
+    // ================= FORM CHANGE =================
 
     const handleChange = (e) => {
 
         const { name, value } = e.target;
 
-        setFormData((previous) => ({
-            ...previous,
+        setFormData({
+
+            ...formData,
+
             [name]: value,
-        }));
+
+        });
+
     };
 
 
-    // ================= PLACE ORDER =================
+    // ================= PRICE CALCULATION =================
+
+    const subtotal = cart.reduce(
+
+        (total, item) =>
+
+            total +
+            Number(item.price) *
+            Number(item.quantity || 1),
+
+        0
+
+    );
+
+
+    const deliveryFee =
+        subtotal > 0 ? 60 : 0;
+
+
+    const discount = couponApplied
+
+        ? (subtotal * discountPercent) / 100
+
+        : 0;
+
+
+    const total =
+        subtotal +
+        deliveryFee -
+        discount;
+
+
+    // ================= APPLY COUPON =================
+
+    const handleApplyCoupon = () => {
+
+        const code =
+            couponCode.trim().toUpperCase();
+
+
+        if (code === "DENTAL10") {
+
+            setCouponApplied(true);
+
+            setDiscountPercent(10);
+
+
+            Swal.fire({
+
+                toast: true,
+
+                position: "top-end",
+
+                icon: "success",
+
+                title: "10% coupon applied!",
+
+                showConfirmButton: false,
+
+                timer: 2000,
+
+            });
+
+        }
+
+        else {
+
+            setCouponApplied(false);
+
+            setDiscountPercent(0);
+
+
+            Swal.fire({
+
+                toast: true,
+
+                position: "top-end",
+
+                icon: "error",
+
+                title: "Invalid coupon code!",
+
+                showConfirmButton: false,
+
+                timer: 2000,
+
+            });
+
+        }
+
+    };
+
+
+    // ==================================================
+    // PLACE ORDER
+    // ==================================================
 
     const handlePlaceOrder = (e) => {
 
         e.preventDefault();
 
+
+        // ================= CART CHECK =================
 
         if (cart.length === 0) {
 
@@ -111,20 +180,53 @@ const Checkout = () => {
             navigate("/shop");
 
             return;
+
         }
 
 
+        // ================= CREATE ORDER =================
+
         const orderData = {
 
-            customer: formData,
+            // Unique order ID
+            _id: `order-${Date.now()}`,
 
-            products: cart,
+            // Customer friendly order ID
+            orderId: `DC-${Date.now()}`,
 
+            // Logged-in user's email
+            userEmail:
+                user?.email ||
+                formData.email,
+
+            // Customer information
+            customer: {
+
+                ...formData,
+
+                email:
+                    user?.email ||
+                    formData.email,
+
+            },
+
+            // Products from Cart
+            products: cart.map((item) => ({
+
+                ...item,
+
+                quantity:
+                    Number(item.quantity) || 1,
+
+            })),
+
+            // Payment
             paymentMethod,
 
+            // Coupon
             couponCode:
                 couponApplied
-                    ? couponCode
+                    ? couponCode.trim().toUpperCase()
                     : "",
 
             discountPercent:
@@ -132,25 +234,85 @@ const Checkout = () => {
                     ? discountPercent
                     : 0,
 
+            // Price information
             subtotal,
 
             deliveryFee,
+
+            // MyOrder.jsx can use this
+            shipping: deliveryFee,
 
             discount,
 
             total,
 
+            // Order status
+            status: "Processing",
+
+            // Order date
             orderDate:
-                new Date().toISOString(),
+                new Date().toLocaleString(),
+
         };
 
 
-        console.log("Order Data:", orderData);
+        // ==================================================
+        // GET EXISTING ORDERS
+        // ==================================================
+
+        const existingOrders =
+
+            JSON.parse(
+                localStorage.getItem("orders")
+            ) || [];
 
 
-        // Clear cart after successful order
+        // ==================================================
+        // ADD NEW ORDER
+        // ==================================================
+
+        const updatedOrders = [
+
+            ...existingOrders,
+
+            orderData,
+
+        ];
+
+
+        // ==================================================
+        // SAVE ORDER TO LOCAL STORAGE
+        // ==================================================
+
+        localStorage.setItem(
+
+            "orders",
+
+            JSON.stringify(updatedOrders)
+
+        );
+
+
+        // Debug
+        console.log(
+            "Order Saved Successfully:",
+            orderData
+        );
+
+        console.log(
+            "All Orders:",
+            updatedOrders
+        );
+
+
+        // ==================================================
+        // CLEAR CART
+        // ==================================================
+
         localStorage.removeItem("cart");
 
+
+        // Clear coupon data if exists
         localStorage.removeItem("couponCode");
 
         localStorage.removeItem("discountPercent");
@@ -158,7 +320,11 @@ const Checkout = () => {
         localStorage.removeItem("couponApplied");
 
 
-        Swal.mixin({
+        // ==================================================
+        // SUCCESS MESSAGE
+        // ==================================================
+
+         Swal.mixin({
             toast: true,
             position: "top-end",
             showConfirmButton: false,
@@ -175,457 +341,248 @@ const Checkout = () => {
 
 
         navigate("/order-success");
+
     };
 
 
-    // ================= EMPTY CART =================
-
-    if (cart.length === 0) {
-
-        return (
-
-            <div className="min-h-screen bg-slate-50 pt-28 pb-16">
-
-                <div className="max-w-4xl mx-auto px-5">
-
-                    <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center">
-
-                        <ShoppingBag
-                            size={55}
-                            className="mx-auto text-sky-600 mb-5"
-                        />
-
-                        <h1 className="text-3xl font-bold text-slate-900">
-                            Your Cart is Empty
-                        </h1>
-
-                        <p className="text-slate-500 mt-3">
-                            Please add some dental care products before checkout.
-                        </p>
-
-                        <Link
-                            to="/shop"
-                            className="inline-flex items-center gap-2 mt-7 bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-xl font-semibold transition"
-                        >
-                            Continue Shopping
-                            <ArrowRight size={18} />
-                        </Link>
-
-                    </div>
-
-                </div>
-
-            </div>
-        );
-    }
-
+    // ==================================================
+    // JSX
+    // ==================================================
 
     return (
 
-        <div className="min-h-screen bg-slate-50 pt-28 pb-16">
+        <div className="bg-gray-50 min-h-screen py-10">
 
-            <div className="max-w-7xl mx-auto px-5">
-
-
-                {/* ================= HEADER ================= */}
-
-                <div className="mb-10">
-
-                    <Link
-                        to="/cart"
-                        className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-semibold mb-5"
-                    >
-                        <ArrowLeft size={18} />
-
-                        Back to Cart
-                    </Link>
+            <div className="max-w-7xl mx-auto px-4">
 
 
-                    <p className="text-sky-600 font-bold uppercase tracking-wider text-sm">
-                        DentalCare Shop
-                    </p>
+                {/* ================= TITLE ================= */}
 
+                <div className="mb-8">
 
-                    <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mt-2">
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+
                         Checkout
+
                     </h1>
 
+                    <p className="text-gray-500 mt-2">
 
-                    <p className="text-slate-500 mt-3">
-                        Complete your information and place your order.
+                        Complete your order details
+
                     </p>
 
                 </div>
 
 
-                <form onSubmit={handlePlaceOrder}>
 
-                    <div className="grid lg:grid-cols-3 gap-8">
-
-
-                        {/* ================================================= */}
-                        {/* LEFT SIDE */}
-                        {/* ================================================= */}
-
-                        <div className="lg:col-span-2 space-y-6">
+                <form
+                    onSubmit={handlePlaceOrder}
+                    className="grid lg:grid-cols-3 gap-8"
+                >
 
 
-                            {/* ================= CUSTOMER INFORMATION ================= */}
+                    {/* ==================================================
+                        LEFT SIDE
+                    ================================================== */}
 
-                            <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-7">
-
-                                <div className="flex items-center gap-3 mb-6">
-
-                                    <div className="w-10 h-10 bg-sky-50 rounded-full flex items-center justify-center">
-
-                                        <CheckCircle
-                                            size={20}
-                                            className="text-sky-600"
-                                        />
-
-                                    </div>
-
-                                    <div>
-
-                                        <h2 className="text-xl font-bold text-slate-900">
-                                            Customer Information
-                                        </h2>
-
-                                        <p className="text-sm text-slate-500">
-                                            Enter your contact information
-                                        </p>
-
-                                    </div>
-
-                                </div>
+                    <div className="lg:col-span-2 space-y-6">
 
 
-                                <div className="grid md:grid-cols-2 gap-5">
+                        {/* ================= CUSTOMER INFORMATION ================= */}
+
+                        <div className="bg-white rounded-xl shadow-sm p-6">
+
+                            <h2 className="text-xl font-bold mb-5">
+
+                                Customer Information
+
+                            </h2>
 
 
-                                    {/* First Name */}
-
-                                    <div>
-
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            First Name
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            name="firstName"
-                                            value={formData.firstName}
-                                            onChange={handleChange}
-                                            placeholder="Enter your first name"
-                                            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-                                            required
-                                        />
-
-                                    </div>
+                            <div className="grid md:grid-cols-2 gap-4">
 
 
-                                    {/* Last Name */}
+                                {/* Name */}
 
-                                    <div>
+                                <div>
 
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            Last Name
-                                        </label>
+                                    <label className="block text-sm font-medium mb-2">
 
-                                        <input
-                                            type="text"
-                                            name="lastName"
-                                            value={formData.lastName}
-                                            onChange={handleChange}
-                                            placeholder="Enter your last name"
-                                            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-                                            required
-                                        />
+                                        Full Name
 
-                                    </div>
+                                    </label>
 
+                                    <input
 
-                                    {/* Email */}
+                                        type="text"
 
-                                    <div>
+                                        name="name"
 
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            Email Address
-                                        </label>
+                                        value={formData.name}
 
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            placeholder="example@gmail.com"
-                                            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-                                            required
-                                        />
+                                        onChange={handleChange}
 
-                                    </div>
+                                        required
 
+                                        className="input input-bordered w-full"
 
-                                    {/* Phone */}
+                                        placeholder="Enter your name"
 
-                                    <div>
-
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            Phone Number
-                                        </label>
-
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            placeholder="+880 1XXXXXXXXX"
-                                            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-                                            required
-                                        />
-
-                                    </div>
+                                    />
 
                                 </div>
 
-                            </div>
 
+                                {/* Email */}
 
-                            {/* ================= SHIPPING ADDRESS ================= */}
+                                <div>
 
-                            <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-7">
+                                    <label className="block text-sm font-medium mb-2">
 
-                                <div className="flex items-center gap-3 mb-6">
+                                        Email
 
-                                    <div className="w-10 h-10 bg-sky-50 rounded-full flex items-center justify-center">
+                                    </label>
 
-                                        <MapPin
-                                            size={20}
-                                            className="text-sky-600"
-                                        />
+                                    <input
 
-                                    </div>
+                                        type="email"
 
-                                    <div>
+                                        name="email"
 
-                                        <h2 className="text-xl font-bold text-slate-900">
-                                            Shipping Address
-                                        </h2>
+                                        value={
+                                            formData.email
+                                        }
 
-                                        <p className="text-sm text-slate-500">
-                                            Where should we deliver your order?
-                                        </p>
+                                        onChange={handleChange}
 
-                                    </div>
+                                        required
+
+                                        className="input input-bordered w-full"
+
+                                        placeholder="Enter your email"
+
+                                    />
+
+                                </div>
+
+                                {/* City */}
+
+                                <div>
+
+                                    <label className="block text-sm font-medium mb-2">
+
+                                        City
+
+                                    </label>
+
+                                    <input
+
+                                        type="text"
+
+                                        name="city"
+
+                                        value={formData.city}
+
+                                        onChange={handleChange}
+
+                                        required
+
+                                        className="input input-bordered w-full"
+
+                                        placeholder="Enter city"
+
+                                    />
+
+                                </div>
+
+                                  {/* Phone */}
+
+                                <div>
+
+                                    <label className="block text-sm font-medium mb-2">
+
+                                        Phone
+
+                                    </label>
+
+                                    <input
+
+                                        type="tel"
+
+                                        name="phone"
+
+                                        value={formData.phone}
+
+                                        onChange={handleChange}
+
+                                        required
+
+                                        className="input input-bordered w-full"
+
+                                        placeholder="01XXXXXXXXX"
+
+                                    />
 
                                 </div>
 
 
                                 {/* Address */}
 
-                                <div className="mb-5">
+                                <div className="md:col-span-2">
 
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                        Full Address
+                                    <label className="block text-sm font-medium mb-2">
+
+                                        Delivery Address
+
                                     </label>
 
                                     <textarea
+
                                         name="address"
+
                                         value={formData.address}
+
                                         onChange={handleChange}
-                                        placeholder="House number, road, area..."
-                                        className="w-full border border-slate-200 rounded-xl px-4 py-3 h-28 resize-none outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+
                                         required
+
+                                        className="textarea textarea-bordered w-full"
+
+                                        placeholder="Enter your full address"
+
+                                        rows="3"
+
                                     />
 
                                 </div>
 
 
-                                <div className="grid md:grid-cols-2 gap-5">
+                                {/* Postal Code */}
 
+                                <div>
 
-                                    {/* City */}
+                                    <label className="block text-sm font-medium mb-2">
 
-                                    <div>
-
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            City
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            name="city"
-                                            value={formData.city}
-                                            onChange={handleChange}
-                                            placeholder="Dhaka"
-                                            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-                                            required
-                                        />
-
-                                    </div>
-
-
-                                    {/* Postal Code */}
-
-                                    <div>
-
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">
-                                            Postal Code
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            name="postalCode"
-                                            value={formData.postalCode}
-                                            onChange={handleChange}
-                                            placeholder="1200"
-                                            className="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-                                            required
-                                        />
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            {/* ================= PAYMENT METHOD ================= */}
-
-                            <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-7">
-
-                                <div className="flex items-center gap-3 mb-6">
-
-                                    <div className="w-10 h-10 bg-sky-50 rounded-full flex items-center justify-center">
-
-                                        <CreditCard
-                                            size={20}
-                                            className="text-sky-600"
-                                        />
-
-                                    </div>
-
-                                    <div>
-
-                                        <h2 className="text-xl font-bold text-slate-900">
-                                            Payment Method
-                                        </h2>
-
-                                        <p className="text-sm text-slate-500">
-                                            Select your preferred payment method
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div className="space-y-3">
-
-
-                                    {/* Cash on Delivery */}
-
-                                    <label
-                                        className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition ${paymentMethod === "cash"
-                                            ? "border-sky-500 bg-sky-50"
-                                            : "border-slate-200 hover:border-sky-300"
-                                            }`}
-                                    >
-
-                                        <input
-                                            type="radio"
-                                            name="paymentMethod"
-                                            value="cash"
-                                            checked={paymentMethod === "cash"}
-                                            onChange={(e) =>
-                                                setPaymentMethod(e.target.value)
-                                            }
-                                            className="radio radio-info"
-                                        />
-
-                                        <div>
-
-                                            <h3 className="font-semibold text-slate-900">
-                                                Cash on Delivery
-                                            </h3>
-
-                                            <p className="text-sm text-slate-500">
-                                                Pay when your order arrives.
-                                            </p>
-
-                                        </div>
+                                        Postal Code
 
                                     </label>
 
+                                    <input
 
-                                    {/* Card */}
+                                        type="text"
 
-                                    <label
-                                        className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition ${paymentMethod === "card"
-                                            ? "border-sky-500 bg-sky-50"
-                                            : "border-slate-200 hover:border-sky-300"
-                                            }`}
-                                    >
+                                        name="postalCode"
 
-                                        <input
-                                            type="radio"
-                                            name="paymentMethod"
-                                            value="card"
-                                            checked={paymentMethod === "card"}
-                                            onChange={(e) =>
-                                                setPaymentMethod(e.target.value)
-                                            }
-                                            className="radio radio-info"
-                                        />
+                                        value={formData.postalCode}
 
-                                        <div>
+                                        onChange={handleChange}
 
-                                            <h3 className="font-semibold text-slate-900">
-                                                Credit / Debit Card
-                                            </h3>
+                                        className="input input-bordered w-full"
 
-                                            <p className="text-sm text-slate-500">
-                                                Secure online payment.
-                                            </p>
+                                        placeholder="Postal code"
 
-                                        </div>
-
-                                    </label>
-
-
-                                    {/* Mobile Banking */}
-
-                                    <label
-                                        className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition ${paymentMethod === "mobile"
-                                            ? "border-sky-500 bg-sky-50"
-                                            : "border-slate-200 hover:border-sky-300"
-                                            }`}
-                                    >
-
-                                        <input
-                                            type="radio"
-                                            name="paymentMethod"
-                                            value="mobile"
-                                            checked={paymentMethod === "mobile"}
-                                            onChange={(e) =>
-                                                setPaymentMethod(e.target.value)
-                                            }
-                                            className="radio radio-info"
-                                        />
-
-                                        <div>
-
-                                            <h3 className="font-semibold text-slate-900">
-                                                Mobile Banking
-                                            </h3>
-
-                                            <p className="text-sm text-slate-500">
-                                                bKash / Nagad / Rocket
-                                            </p>
-
-                                        </div>
-
-                                    </label>
+                                    />
 
                                 </div>
 
@@ -634,109 +591,254 @@ const Checkout = () => {
                         </div>
 
 
-                        {/* ================================================= */}
-                        {/* RIGHT SIDE - ORDER SUMMARY */}
-                        {/* ================================================= */}
 
-                        <div>
+                        {/* ================= PAYMENT METHOD ================= */}
 
-                            <div className="bg-white border border-slate-200 rounded-2xl p-6 sticky top-28">
+                        <div className="bg-white rounded-xl shadow-sm p-6">
 
+                            <h2 className="text-xl font-bold mb-5">
 
-                                <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                                    Order Summary
-                                </h2>
+                                Payment Method
+
+                            </h2>
 
 
-                                {/* ================= PRODUCTS ================= */}
-
-                                <div className="space-y-4">
-
-                                    {cart.map((item) => (
-
-                                        <div
-                                            key={item._id}
-                                            className="flex gap-3 items-center"
-                                        >
-
-                                            {/* Image */}
-
-                                            <div className="relative shrink-0">
-
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    className="w-16 h-16 rounded-xl object-cover border border-slate-200"
-                                                />
-
-                                                <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-sky-600 text-white text-xs flex items-center justify-center font-semibold">
-                                                    {item.quantity}
-                                                </span>
-
-                                            </div>
+                            <div className="space-y-3">
 
 
-                                            {/* Name */}
+                                <label className="flex items-center gap-3 border rounded-lg p-4 cursor-pointer">
 
-                                            <div className="flex-1 min-w-0">
+                                    <input
 
-                                                <h3 className="font-semibold text-slate-900 text-sm truncate">
-                                                    {item.name}
-                                                </h3>
+                                        type="radio"
 
-                                                <p className="text-sm text-slate-500 mt-1">
-                                                    ৳{item.price} × {item.quantity}
-                                                </p>
+                                        name="payment"
 
-                                            </div>
+                                        value="Cash on Delivery"
+
+                                        checked={
+                                            paymentMethod ===
+                                            "Cash on Delivery"
+                                        }
+
+                                        onChange={(e) =>
+                                            setPaymentMethod(
+                                                e.target.value
+                                            )
+                                        }
+
+                                        className="radio"
+
+                                    />
+
+                                    <div>
+
+                                        <p className="font-semibold">
+
+                                            Cash on Delivery
+
+                                        </p>
+
+                                        <p className="text-sm text-gray-500">
+
+                                            Pay when your order arrives
+
+                                        </p>
+
+                                    </div>
+
+                                </label>
 
 
-                                            {/* Item total */}
+                                <label className="flex items-center gap-3 border rounded-lg p-4 cursor-pointer">
 
-                                            <p className="font-bold text-slate-900 text-sm">
-                                                ৳{(
-                                                    item.price *
-                                                    item.quantity
-                                                ).toFixed(0)}
+                                    <input
+
+                                        type="radio"
+
+                                        name="payment"
+
+                                        value="Online Payment"
+
+                                        checked={
+                                            paymentMethod ===
+                                            "Online Payment"
+                                        }
+
+                                        onChange={(e) =>
+                                            setPaymentMethod(
+                                                e.target.value
+                                            )
+                                        }
+
+                                        className="radio"
+
+                                    />
+
+                                    <div>
+
+                                        <p className="font-semibold">
+
+                                            Online Payment
+
+                                        </p>
+
+                                        <p className="text-sm text-gray-500">
+
+                                            Pay securely online
+
+                                        </p>
+
+                                    </div>
+
+                                </label>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    {/* ==================================================
+                        RIGHT SIDE - ORDER SUMMARY
+                    ================================================== */}
+
+                    <div>
+
+                        <div className="bg-white rounded-xl shadow-sm p-6 sticky top-5">
+
+
+                            <h2 className="text-xl font-bold mb-5">
+
+                                Order Summary
+
+                            </h2>
+
+
+                            {/* ================= PRODUCTS ================= */}
+
+                            <div className="space-y-4 mb-5">
+
+
+                                {cart.map((item) => (
+
+                                    <div
+
+                                        key={item._id}
+
+                                        className="flex items-center gap-3"
+
+                                    >
+
+                                        <img
+
+                                            src={item.image}
+
+                                            alt={item.name}
+
+                                            className="w-16 h-16 object-cover rounded-lg"
+
+                                        />
+
+
+                                        <div className="flex-1">
+
+                                            <h3 className="font-medium">
+
+                                                {item.name}
+
+                                            </h3>
+
+                                            <p className="text-sm text-gray-500">
+
+                                                Qty:{" "}
+
+                                                {item.quantity || 1}
+
                                             </p>
 
                                         </div>
 
-                                    ))}
 
-                                </div>
+                                        <p className="font-semibold">
+
+                                            ৳
+                                            {Number(item.price) *
+                                                Number(
+                                                    item.quantity || 1
+                                                )}
+
+                                        </p>
+
+                                    </div>
+
+                                ))}
 
 
-                                <div className="border-t border-slate-200 my-6"></div>
+                            </div>
 
 
-                                {/* ================= SUBTOTAL ================= */}
+                            <div className="border-t pt-4 space-y-3">
 
-                                <div className="flex justify-between text-slate-600 mb-4">
 
-                                    <span>
+                                {/* Subtotal */}
+
+                                <div className="flex justify-between">
+
+                                    <span className="text-gray-600">
+
                                         Subtotal
+
                                     </span>
 
-                                    <span className="font-semibold text-slate-900">
-                                        ৳{subtotal.toFixed(0)}
+                                    <span className="font-medium">
+
+                                        ৳{subtotal}
+
                                     </span>
 
                                 </div>
 
 
-                                {/* ================= COUPON ================= */}
+                                {/* Shipping */}
 
-                                {couponApplied && discountPercent > 0 && (
+                                <div className="flex justify-between">
 
-                                    <div className="flex justify-between text-green-600 mb-4">
+                                    <span className="text-gray-600">
+
+                                        Delivery Fee
+
+                                    </span>
+
+                                    <span className="font-medium">
+
+                                        ৳{deliveryFee}
+
+                                    </span>
+
+                                </div>
+
+
+                                {/* Discount */}
+
+                                {couponApplied && (
+
+                                    <div className="flex justify-between text-green-600">
 
                                         <span>
+
                                             Discount ({discountPercent}%)
+
                                         </span>
 
-                                        <span className="font-semibold">
-                                            -৳{discount.toFixed(0)}
+                                        <span>
+
+                                            -৳{discount}
+
                                         </span>
 
                                     </div>
@@ -744,76 +846,115 @@ const Checkout = () => {
                                 )}
 
 
-                                {/* ================= DELIVERY ================= */}
+                                {/* Total */}
 
-                                <div className="flex justify-between text-slate-600 mb-5">
+                                <div className="border-t pt-4 flex justify-between text-lg font-bold">
 
                                     <span>
-                                        Delivery Fee
+
+                                        Total
+
                                     </span>
 
-                                    <span className="font-semibold text-slate-900">
-                                        ৳{deliveryFee}
+                                    <span className="text-primary">
+
+                                        ৳{total}
+
                                     </span>
 
                                 </div>
 
 
-                                {/* ================= TOTAL ================= */}
-
-                                <div className="border-t border-slate-200 pt-5">
-
-                                    <div className="flex justify-between items-center">
-
-                                        <span className="text-lg font-bold text-slate-900">
-                                            Total
-                                        </span>
-
-                                        <span className="text-2xl font-bold text-sky-600">
-                                            ৳{total.toFixed(0)}
-                                        </span>
-
-                                    </div>
+                            </div>
 
 
-                                    {/* ================= PLACE ORDER ================= */}
+
+                            {/* ================= COUPON ================= */}
+
+                            <div className="mt-6">
+
+                                <label className="block text-sm font-medium mb-2">
+
+                                    Coupon Code
+
+                                </label>
+
+
+                                <div className="flex gap-2">
+
+                                    <input
+
+                                        type="text"
+
+                                        value={couponCode}
+
+                                        onChange={(e) =>
+                                            setCouponCode(
+                                                e.target.value
+                                            )
+                                        }
+
+                                        className="input input-bordered flex-1"
+
+                                        placeholder="Enter coupon"
+
+                                    />
 
                                     <button
-                                        type="submit"
-                                        className="w-full mt-6 bg-sky-600 hover:bg-sky-700 text-white py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition"
+
+                                        type="button"
+
+                                        onClick={handleApplyCoupon}
+
+                                        className="btn btn-outline"
+
                                     >
 
-                                        <CheckCircle size={18} />
-
-                                        Place Order
+                                        Apply
 
                                     </button>
 
-
-                                    {/* Security */}
-
-                                    <div className="flex items-center justify-center gap-2 text-xs text-slate-500 mt-5">
-
-                                        <Lock size={14} />
-
-                                        Secure & Protected Checkout
-
-                                    </div>
-
                                 </div>
 
+
+                                <p className="text-xs text-gray-500 mt-2">
+
+                                    Try: DENTAL10
+
+                                </p>
+
                             </div>
+
+
+
+                            {/* ================= PLACE ORDER ================= */}
+
+                            <button
+
+                                type="submit"
+
+                                className="btn btn-primary w-full mt-6 text-white"
+
+                            >
+
+                                Place Order
+
+                            </button>
+
 
                         </div>
 
                     </div>
+
 
                 </form>
 
             </div>
 
         </div>
+
     );
+
 };
 
 

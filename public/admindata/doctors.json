@@ -1,0 +1,134 @@
+[
+  {
+    "_id": "doctor01",
+    "doctorName": "Dr. Sarah Ahmed",
+    "doctorImage": "/doctors/doctor1.jpg",
+    "specialization": "General Dentist",
+    "phone": "01711111111",
+    "email": "sarah@dentalcare.com",
+    "location": "Chittagong, Bangladesh",
+    "qualification": "BDS, FCPS",
+    "hospital": "DentalCare Clinic",
+    "availableDays": [
+      "Saturday",
+      "Monday",
+      "Wednesday"
+    ],
+    "availableTime": [
+      "9:30 AM - 11:30 AM",
+      "2:00 PM - 4:00 PM",
+      "6:00 PM - 8:00 PM"
+    ],
+    "experience": "9 Years"
+  },
+  {
+    "_id": "doctor02",
+    "doctorName": "Dr. James Wilson",
+    "doctorImage": "/doctors/doctor2.jpg",
+    "specialization": "Cosmetic Dentist",
+    "phone": "01722222222",
+    "email": "james@dentalcare.com",
+    "location": "Dhaka, Bangladesh",
+    "qualification": "BDS, DDS",
+    "hospital": "DentalCare Clinic",
+    "availableDays": [
+      "Sunday",
+      "Tuesday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "10:00 AM - 12:00 PM",
+      "3:00 PM - 5:00 PM",
+      "7:00 PM - 9:00 PM"
+    ],
+    "experience": "8 Years"
+  },
+  {
+    "_id": "doctor03",
+    "doctorName": "Dr. Emily Carter",
+    "doctorImage": "/doctors/doctor3.jpg",
+    "specialization": "Orthodontist",
+    "phone": "01733333333",
+    "email": "emily@dentalcare.com",
+    "location": "Sylhet, Bangladesh",
+    "qualification": "BDS, MDS",
+    "hospital": "DentalCare Clinic",
+    "availableDays": [
+      "Saturday",
+      "Tuesday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "9:00 AM - 11:00 AM",
+      "1:00 PM - 3:00 PM",
+      "5:00 PM - 7:00 PM"
+    ],
+    "experience": "7 Years"
+  },
+  {
+    "_id": "doctor04",
+    "doctorName": "Dr. Michael Brown",
+    "doctorImage": "/doctors/doctor4.jpg",
+    "specialization": "Dental Surgeon",
+    "phone": "01744444444",
+    "email": "michael@dentalcare.com",
+    "location": "Chittagong, Bangladesh",
+    "qualification": "BDS, MS",
+    "hospital": "DentalCare Clinic",
+    "availableDays": [
+      "Sunday",
+      "Monday",
+      "Wednesday"
+    ],
+    "availableTime": [
+      "10:00 AM - 12:00 PM",
+      "2:00 PM - 4:00 PM",
+      "6:00 PM - 8:00 PM"
+    ],
+    "experience": "10 Years"
+  },
+  {
+    "_id": "doctor05",
+    "doctorName": "Dr. Olivia Martin",
+    "doctorImage": "/doctors/doctor5.jpg",
+    "specialization": "Pediatric Dentist",
+    "phone": "01755555555",
+    "email": "olivia@dentalcare.com",
+    "location": "Dhaka, Bangladesh",
+    "qualification": "BDS, MDS",
+    "hospital": "DentalCare Clinic",
+    "availableDays": [
+      "Saturday",
+      "Monday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "9:30 AM - 11:30 AM",
+      "2:30 PM - 4:30 PM",
+      "6:30 PM - 8:30 PM"
+    ],
+    "experience": "6 Years"
+  },
+  {
+    "_id": "doctor06",
+    "doctorName": "Dr. Daniel Smith",
+    "doctorImage": "/doctors/doctor6.jpg",
+    "specialization": "Periodontist",
+    "phone": "01766666666",
+    "email": "daniel@dentalcare.com",
+    "location": "Rajshahi, Bangladesh",
+    "qualification": "BDS, MDS",
+    "hospital": "DentalCare Clinic",
+    "availableDays": [
+      "Sunday",
+      "Tuesday",
+      "Wednesday"
+    ],
+    "availableTime": [
+      "9:00 AM - 11:00 AM",
+      "1:30 PM - 3:30 PM",
+      "5:30 PM - 7:30 PM"
+    ],
+    "experience": "8 Years"
+  }
+]

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import uthentication1 from "../../assets/author/images1.png"
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
@@ -7,6 +7,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const SignUp = () => {
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -22,6 +24,8 @@ const SignUp = () => {
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
+
+        navigate ("/login")
 
       })
   };

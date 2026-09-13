@@ -2,10 +2,14 @@ import contactImg from "../../assets/contact/contact img.jpg";
 import Cover from "../../Shared/Cover/Cover";
 import contact1 from "../../assets/contact/contact_image.png";
 import contactUs from "../../assets/contact/contact_us image.jpg"
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
     return (
         <div>
+            <Helmet>
+                <title>DentCare | Contact</title>
+            </Helmet>
             <div>
                 <Cover img={contactImg} title="CONTACT US" about="Contact us"></Cover>
             </div>

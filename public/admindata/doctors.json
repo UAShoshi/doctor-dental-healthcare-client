@@ -23,7 +23,7 @@
   },
   {
     "_id": "doctor02",
-    "doctorName": "Dr. James Wilson",
+    "doctorName": "Dr. Mohammad Rahman",
     "doctorImage": "/doctors/doctor2.jpg",
     "specialization": "Cosmetic Dentist",
     "phone": "01722222222",
@@ -45,7 +45,7 @@
   },
   {
     "_id": "doctor03",
-    "doctorName": "Dr. Emily Carter",
+    "doctorName": "Dr. Nusrat Jahan",
     "doctorImage": "/doctors/doctor3.jpg",
     "specialization": "Orthodontist",
     "phone": "01733333333",
@@ -67,7 +67,7 @@
   },
   {
     "_id": "doctor04",
-    "doctorName": "Dr. Michael Brown",
+    "doctorName": "Dr. Tanvir Hasan",
     "doctorImage": "/doctors/doctor4.jpg",
     "specialization": "Dental Surgeon",
     "phone": "01744444444",
@@ -89,7 +89,7 @@
   },
   {
     "_id": "doctor05",
-    "doctorName": "Dr. Olivia Martin",
+    "doctorName": "Dr. Farzana Akter",
     "doctorImage": "/doctors/doctor5.jpg",
     "specialization": "Pediatric Dentist",
     "phone": "01755555555",
@@ -111,7 +111,7 @@
   },
   {
     "_id": "doctor06",
-    "doctorName": "Dr. Daniel Smith",
+    "doctorName": "Dr. Imran Kabir",
     "doctorImage": "/doctors/doctor6.jpg",
     "specialization": "Periodontist",
     "phone": "01766666666",

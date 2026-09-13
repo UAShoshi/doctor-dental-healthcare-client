@@ -4,6 +4,7 @@ import ServicesCover from "../../assets/service/service-img4.jpg";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AllServices from "./AllServices";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -19,6 +20,9 @@ const Services = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>DentCare | Services</title>
+            </Helmet>
             <div>
                 <Cover img={ServicesCover} title="OUR SERVICES" directions="Services"></Cover>
             </div>

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import dentCareLogo from "../../assets/author/dentCare-logo.jpg";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -32,22 +33,20 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => console.log(error));
   };
 
   const navLinkClass = ({ isActive }) =>
-    `block px-4 py-2.5 rounded-lg font-medium transition-all duration-200 ${
-      isActive
-        ? "bg-[#5F6FFF] text-white"
-        : "text-gray-600 hover:bg-gray-100 hover:text-[#5F6FFF]"
+    `block px-4 py-2.5 rounded-lg font-medium transition-all duration-200 ${isActive
+      ? "bg-[#5F6FFF] text-white"
+      : "text-gray-600 hover:bg-gray-100 hover:text-[#5F6FFF]"
     }`;
 
   const dropdownLinkClass = ({ isActive }) =>
-    `block w-full px-3 py-2 rounded-lg font-medium transition-all duration-200 ${
-      isActive
-        ? "bg-[#5F6FFF] text-white"
-        : "text-gray-600 hover:bg-gray-100 hover:text-[#5F6FFF]"
+    `block w-full px-3 py-2 rounded-lg font-medium transition-all duration-200 ${isActive
+      ? "bg-[#5F6FFF] text-white"
+      : "text-gray-600 hover:bg-gray-100 hover:text-[#5F6FFF]"
     }`;
 
   const navOption = (
@@ -115,10 +114,10 @@ const NavBar = () => {
 
             <li>
               <NavLink
-                to="/errorpage"
+                to="/appointment"
                 className={dropdownLinkClass}
               >
-                404
+                Appointment
               </NavLink>
             </li>
           </ul>
@@ -179,9 +178,14 @@ const NavBar = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="btn btn-ghost text-xl font-bold text-[#5F6FFF]"
+          className="btn btn-ghost text-xl font-bold text-[#5F6FFF] flex items-center gap-2"
         >
-          DentCare
+          <img
+            src={dentCareLogo}
+            alt="DentCare Logo"
+            className="w-6 h-6 object-contain"
+          />
+          <span>DentCare</span>
         </Link>
       </div>
 

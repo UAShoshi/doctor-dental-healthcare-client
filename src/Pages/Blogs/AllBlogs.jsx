@@ -1,4 +1,4 @@
-import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { CgAlarm, CgCalendar } from 'react-icons/cg';
 import { GoArrowDownRight } from 'react-icons/go';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,9 @@ const AllBlogs = ({ blog }) => {
   const { _id, blogImage, blogTitle, category, author, authorImg, date, readTime, shortDescription } = blog;
   return (
     <div>
+      <Helmet>
+        <title>DentCare | All Blogs</title>
+      </Helmet>
       <div className="card bg-base-100 mt-20 shadow-sm">
         <figure>
           <img

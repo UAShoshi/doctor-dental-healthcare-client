@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { TiSocialFacebook, TiSocialLinkedin, TiSocialTwitter } from 'react-icons/ti';
 import { Link, useParams } from 'react-router-dom';
 
@@ -59,6 +60,9 @@ const DoctorsDetail = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>DentCare | Doctors details</title>
+      </Helmet>
       {/* ------ first stap ------ */}
       <div className="bg-base-200 py-20">
         <div className="hero-content flex-col lg:flex-row-reverse max-w-7xl mx-auto gap-40">

@@ -1,10 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const AllTestimonials = ({ testimonial }) => {
     const { patientName, patientImage, serviceName, textTestimonial, rating } = testimonial;
 
     return (
         <div>
+            <Helmet>
+                <title>DentCare | All Testimonials</title>
+            </Helmet>
             <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
                 <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12">
                     <p className="relative px-6 py-1 text-lg italic text-center">

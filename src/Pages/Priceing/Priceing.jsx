@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PriceingCover from '../../assets/author/Priceing-cover.jpg';
 import AllPriceing from './AllPriceing';
 import Cover from '../../Shared/Cover/Cover';
+import { Helmet } from 'react-helmet-async';
 
 const Priceing = () => {
     const [priceing, setPriceing] = useState([]);
@@ -14,6 +15,9 @@ const Priceing = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>DentCare | Priceing</title>
+            </Helmet>
             <div>
                 <Cover img={PriceingCover} title="PRICEING PLAN" testimonials="Priceing"></Cover>
             </div>

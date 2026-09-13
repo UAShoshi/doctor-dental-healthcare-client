@@ -4,6 +4,7 @@ import ShopCover from '../../assets/shop/shop-cover.jpg';
 import Cover from "../../Shared/Cover/Cover";
 import { useCart } from "../../Provider/CartProvider";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -50,6 +51,9 @@ const Shop = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 pt-20">
+            <Helmet>
+                <title>DentCare | Our Shop</title>
+            </Helmet>
             {/* ================= HERO SECTION ================= */}
             <section className="bg-sky-50">
                 <div>

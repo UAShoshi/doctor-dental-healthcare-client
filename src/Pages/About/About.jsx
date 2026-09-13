@@ -5,12 +5,16 @@ import aboutImg from "../../assets/about/about-img1.jpg";
 import aboutImg2 from "../../assets/about/about-img3.jpg";
 import aboutImg3 from "../../assets/about/about-img4.jpg";
 import aboutImg4 from "../../assets/about/about-img5.jpg";
+import { Helmet } from "react-helmet-async";
 
 
 
 const About = () => {
     return (
         <div>
+            <Helmet>
+                <title>DentCare | About Us</title>
+            </Helmet>
             <div>
                 <Cover img={aboutImg} title="ABOUT US" contact="About Us"></Cover>
             </div>

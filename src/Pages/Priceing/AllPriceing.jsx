@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const AllPriceing = ({ price }) => {
     console.log(price);
@@ -11,6 +12,9 @@ const AllPriceing = ({ price }) => {
     } = price;
     return (
         <div>
+            <Helmet>
+                <title>DentCare | All Priceing</title>
+            </Helmet>
             <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
                 <div className="px-2 py-12 p-8 space-y-6 rounded shadow sm:p-8">
                     <div className="space-y-2">

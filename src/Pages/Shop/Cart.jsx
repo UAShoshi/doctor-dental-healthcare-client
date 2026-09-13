@@ -12,6 +12,7 @@ import {
 import { Link } from "react-router-dom";
 
 import { useCart } from "../../Provider/CartProvider";
+import { Helmet } from "react-helmet-async";
 
 
 const Cart = () => {
@@ -127,6 +128,9 @@ const Cart = () => {
     return (
 
         <div className="min-h-screen bg-slate-50 pt-28 pb-16">
+            <Helmet>
+                <title>DentCare | Cart</title>
+            </Helmet>
 
             <div className="max-w-7xl mx-auto px-5">
 

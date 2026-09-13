@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Cover from '../../Shared/Cover/Cover';
 import AllBlogs from './AllBlogs';
 import BlogsCover from '../../assets/blog/cover-img.jpg';
+import { Helmet } from 'react-helmet-async';
 
 const Blogs = () => {
 
@@ -16,6 +17,9 @@ const Blogs = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>DentCare | Blogs</title>
+            </Helmet>
             <div>
                 <Cover img={BlogsCover} title="OUR BLOGS" blogs="Our Blogs"></Cover>
             </div>

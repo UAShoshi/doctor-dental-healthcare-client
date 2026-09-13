@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { GoArrowDownRight } from "react-icons/go";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { Link } from "react-router-dom";
@@ -10,6 +11,9 @@ const AllDoctors = ({ doctor }) => {
         = doctor;
     return (
         <div>
+            <Helmet>
+                <title>DentCare | All Doctors</title>
+            </Helmet>
             <div className="card bg-base-100 shadow-sm hover:bg-base-200 rounded-2xl">
 
                 <div className="card-body">

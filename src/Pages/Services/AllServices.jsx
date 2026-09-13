@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
@@ -7,6 +8,9 @@ const AllServices = ({ service }) => {
 
     return (
         <div>
+            <Helmet>
+                <title>DentCare | All Services</title>
+            </Helmet>
             <div className="ccard bg-base-100 mt-20 shadow-sm">
                 <img
                     className="rounded-t-2xl"

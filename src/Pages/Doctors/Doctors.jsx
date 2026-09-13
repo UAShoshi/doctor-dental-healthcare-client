@@ -3,6 +3,7 @@ import Cover from '../../Shared/Cover/Cover';
 import DoctorsCover from '../../assets/team/doctor-cover.jpg';
 import AppointmentImg from '../../assets/team/Appointment.jpg';
 import AllDoctors from './AllDoctors';
+import { Helmet } from 'react-helmet-async';
 
 const Doctors = () => {
     const [doctors, setDoctors] = useState([]);
@@ -16,6 +17,9 @@ const Doctors = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>DentCare | Doctors</title>
+            </Helmet>
             <div>
                 <Cover img={DoctorsCover} title="OUR DOCTORS" doctors="Our Doctors "></Cover>
             </div>

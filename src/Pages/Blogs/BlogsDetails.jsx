@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { IoMailOutline } from 'react-icons/io5';
 import { RxTwitterLogo } from 'react-icons/rx';
 import { Link, useParams } from 'react-router-dom';
@@ -95,6 +96,9 @@ const BlogsDetails = () => {
 
   return (
     <div className="bg-slate-50 min-h-screen">
+      <Helmet>
+        <title>DentCare | Blogs Details</title>
+      </Helmet>
 
       {/* =====================================================
           BREADCRUMB

@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import ErrorImg from '../../assets/author/error-img.jpg';
+import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
 	return (
 		<div>
+			<Helmet>
+                <title>DentCare | Error Page</title>
+            </Helmet>
 			<section className="flex items-center h-full p-16">
 				<div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
 					<div className="max-w-md text-center">

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useCart } from "../../Provider/CartProvider";
+import { Helmet } from "react-helmet-async";
 
 
 const Checkout = () => {
@@ -324,7 +325,7 @@ const Checkout = () => {
         // SUCCESS MESSAGE
         // ==================================================
 
-         Swal.mixin({
+        Swal.mixin({
             toast: true,
             position: "top-end",
             showConfirmButton: false,
@@ -352,6 +353,9 @@ const Checkout = () => {
     return (
 
         <div className="bg-gray-50 min-h-screen py-10">
+            <Helmet>
+                <title>DentCare | Checkout</title>
+            </Helmet>
 
             <div className="max-w-7xl mx-auto px-4">
 
@@ -496,7 +500,7 @@ const Checkout = () => {
 
                                 </div>
 
-                                  {/* Phone */}
+                                {/* Phone */}
 
                                 <div>
 

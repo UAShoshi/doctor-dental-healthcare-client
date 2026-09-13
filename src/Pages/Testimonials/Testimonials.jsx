@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AllTestimonials from './AllTestimonials';
 import TestimonialCover from '../../assets/author/Testimonial-cover.jpg';
 import Cover from '../../Shared/Cover/Cover';
+import { Helmet } from 'react-helmet-async';
 // import AllTestimonials from './AllTestimonials';
 
 const Testimonials = () => {
@@ -17,6 +18,9 @@ const Testimonials = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>DentCare | Testimonials</title>
+            </Helmet>
             <div>
                 <Cover img={TestimonialCover} title="TESTIMONIALS" priceing="Testimonials"></Cover>
             </div>

@@ -10,48 +10,151 @@ const AdminDashboard = () => {
   useEffect(() => {
     const loadDashboardData = async () => {
       try {
-        // Users + Doctors + Appointments JSON
-        const [usersRes, doctorsRes, appointmentsRes] =
-          await Promise.all([
-            fetch("/admindata/users.json"),
-            fetch("/admindata/doctors.json"),
-            fetch("/admindata/appointments.json"),
-          ]);
+        // =========================================
+        // Load Users, Doctors & Appointments
+        // =========================================
+        const [
+          usersRes,
+          doctorsRes,
+          appointmentsRes,
+        ] = await Promise.all([
+          fetch("/admindata/users.json"),
+          fetch("/admindata/doctors.json"),
+          fetch("/admindata/appointments.json"),
+        ]);
 
         const usersData = await usersRes.json();
         const doctorsData = await doctorsRes.json();
-        const appointmentsData = await appointmentsRes.json();
+        const appointmentsData =
+          await appointmentsRes.json();
 
-        // ================================
-        // Appointment Status From LocalStorage
-        // ================================
+        // =========================================
+        // Users: JSON + LocalStorage
+        // =========================================
+        const localUsers =
+          JSON.parse(
+            localStorage.getItem("users")
+          ) || [];
+
+        const deletedUserIds =
+          JSON.parse(
+            localStorage.getItem("deletedUserIds")
+          ) || [];
+
+        const userMap = new Map();
+
+        usersData.forEach((user) => {
+          userMap.set(user._id, user);
+        });
+
+        localUsers.forEach((user) => {
+          userMap.set(user._id, user);
+        });
+
+        deletedUserIds.forEach((id) => {
+          userMap.delete(id);
+        });
+
+        const dynamicUsers =
+          Array.from(userMap.values());
+
+        // =========================================
+        // Doctors: JSON + LocalStorage
+        // =========================================
+        const localDoctors =
+          JSON.parse(
+            localStorage.getItem("doctors")
+          ) || [];
+
+        const deletedDoctorIds =
+          JSON.parse(
+            localStorage.getItem("deletedDoctorIds")
+          ) || [];
+
+        const doctorMap = new Map();
+
+        doctorsData.forEach((doctor) => {
+          doctorMap.set(doctor._id, doctor);
+        });
+
+        localDoctors.forEach((doctor) => {
+          doctorMap.set(doctor._id, doctor);
+        });
+
+        deletedDoctorIds.forEach((id) => {
+          doctorMap.delete(id);
+        });
+
+        const dynamicDoctors =
+          Array.from(doctorMap.values());
+
+        // =========================================
+        // Appointments: JSON + LocalStorage
+        // =========================================
+        const localAppointments =
+          JSON.parse(
+            localStorage.getItem("appointments")
+          ) || [];
+
+        const appointmentMap = new Map();
+
+        appointmentsData.forEach((appointment) => {
+          appointmentMap.set(
+            appointment._id,
+            appointment
+          );
+        });
+
+        localAppointments.forEach((appointment) => {
+          appointmentMap.set(
+            appointment._id,
+            appointment
+          );
+        });
+
+        // =========================================
+        // Appointment Status
+        // =========================================
         const appointmentStatuses =
           JSON.parse(
-            localStorage.getItem("appointmentStatuses")
+            localStorage.getItem(
+              "appointmentStatuses"
+            )
           ) || {};
 
-        const dynamicAppointments = appointmentsData.map(
-          (appointment) => ({
+        const dynamicAppointments =
+          Array.from(
+            appointmentMap.values()
+          ).map((appointment) => ({
             ...appointment,
             status:
-              appointmentStatuses[appointment._id] ||
+              appointmentStatuses[
+                appointment._id
+              ] ||
               appointment.status ||
               "Pending",
-          })
-        );
+          }));
 
-        // ================================
+        // =========================================
         // Orders From LocalStorage
-        // ================================
+        // =========================================
         const ordersData =
-          JSON.parse(localStorage.getItem("orders")) || [];
+          JSON.parse(
+            localStorage.getItem("orders")
+          ) || [];
 
-        setUsers(usersData);
-        setDoctors(doctorsData);
+        // =========================================
+        // Set Dashboard Data
+        // =========================================
+        setUsers(dynamicUsers);
+        setDoctors(dynamicDoctors);
         setAppointments(dynamicAppointments);
         setOrders(ordersData);
       } catch (error) {
-        console.log("Dashboard Error:", error);
+        console.log(
+          "Dashboard Error:",
+          error
+        );
       }
     };
 
@@ -65,25 +168,23 @@ const AdminDashboard = () => {
     appointmentId,
     newStatus
   ) => {
-    // Get old statuses
     const appointmentStatuses =
       JSON.parse(
-        localStorage.getItem("appointmentStatuses")
+        localStorage.getItem(
+          "appointmentStatuses"
+        )
       ) || {};
 
-    // Update status
     const updatedStatuses = {
       ...appointmentStatuses,
       [appointmentId]: newStatus,
     };
 
-    // Save to localStorage
     localStorage.setItem(
       "appointmentStatuses",
       JSON.stringify(updatedStatuses)
     );
 
-    // Update UI immediately
     setAppointments((prevAppointments) =>
       prevAppointments.map((appointment) =>
         appointment._id === appointmentId
@@ -111,22 +212,21 @@ const AdminDashboard = () => {
     orderId,
     newStatus
   ) => {
-    const updatedOrders = orders.map((order) =>
-      order._id === orderId
-        ? {
-            ...order,
-            status: newStatus,
-          }
-        : order
+    const updatedOrders = orders.map(
+      (order) =>
+        order._id === orderId
+          ? {
+              ...order,
+              status: newStatus,
+            }
+          : order
     );
 
-    // Save updated orders
     localStorage.setItem(
       "orders",
       JSON.stringify(updatedOrders)
     );
 
-    // Update UI
     setOrders(updatedOrders);
 
     Swal.fire({
@@ -159,17 +259,16 @@ const AdminDashboard = () => {
   // =========================================
   // Delivered Orders
   // =========================================
-  const deliveredOrders = orders.filter(
-    (order) =>
-      order.status === "Delivered"
-  ).length;
+  const deliveredOrders =
+    orders.filter(
+      (order) =>
+        order.status === "Delivered"
+    ).length;
 
   return (
     <div>
-
       {/* Welcome Section */}
       <div className="mb-8">
-
         <h2 className="text-3xl font-bold text-gray-800">
           Welcome, Admin 👋
         </h2>
@@ -177,21 +276,14 @@ const AdminDashboard = () => {
         <p className="text-gray-500 mt-2">
           Here's what's happening with your DentalCare website.
         </p>
-
       </div>
-
 
       {/* Statistics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
-
         {/* Users */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border">
-
           <div className="flex justify-between items-center">
-
             <div>
-
               <p className="text-gray-500">
                 Total Users
               </p>
@@ -199,25 +291,18 @@ const AdminDashboard = () => {
               <h3 className="text-3xl font-bold mt-2">
                 {users.length}
               </h3>
-
             </div>
 
             <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-2xl">
               👥
             </div>
-
           </div>
-
         </div>
-
 
         {/* Doctors */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border">
-
           <div className="flex justify-between items-center">
-
             <div>
-
               <p className="text-gray-500">
                 Total Doctors
               </p>
@@ -225,25 +310,18 @@ const AdminDashboard = () => {
               <h3 className="text-3xl font-bold mt-2">
                 {doctors.length}
               </h3>
-
             </div>
 
             <div className="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center text-2xl">
               👨‍⚕️
             </div>
-
           </div>
-
         </div>
-
 
         {/* Appointments */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border">
-
           <div className="flex justify-between items-center">
-
             <div>
-
               <p className="text-gray-500">
                 Appointments
               </p>
@@ -251,25 +329,18 @@ const AdminDashboard = () => {
               <h3 className="text-3xl font-bold mt-2">
                 {appointments.length}
               </h3>
-
             </div>
 
             <div className="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center text-2xl">
               📅
             </div>
-
           </div>
-
         </div>
-
 
         {/* Revenue */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border">
-
           <div className="flex justify-between items-center">
-
             <div>
-
               <p className="text-gray-500">
                 Total Revenue
               </p>
@@ -277,31 +348,21 @@ const AdminDashboard = () => {
               <h3 className="text-3xl font-bold mt-2">
                 ৳{totalRevenue}
               </h3>
-
             </div>
 
             <div className="w-14 h-14 rounded-xl bg-yellow-100 flex items-center justify-center text-2xl">
               💰
             </div>
-
           </div>
-
         </div>
-
       </div>
-
 
       {/* Second Statistics */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-
-
         {/* Pending Appointment */}
         <div className="bg-white rounded-2xl border shadow-sm p-6">
-
           <div className="flex justify-between items-center">
-
             <div>
-
               <p className="text-gray-500">
                 Pending Appointments
               </p>
@@ -309,25 +370,18 @@ const AdminDashboard = () => {
               <h3 className="text-2xl font-bold mt-2">
                 {pendingAppointments}
               </h3>
-
             </div>
 
             <div className="text-3xl">
               ⏳
             </div>
-
           </div>
-
         </div>
-
 
         {/* Delivered Orders */}
         <div className="bg-white rounded-2xl border shadow-sm p-6">
-
           <div className="flex justify-between items-center">
-
             <div>
-
               <p className="text-gray-500">
                 Delivered Orders
               </p>
@@ -335,25 +389,18 @@ const AdminDashboard = () => {
               <h3 className="text-2xl font-bold mt-2">
                 {deliveredOrders}
               </h3>
-
             </div>
 
             <div className="text-3xl">
               📦
             </div>
-
           </div>
-
         </div>
-
       </div>
-
 
       {/* Recent Appointments */}
       <div className="bg-white rounded-2xl shadow-sm border mt-8">
-
         <div className="p-6 border-b">
-
           <h3 className="text-xl font-bold">
             Recent Appointments
           </h3>
@@ -361,18 +408,12 @@ const AdminDashboard = () => {
           <p className="text-sm text-gray-500 mt-1">
             Latest customer appointments
           </p>
-
         </div>
 
-
         <div className="overflow-x-auto">
-
           <table className="w-full">
-
             <thead className="bg-gray-50">
-
               <tr>
-
                 <th className="text-left p-4">
                   Doctor
                 </th>
@@ -388,22 +429,17 @@ const AdminDashboard = () => {
                 <th className="text-left p-4">
                   Status
                 </th>
-
               </tr>
-
             </thead>
 
-
             <tbody>
-
-              {appointments.slice(0, 5).map(
-                (appointment) => (
-
+              {appointments
+                .slice(0, 5)
+                .map((appointment) => (
                   <tr
                     key={appointment._id}
                     className="border-t"
                   >
-
                     <td className="p-4 font-semibold">
                       {appointment.doctorName}
                     </td>
@@ -417,7 +453,6 @@ const AdminDashboard = () => {
                     </td>
 
                     <td className="p-4">
-
                       <select
                         value={
                           appointment.status ||
@@ -442,7 +477,6 @@ const AdminDashboard = () => {
                             : "bg-red-100 text-red-700"
                         }`}
                       >
-
                         <option value="Pending">
                           Pending
                         </option>
@@ -458,30 +492,18 @@ const AdminDashboard = () => {
                         <option value="Cancelled">
                           Cancelled
                         </option>
-
                       </select>
-
                     </td>
-
                   </tr>
-
-                )
-              )}
-
+                ))}
             </tbody>
-
           </table>
-
         </div>
-
       </div>
-
 
       {/* Recent Orders */}
       <div className="bg-white rounded-2xl shadow-sm border mt-8">
-
         <div className="p-6 border-b">
-
           <h3 className="text-xl font-bold">
             Recent Orders
           </h3>
@@ -489,18 +511,12 @@ const AdminDashboard = () => {
           <p className="text-sm text-gray-500 mt-1">
             Latest shop orders
           </p>
-
         </div>
 
-
         <div className="overflow-x-auto">
-
           <table className="w-full">
-
             <thead className="bg-gray-50">
-
               <tr>
-
                 <th className="text-left p-4">
                   Order ID
                 </th>
@@ -520,22 +536,17 @@ const AdminDashboard = () => {
                 <th className="text-left p-4">
                   Status
                 </th>
-
               </tr>
-
             </thead>
 
-
             <tbody>
-
-              {orders.slice(0, 5).map(
-                (order) => (
-
+              {orders
+                .slice(0, 5)
+                .map((order) => (
                   <tr
                     key={order._id}
                     className="border-t"
                   >
-
                     <td className="p-4 font-semibold">
                       {order.orderId}
                     </td>
@@ -545,7 +556,8 @@ const AdminDashboard = () => {
                     </td>
 
                     <td className="p-4 text-gray-600">
-                      {order.products?.length || 0} item(s)
+                      {order.products?.length || 0}{" "}
+                      item(s)
                     </td>
 
                     <td className="p-4 font-semibold">
@@ -553,7 +565,6 @@ const AdminDashboard = () => {
                     </td>
 
                     <td className="p-4">
-
                       <select
                         value={
                           order.status ||
@@ -578,7 +589,6 @@ const AdminDashboard = () => {
                             : "bg-yellow-100 text-yellow-700"
                         }`}
                       >
-
                         <option value="Processing">
                           Processing
                         </option>
@@ -594,24 +604,14 @@ const AdminDashboard = () => {
                         <option value="Cancelled">
                           Cancelled
                         </option>
-
                       </select>
-
                     </td>
-
                   </tr>
-
-                )
-              )}
-
+                ))}
             </tbody>
-
           </table>
-
         </div>
-
       </div>
-
     </div>
   );
 };

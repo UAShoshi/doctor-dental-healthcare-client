@@ -4,40 +4,17 @@ import Swal from "sweetalert2";
 const ManageDoctors = () => {
   const [doctors, setDoctors] = useState([]);
 
+  // Load doctors from MongoDB
   useEffect(() => {
     const loadDoctors = async () => {
       try {
-        const response = await fetch("/admindata/doctors.json");
-        const jsonDoctors = await response.json();
+        const response = await fetch(
+          "http://localhost:5000/admin-doctors"
+        );
 
-        const localDoctors =
-          JSON.parse(localStorage.getItem("doctors")) || [];
+        const data = await response.json();
 
-        const deletedDoctorIds =
-          JSON.parse(
-            localStorage.getItem("deletedDoctorIds")
-          ) || [];
-
-        const doctorMap = new Map();
-
-        // JSON doctors
-        jsonDoctors.forEach((doctor) => {
-          doctorMap.set(doctor._id, doctor);
-        });
-
-        // LocalStorage doctors
-        localDoctors.forEach((doctor) => {
-          doctorMap.set(doctor._id, doctor);
-        });
-
-        // Remove deleted doctors
-        deletedDoctorIds.forEach((id) => {
-          doctorMap.delete(id);
-        });
-
-        const allDoctors = Array.from(doctorMap.values());
-
-        setDoctors(allDoctors);
+        setDoctors(data);
       } catch (error) {
         console.log("Doctors loading error:", error);
       }
@@ -56,50 +33,43 @@ const ManageDoctors = () => {
       confirmButtonColor: "#d33",
       cancelButtonColor: "#6b7280",
       confirmButtonText: "Yes, Remove",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        // Remove from UI
-        const updatedDoctors = doctors.filter(
-          (doctor) => doctor._id !== id
-        );
+        try {
+          const response = await fetch(
+            `http://localhost:5000/admin-doctors/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
 
-        setDoctors(updatedDoctors);
+          const data = await response.json();
 
-        // Remove from localStorage
-        const localDoctors =
-          JSON.parse(localStorage.getItem("doctors")) || [];
+          if (data.deletedCount > 0) {
+            // Remove doctor from UI
+            const updatedDoctors = doctors.filter(
+              (doctor) => doctor._id !== id
+            );
 
-        const updatedLocalDoctors = localDoctors.filter(
-          (doctor) => doctor._id !== id
-        );
+            setDoctors(updatedDoctors);
 
-        localStorage.setItem(
-          "doctors",
-          JSON.stringify(updatedLocalDoctors)
-        );
+            Swal.fire({
+              icon: "success",
+              title: "Removed!",
+              text: "Doctor has been removed.",
+              timer: 1200,
+              showConfirmButton: false,
+            });
+          }
+        } catch (error) {
+          console.log("Doctor delete error:", error);
 
-        // Save deleted doctor ID
-        const deletedDoctorIds =
-          JSON.parse(
-            localStorage.getItem("deletedDoctorIds")
-          ) || [];
-
-        if (!deletedDoctorIds.includes(id)) {
-          deletedDoctorIds.push(id);
+          Swal.fire({
+            icon: "error",
+            title: "Failed!",
+            text: "Doctor could not be removed.",
+          });
         }
-
-        localStorage.setItem(
-          "deletedDoctorIds",
-          JSON.stringify(deletedDoctorIds)
-        );
-
-        Swal.fire({
-          icon: "success",
-          title: "Removed!",
-          text: "Doctor has been removed.",
-          timer: 1200,
-          showConfirmButton: false,
-        });
       }
     });
   };
@@ -148,11 +118,11 @@ const ManageDoctors = () => {
       </div>
 
       {/* Doctors */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {doctors.map((doctor) => (
           <div
             key={doctor._id}
-            className="bg-white rounded-2xl border shadow-sm overflow-hidden"
+            className="bg-white rounded-2xl overflow-hidden"
           >
             {/* Doctor Image */}
             <div className="h-56 bg-gray-100 flex justify-center">

@@ -1,6 +1,5 @@
 [
   {
-    "_id": "1",
     "name": "Electric Toothbrush",
     "category": "Toothbrush",
     "price": 1200,
@@ -9,7 +8,6 @@
     "image": "https://i.ibb.co.com/x8Rs23mT/electric-toothbrush.jpg"
   },
   {
-    "_id": "2",
     "name": "Whitening Toothpaste",
     "category": "Toothpaste",
     "price": 450,
@@ -18,7 +16,6 @@
     "image": "https://i.ibb.co.com/cXKwjSwD/whitening-toothpaste.jpg"
   },
   {
-    "_id": "3",
     "name": "Fresh Mint Mouthwash",
     "category": "Mouthwash",
     "price": 600,
@@ -27,7 +24,6 @@
     "image": "https://i.ibb.co.com/GfRtzjzJ/fresh-mint-mouthwash.jpg"
   },
   {
-    "_id": "4",
     "name": "Premium Dental Floss",
     "category": "Dental Care",
     "price": 300,
@@ -36,7 +32,6 @@
     "image": "https://i.ibb.co.com/JP86Y1g/premium-dental-floss.jpg"
   },
   {
-    "_id": "5",
     "name": "Kids Soft Toothbrush",
     "category": "Kids Care",
     "price": 250,
@@ -45,7 +40,6 @@
     "image": "https://i.ibb.co.com/k2H6LFV1/kids-soft-toothbrush.jpg"
   },
   {
-    "_id": "6",
     "name": "Interdental Brush",
     "category": "Dental Care",
     "price": 200,

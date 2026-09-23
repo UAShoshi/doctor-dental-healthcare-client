@@ -13,7 +13,7 @@ const Shop = () => {
 
     // Load products from JSON
     useEffect(() => {
-        fetch("/products.json")
+        fetch("http://localhost:5000/products")
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .catch((error) => console.log(error));

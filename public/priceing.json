@@ -1,6 +1,5 @@
 [
   {
-    "_id": "pricing001",
     "serviceName": "Dental Checkup",
     "serviceImage": "https://i.ibb.co.com/8gYqJxM/dental-checkup.png",
     "price": 105,
@@ -26,7 +25,6 @@
     "buttonText": "Book Appointment"
   },
   {
-    "_id": "pricing002",
     "serviceName": "Teeth Whitening",
     "serviceImage": "https://i.ibb.co.com/4Z6QY9p/teeth-whitening.png",
     "price": 150,
@@ -52,7 +50,6 @@
     "buttonText": "Book Appointment"
   },
   {
-    "_id": "pricing003",
     "serviceName": "Dental Filling",
     "serviceImage": "https://i.ibb.co.com/Y7kqvKQ/dental-filling.png",
     "price": 130,
@@ -78,7 +75,6 @@
     "buttonText": "Book Appointment"
   },
   {
-    "_id": "pricing004",
     "serviceName": "Dental Implants",
     "serviceImage": "https://i.ibb.co.com/6ZJ5KxH/dental-implant.png",
     "price": 700,
@@ -104,7 +100,6 @@
     "buttonText": "Book Appointment"
   },
   {
-    "_id": "pricing005",
     "serviceName": "Cosmetic Dentistry",
     "serviceImage": "https://i.ibb.co.com/9H4PqYd/cosmetic-dentistry.png",
     "price": 500,
@@ -130,7 +125,6 @@
     "buttonText": "Book Appointment"
   },
   {
-    "_id": "pricing006",
     "serviceName": "Root Canal Treatment",
     "serviceImage": "https://i.ibb.co.com/3FQwYxP/root-canal.png",
     "price": 350,

@@ -4,69 +4,61 @@ import Swal from "sweetalert2";
 const ManageAppointmentsOrders = () => {
   const [appointments, setAppointments] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // ================================
+  // GET APPOINTMENTS + ORDERS
+  // ================================
   useEffect(() => {
     const loadData = async () => {
       try {
-        // Appointments from JSON
+        setLoading(true);
+
+        // Get appointments
         const appointmentsResponse = await fetch(
-          "/admindata/appointments.json"
+          "http://localhost:5000/admin-appointments"
         );
+
+        if (!appointmentsResponse.ok) {
+          throw new Error("Failed to fetch appointments");
+        }
 
         const appointmentsData =
           await appointmentsResponse.json();
 
-        // Appointments booked by users
-        const localAppointments =
-          JSON.parse(localStorage.getItem("appointments")) || [];
-
-        // Saved appointment statuses
-        const savedStatuses =
-          JSON.parse(
-            localStorage.getItem("appointmentStatuses")
-          ) || {};
-
-        // Combine JSON and localStorage appointments
-        const appointmentMap = new Map();
-
-        appointmentsData.forEach((appointment) => {
-          appointmentMap.set(appointment._id, appointment);
-        });
-
-        localAppointments.forEach((appointment) => {
-          appointmentMap.set(appointment._id, appointment);
-        });
-
-        const allAppointments = Array.from(
-          appointmentMap.values()
+        // Get orders
+        const ordersResponse = await fetch(
+          "http://localhost:5000/admin-orders"
         );
 
-        // Apply updated statuses
-        const finalAppointments = allAppointments.map(
-          (appointment) => ({
-            ...appointment,
-            status:
-              savedStatuses[appointment._id] ||
-              appointment.status ||
-              "Pending",
-          })
-        );
+        if (!ordersResponse.ok) {
+          throw new Error("Failed to fetch orders");
+        }
 
-        // Orders from localStorage
-        const savedOrders =
-          JSON.parse(localStorage.getItem("orders")) || [];
+        const ordersData = await ordersResponse.json();
 
-        setAppointments(finalAppointments);
-        setOrders(savedOrders);
+        // Set MongoDB data
+        setAppointments(appointmentsData);
+        setOrders(ordersData);
       } catch (error) {
         console.log("Data loading error:", error);
+
+        Swal.fire({
+          icon: "error",
+          title: "Data Loading Failed",
+          text: "Could not load appointments and orders.",
+        });
+      } finally {
+        setLoading(false);
       }
     };
 
     loadData();
   }, []);
 
-  // Appointment status color
+  // ================================
+  // APPOINTMENT STATUS STYLE
+  // ================================
   const getAppointmentStatusStyle = (status) => {
     switch (status) {
       case "Pending":
@@ -86,7 +78,9 @@ const ManageAppointmentsOrders = () => {
     }
   };
 
-  // Order status color
+  // ================================
+  // ORDER STATUS STYLE
+  // ================================
   const getOrderStatusStyle = (status) => {
     switch (status) {
       case "Processing":
@@ -106,68 +100,136 @@ const ManageAppointmentsOrders = () => {
     }
   };
 
-  // Appointment status update
-  const handleAppointmentStatus = (id, status) => {
-    const savedStatuses =
-      JSON.parse(
-        localStorage.getItem("appointmentStatuses")
-      ) || {};
+  // ================================
+  // UPDATE APPOINTMENT STATUS
+  // ================================
+  const handleAppointmentStatus = async (id, status) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/admin-appointments/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            status: status,
+          }),
+        }
+      );
 
-    const updatedStatuses = {
-      ...savedStatuses,
-      [id]: status,
-    };
+      if (!response.ok) {
+        throw new Error("Failed to update appointment");
+      }
 
-    localStorage.setItem(
-      "appointmentStatuses",
-      JSON.stringify(updatedStatuses)
-    );
+      const result = await response.json();
 
-    setAppointments((previous) =>
-      previous.map((appointment) =>
-        appointment._id === id
-          ? { ...appointment, status }
-          : appointment
-      )
-    );
+      console.log(result);
 
-    Swal.fire({
-      icon: "success",
-      title: "Status Updated",
-      text: `Appointment status changed to ${status}`,
-      timer: 1200,
-      showConfirmButton: false,
-    });
+      // Update frontend state
+      setAppointments((previous) =>
+        previous.map((appointment) =>
+          appointment._id === id
+            ? {
+                ...appointment,
+                status: status,
+              }
+            : appointment
+        )
+      );
+
+      Swal.fire({
+        icon: "success",
+        title: "Status Updated",
+        text: `Appointment status changed to ${status}`,
+        timer: 1200,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.log(error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Update Failed",
+        text: "Could not update appointment status.",
+      });
+    }
   };
 
-  // Order status update
-  const handleOrderStatus = (id, status) => {
-    const updatedOrders = orders.map((order) =>
-      order._id === id
-        ? { ...order, status }
-        : order
-    );
+  // ================================
+  // UPDATE ORDER STATUS
+  // ================================
+  const handleOrderStatus = async (id, status) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/admin-orders/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            status: status,
+          }),
+        }
+      );
 
-    localStorage.setItem(
-      "orders",
-      JSON.stringify(updatedOrders)
-    );
+      if (!response.ok) {
+        throw new Error("Failed to update order");
+      }
 
-    setOrders(updatedOrders);
+      const result = await response.json();
 
-    Swal.fire({
-      icon: "success",
-      title: "Status Updated",
-      text: `Order status changed to ${status}`,
-      timer: 1200,
-      showConfirmButton: false,
-    });
+      console.log(result);
+
+      // Update frontend state
+      setOrders((previous) =>
+        previous.map((order) =>
+          order._id === id
+            ? {
+                ...order,
+                status: status,
+              }
+            : order
+        )
+      );
+
+      Swal.fire({
+        icon: "success",
+        title: "Status Updated",
+        text: `Order status changed to ${status}`,
+        timer: 1200,
+        showConfirmButton: false,
+      });
+    } catch (error) {
+      console.log(error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Update Failed",
+        text: "Could not update order status.",
+      });
+    }
   };
+
+  // ================================
+  // LOADING
+  // ================================
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <span className="loading loading-spinner loading-lg text-[#5F6FFF]"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
 
-      {/* Page Heading */}
+      {/* ================================
+          PAGE HEADING
+      ================================= */}
+
       <div>
         <h2 className="text-3xl font-bold text-gray-800">
           Appointments & Orders
@@ -179,13 +241,15 @@ const ManageAppointmentsOrders = () => {
       </div>
 
 
-      {/* ================= APPOINTMENTS ================= */}
+      {/* ================================
+          APPOINTMENTS
+      ================================= */}
 
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
 
-        {/* Appointment Header */}
-        <div className="p-6 border-b from-blue-50 to-white">
+        {/* Header */}
 
+        <div className="p-6 border-b">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
             <div className="flex items-center gap-3">
@@ -207,7 +271,8 @@ const ManageAppointmentsOrders = () => {
             </div>
 
 
-            {/* Total Appointments */}
+            {/* Total */}
+
             <div className="bg-white border border-blue-100 px-5 py-2 rounded-xl">
 
               <p className="text-xs text-gray-500">
@@ -221,173 +286,167 @@ const ManageAppointmentsOrders = () => {
             </div>
 
           </div>
-
         </div>
 
 
         {/* Appointment Table */}
-        <div className="overflow-x-auto">
 
-          <table className="w-full">
+        {appointments.length > 0 && (
+          <div className="overflow-x-auto">
 
-            <thead className="bg-gray-50">
+            <table className="w-full">
 
-              <tr>
+              <thead className="bg-gray-50">
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Doctor
-                </th>
+                <tr>
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Service
-                </th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Doctor
+                  </th>
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Date
-                </th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Service
+                  </th>
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Time
-                </th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Date
+                  </th>
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Status
-                </th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Time
+                  </th>
 
-              </tr>
-
-            </thead>
-
-
-            <tbody>
-
-              {appointments.map((appointment) => (
-
-                <tr
-                  key={appointment._id}
-                  className="border-t hover:bg-gray-50 transition"
-                >
-
-                  {/* Doctor */}
-                  <td className="p-4">
-
-                    <div className="flex items-center gap-3">
-
-                      <img
-                        src={appointment.doctorImage}
-                        alt={appointment.doctorName}
-                        className="w-11 h-11 rounded-full object-cover border"
-                      />
-
-                      <div>
-
-                        <p className="font-semibold text-gray-800">
-                          {appointment.doctorName}
-                        </p>
-
-                        <p className="text-xs text-gray-500">
-                          {appointment.userName}
-                        </p>
-
-                      </div>
-
-                    </div>
-
-                  </td>
-
-
-                  {/* Service */}
-                  <td className="p-4">
-
-                    <span className="font-medium text-gray-700">
-                      {appointment.serviceName}
-                    </span>
-
-                  </td>
-
-
-                  {/* Date */}
-                  <td className="p-4">
-
-                    <span className="text-sm text-gray-600">
-                      {appointment.date}
-                    </span>
-
-                  </td>
-
-
-                  {/* Time */}
-                  <td className="p-4">
-
-                    <span className="text-sm text-gray-600">
-                      {appointment.time}
-                    </span>
-
-                  </td>
-
-
-                  {/* Appointment Status */}
-                  <td className="p-4">
-
-                    <select
-                      value={
-                        appointment.status || "Pending"
-                      }
-                      onChange={(e) =>
-                        handleAppointmentStatus(
-                          appointment._id,
-                          e.target.value
-                        )
-                      }
-                      className={`select select-bordered select-sm w-36 font-semibold ${getAppointmentStatusStyle(
-                        appointment.status || "Pending"
-                      )}`}
-                    >
-
-                      <option
-                        value="Pending"
-                        className="bg-yellow-50 text-yellow-600"
-                      >
-                        🟡 Pending
-                      </option>
-
-                      <option
-                        value="Confirmed"
-                        className="bg-blue-50 text-blue-600"
-                      >
-                        🔵 Confirmed
-                      </option>
-
-                      <option
-                        value="Completed"
-                        className="bg-green-50 text-green-600"
-                      >
-                        🟢 Completed
-                      </option>
-
-                      <option
-                        value="Cancelled"
-                        className="bg-red-50 text-red-600"
-                      >
-                        🔴 Cancelled
-                      </option>
-
-                    </select>
-
-                  </td>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Status
+                  </th>
 
                 </tr>
 
-              ))}
-
-            </tbody>
-
-          </table>
-
-        </div>
+              </thead>
 
 
-        {/* Empty Appointment */}
+              <tbody>
+
+                {appointments.map((appointment) => (
+
+                  <tr
+                    key={appointment._id}
+                    className="border-t hover:bg-gray-50 transition"
+                  >
+
+                    {/* Doctor */}
+
+                    <td className="p-4">
+
+                      <div className="flex items-center gap-3">
+
+                        <img
+                          src={appointment.doctorImage}
+                          alt={appointment.doctorName}
+                          className="w-11 h-11 rounded-full object-cover border"
+                        />
+
+                        <div>
+
+                          <p className="font-semibold text-gray-800">
+                            {appointment.doctorName}
+                          </p>
+
+                          <p className="text-xs text-gray-500">
+                            {appointment.userName}
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    </td>
+
+
+                    {/* Service */}
+
+                    <td className="p-4">
+
+                      <span className="font-medium text-gray-700">
+                        {appointment.serviceName}
+                      </span>
+
+                    </td>
+
+
+                    {/* Date */}
+
+                    <td className="p-4">
+
+                      <span className="text-sm text-gray-600">
+                        {appointment.date}
+                      </span>
+
+                    </td>
+
+
+                    {/* Time */}
+
+                    <td className="p-4">
+
+                      <span className="text-sm text-gray-600">
+                        {appointment.time}
+                      </span>
+
+                    </td>
+
+
+                    {/* Status */}
+
+                    <td className="p-4">
+
+                      <select
+                        value={appointment.status || "Pending"}
+                        onChange={(e) =>
+                          handleAppointmentStatus(
+                            appointment._id,
+                            e.target.value
+                          )
+                        }
+                        className={`select select-bordered select-sm w-36 font-semibold ${getAppointmentStatusStyle(
+                          appointment.status || "Pending"
+                        )}`}
+                      >
+
+                        <option value="Pending">
+                          🟡 Pending
+                        </option>
+
+                        <option value="Confirmed">
+                          🔵 Confirmed
+                        </option>
+
+                        <option value="Completed">
+                          🟢 Completed
+                        </option>
+
+                        <option value="Cancelled">
+                          🔴 Cancelled
+                        </option>
+
+                      </select>
+
+                    </td>
+
+                  </tr>
+
+                ))}
+
+              </tbody>
+
+            </table>
+
+          </div>
+        )}
+
+
+        {/* Empty */}
+
         {appointments.length === 0 && (
 
           <div className="py-16 text-center">
@@ -411,12 +470,15 @@ const ManageAppointmentsOrders = () => {
       </div>
 
 
-      {/* ================= ORDERS ================= */}
+      {/* ================================
+          ORDERS
+      ================================= */}
 
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
 
-        {/* Order Header */}
-        <div className="p-6 border-b from-purple-50 to-white">
+        {/* Header */}
+
+        <div className="p-6 border-b">
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
@@ -441,7 +503,8 @@ const ManageAppointmentsOrders = () => {
             </div>
 
 
-            {/* Total Orders */}
+            {/* Total */}
+
             <div className="bg-white border border-purple-100 px-5 py-2 rounded-xl">
 
               <p className="text-xs text-gray-500">
@@ -459,163 +522,160 @@ const ManageAppointmentsOrders = () => {
         </div>
 
 
-        {/* Orders Table */}
-        <div className="overflow-x-auto">
+        {/* Order Table */}
 
-          <table className="w-full">
+        {orders.length > 0 && (
 
-            <thead className="bg-gray-50">
+          <div className="overflow-x-auto">
 
-              <tr>
+            <table className="w-full">
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Order ID
-                </th>
+              <thead className="bg-gray-50">
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Date
-                </th>
+                <tr>
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Products
-                </th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Order ID
+                  </th>
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Total
-                </th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Date
+                  </th>
 
-                <th className="text-left p-4 text-sm font-semibold text-gray-600">
-                  Status
-                </th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Products
+                  </th>
 
-              </tr>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Total
+                  </th>
 
-            </thead>
-
-
-            <tbody>
-
-              {orders.map((order) => (
-
-                <tr
-                  key={order._id}
-                  className="border-t hover:bg-gray-50 transition"
-                >
-
-                  {/* Order ID */}
-                  <td className="p-4">
-
-                    <p className="font-semibold text-gray-800">
-                      {order.orderId}
-                    </p>
-
-                    <p className="text-xs text-gray-400 mt-1">
-                      Customer Order
-                    </p>
-
-                  </td>
-
-
-                  {/* Date */}
-                  <td className="p-4">
-
-                    <span className="text-sm text-gray-600">
-                      {order.orderDate}
-                    </span>
-
-                  </td>
-
-
-                  {/* Products */}
-                  <td className="p-4">
-
-                    <div className="flex items-center gap-2">
-
-                      <div className="w-9 h-9 rounded-lg bg-purple-50 flex items-center justify-center">
-                        🛍️
-                      </div>
-
-                      <span className="text-sm font-medium text-gray-700">
-                        {order.products?.length || 0} item(s)
-                      </span>
-
-                    </div>
-
-                  </td>
-
-
-                  {/* Total */}
-                  <td className="p-4">
-
-                    <span className="text-base font-bold text-gray-800">
-                      ৳{order.total || 0}
-                    </span>
-
-                  </td>
-
-
-                  {/* Order Status */}
-                  <td className="p-4">
-
-                    <select
-                      value={
-                        order.status || "Processing"
-                      }
-                      onChange={(e) =>
-                        handleOrderStatus(
-                          order._id,
-                          e.target.value
-                        )
-                      }
-                      className={`select select-bordered select-sm w-36 font-semibold ${getOrderStatusStyle(
-                        order.status || "Processing"
-                      )}`}
-                    >
-
-                      <option
-                        value="Processing"
-                        className="bg-orange-50 text-orange-600"
-                      >
-                        🟠 Processing
-                      </option>
-
-                      <option
-                        value="Shipped"
-                        className="bg-purple-50 text-purple-600"
-                      >
-                        🟣 Shipped
-                      </option>
-
-                      <option
-                        value="Delivered"
-                        className="bg-green-50 text-green-600"
-                      >
-                        🟢 Delivered
-                      </option>
-
-                      <option
-                        value="Cancelled"
-                        className="bg-red-50 text-red-600"
-                      >
-                        🔴 Cancelled
-                      </option>
-
-                    </select>
-
-                  </td>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-600">
+                    Status
+                  </th>
 
                 </tr>
 
-              ))}
-
-            </tbody>
-
-          </table>
-
-        </div>
+              </thead>
 
 
-        {/* Empty Orders */}
+              <tbody>
+
+                {orders.map((order) => (
+
+                  <tr
+                    key={order._id}
+                    className="border-t hover:bg-gray-50 transition"
+                  >
+
+                    {/* Order ID */}
+
+                    <td className="p-4">
+
+                      <p className="font-semibold text-gray-800">
+                        {order.orderId}
+                      </p>
+
+                      <p className="text-xs text-gray-400 mt-1">
+                        Customer Order
+                      </p>
+
+                    </td>
+
+
+                    {/* Date */}
+
+                    <td className="p-4">
+
+                      <span className="text-sm text-gray-600">
+                        {order.orderDate}
+                      </span>
+
+                    </td>
+
+
+                    {/* Products */}
+
+                    <td className="p-4">
+
+                      <div className="flex items-center gap-2">
+
+                        <div className="w-9 h-9 rounded-lg bg-purple-50 flex items-center justify-center">
+                          🛍️
+                        </div>
+
+                        <span className="text-sm font-medium text-gray-700">
+                          {order.products?.length || 0} item(s)
+                        </span>
+
+                      </div>
+
+                    </td>
+
+
+                    {/* Total */}
+
+                    <td className="p-4">
+
+                      <span className="text-base font-bold text-gray-800">
+                        ৳{order.total || 0}
+                      </span>
+
+                    </td>
+
+
+                    {/* Status */}
+
+                    <td className="p-4">
+
+                      <select
+                        value={order.status || "Processing"}
+                        onChange={(e) =>
+                          handleOrderStatus(
+                            order._id,
+                            e.target.value
+                          )
+                        }
+                        className={`select select-bordered select-sm w-36 font-semibold ${getOrderStatusStyle(
+                          order.status || "Processing"
+                        )}`}
+                      >
+
+                        <option value="Processing">
+                          🟠 Processing
+                        </option>
+
+                        <option value="Shipped">
+                          🟣 Shipped
+                        </option>
+
+                        <option value="Delivered">
+                          🟢 Delivered
+                        </option>
+
+                        <option value="Cancelled">
+                          🔴 Cancelled
+                        </option>
+
+                      </select>
+
+                    </td>
+
+                  </tr>
+
+                ))}
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        )}
+
+
+        {/* Empty */}
+
         {orders.length === 0 && (
 
           <div className="py-16 text-center">

@@ -9,7 +9,7 @@ const ManageUsers = () => {
   useEffect(() => {
     const loadUsers = async () => {
       try {
-        const response = await fetch("/admindata/users.json");
+        const response = await fetch("http://localhost:5000/admin-users");
         const jsonUsers = await response.json();
 
         const localUsers =
@@ -50,116 +50,100 @@ const ManageUsers = () => {
 
   // ================= ROLE CHANGE =================
 
-  const handleRoleChange = (id, newRole) => {
-    const updatedUsers = users.map((user) =>
-      user._id === id
-        ? { ...user, role: newRole }
-        : user
-    );
-
-    setUsers(updatedUsers);
-
-    const localUsers =
-      JSON.parse(localStorage.getItem("users")) || [];
-
-    const existingUser = localUsers.some(
-      (user) => user._id === id
-    );
-
-    let updatedLocalUsers;
-
-    if (existingUser) {
-      updatedLocalUsers = localUsers.map((user) =>
-        user._id === id
-          ? { ...user, role: newRole }
-          : user
-      );
-    } else {
-      const changedUser = users.find(
-        (user) => user._id === id
-      );
-
-      updatedLocalUsers = [
-        ...localUsers,
+  const handleRoleChange = async (id, newRole) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/admin-users/${id}`,
         {
-          ...changedUser,
-          role: newRole,
-        },
-      ];
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            role: newRole,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // UI update
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user._id === id
+              ? { ...user, role: newRole }
+              : user
+          )
+        );
+
+        Swal.fire({
+          icon: "success",
+          title: "Role Updated",
+          text: `User role changed to ${newRole}`,
+          timer: 1200,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Update Failed",
+          text: data.message || "Could not update user role.",
+        });
+      }
+    } catch (error) {
+      console.log("Role update error:", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Something went wrong.",
+      });
     }
-
-    localStorage.setItem(
-      "users",
-      JSON.stringify(updatedLocalUsers)
-    );
-
-    Swal.fire({
-      icon: "success",
-      title: "Role Updated",
-      text: `User role changed to ${newRole}`,
-      timer: 1200,
-      showConfirmButton: false,
-    });
   };
 
   // ================= DELETE USER =================
 
   const handleDeleteUser = (id) => {
-    Swal.fire({
-      title: "Delete User?",
-      text: "This user will be removed permanently from this browser.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#6b7280",
-      confirmButtonText: "Yes, Delete",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Remove from UI
-        const updatedUsers = users.filter(
-          (user) => user._id !== id
+  Swal.fire({
+    title: "Delete User?",
+    text: "This user will be deleted permanently.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#6b7280",
+    confirmButtonText: "Yes, Delete",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/admin-users/${id}`,
+          {
+            method: "DELETE",
+          }
         );
 
-        setUsers(updatedUsers);
+        const data = await response.json();
 
-        // Remove from localStorage users
-        const localUsers =
-          JSON.parse(localStorage.getItem("users")) || [];
+        if (response.ok) {
+          setUsers((prevUsers) =>
+            prevUsers.filter((user) => user._id !== id)
+          );
 
-        const updatedLocalUsers = localUsers.filter(
-          (user) => user._id !== id
-        );
-
-        localStorage.setItem(
-          "users",
-          JSON.stringify(updatedLocalUsers)
-        );
-
-        // Save deleted user ID
-        const deletedUserIds =
-          JSON.parse(
-            localStorage.getItem("deletedUserIds")
-          ) || [];
-
-        if (!deletedUserIds.includes(id)) {
-          deletedUserIds.push(id);
+          Swal.fire({
+            icon: "success",
+            title: "Deleted!",
+            text: data.message || "User has been deleted.",
+            timer: 1200,
+            showConfirmButton: false,
+          });
         }
-
-        localStorage.setItem(
-          "deletedUserIds",
-          JSON.stringify(deletedUserIds)
-        );
-
-        Swal.fire({
-          icon: "success",
-          title: "Deleted!",
-          text: "User has been deleted.",
-          timer: 1200,
-          showConfirmButton: false,
-        });
+      } catch (error) {
+        console.log("Delete error:", error);
       }
-    });
-  };
+    }
+  });
+};
 
   // ================= SEARCH + FILTER =================
 
@@ -404,11 +388,10 @@ const ManageUsers = () => {
                             e.target.value
                           )
                         }
-                        className={`select select-bordered select-sm ${
-                          user.role === "admin"
+                        className={`select select-bordered select-sm ${user.role === "admin"
                             ? "text-purple-700"
                             : "text-blue-700"
-                        }`}
+                          }`}
                       >
 
                         <option value="user">

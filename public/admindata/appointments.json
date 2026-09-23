@@ -1,12 +1,11 @@
 [
   {
-    "_id": "appointment01",
     "userId": "user01",
     "userName": "Aymon",
     "userEmail": "aymon@gmail.com",
     "doctorId": "doctor01",
     "doctorName": "Dr. Sarah Ahmed",
-    "doctorImage": "/doctors/doctor1.jpg",
+    "doctorImage": "https://i.ibb.co.com/TqKF7Rzg/doctor1.png",
     "serviceName": "Dental Checkup",
     "date": "2026-09-12",
     "time": "10:00 AM - 11:00 AM",
@@ -14,13 +13,12 @@
     "notes": "Regular dental checkup"
   },
   {
-    "_id": "appointment02",
     "userId": "user01",
     "userName": "Aymon",
     "userEmail": "aymon@gmail.com",
     "doctorId": "doctor02",
     "doctorName": "Dr. Mohammad Rahman",
-    "doctorImage": "/doctors/doctor2.jpg",
+    "doctorImage": "https://i.ibb.co.com/99DZS4YD/doctor2.png",
     "serviceName": "Teeth Whitening",
     "date": "2026-09-18",
     "time": "02:00 PM - 03:00 PM",
@@ -28,13 +26,12 @@
     "notes": "Teeth whitening consultation"
   },
   {
-    "_id": "appointment03",
     "userId": "user02",
     "userName": "Nusrat Jahan",
     "userEmail": "nusrat@gmail.com",
     "doctorId": "doctor03",
     "doctorName": "Dr. Nusrat Jahan",
-    "doctorImage": "/doctors/doctor3.jpg",
+    "doctorImage": "https://i.ibb.co.com/VWZLv4Cr/doctor3.png",
     "serviceName": "Dental Filling",
     "date": "2026-09-20",
     "time": "06:00 PM - 07:00 PM",
@@ -42,13 +39,12 @@
     "notes": "Tooth filling treatment"
   },
   {
-    "_id": "appointment04",
     "userId": "user03",
     "userName": "Rahim Ahmed",
     "userEmail": "rahim@gmail.com",
     "doctorId": "doctor04",
     "doctorName": "Dr. Tanvir Hasan",
-    "doctorImage": "/doctors/doctor4.jpg",
+    "doctorImage": "https://i.ibb.co.com/qF1Fx960/doctor4.jpg",
     "serviceName": "Dental Implant",
     "date": "2026-09-22",
     "time": "11:00 AM - 12:00 PM",
@@ -56,13 +52,12 @@
     "notes": "Dental implant consultation"
   },
   {
-    "_id": "appointment05",
     "userId": "user02",
     "userName": "Nusrat Jahan",
     "userEmail": "nusrat@gmail.com",
     "doctorId": "doctor05",
     "doctorName": "Dr. Farzana Akter",
-    "doctorImage": "/doctors/doctor5.jpg",
+    "doctorImage": "https://i.ibb.co.com/FLQvT3HL/doctor5.png",
     "serviceName": "Routine Dental Exam",
     "date": "2026-09-25",
     "time": "03:00 PM - 04:00 PM",

@@ -1,60 +1,36 @@
 [
   {
-    "_id": "doctor01",
     "doctorName": "Dr. Sarah Ahmed",
-    "doctorImage": "/doctors/doctor1.jpg",
+    "doctorImage": "https://i.ibb.co.com/TqKF7Rzg/doctor1.png",
     "specialization": "General Dentist",
-    "phone": "01711111111",
-    "email": "sarah@dentalcare.com",
-    "location": "Chittagong, Bangladesh",
+    "phone": "+880 1712-345678",
+    "email": "sarah.ahmed@example.com",
+    "location": "Dhaka, Bangladesh",
     "qualification": "BDS, FCPS",
-    "hospital": "DentalCare Clinic",
+    "hospital": "Smile Dental Care",
     "availableDays": [
       "Saturday",
       "Monday",
       "Wednesday"
     ],
     "availableTime": [
-      "9:30 AM - 11:30 AM",
+      "10:00 AM - 12:00 PM",
       "2:00 PM - 4:00 PM",
       "6:00 PM - 8:00 PM"
-    ],
-    "experience": "9 Years"
-  },
-  {
-    "_id": "doctor02",
-    "doctorName": "Dr. Mohammad Rahman",
-    "doctorImage": "/doctors/doctor2.jpg",
-    "specialization": "Cosmetic Dentist",
-    "phone": "01722222222",
-    "email": "james@dentalcare.com",
-    "location": "Dhaka, Bangladesh",
-    "qualification": "BDS, DDS",
-    "hospital": "DentalCare Clinic",
-    "availableDays": [
-      "Sunday",
-      "Tuesday",
-      "Thursday"
-    ],
-    "availableTime": [
-      "10:00 AM - 12:00 PM",
-      "3:00 PM - 5:00 PM",
-      "7:00 PM - 9:00 PM"
     ],
     "experience": "8 Years"
   },
   {
-    "_id": "doctor03",
-    "doctorName": "Dr. Nusrat Jahan",
-    "doctorImage": "/doctors/doctor3.jpg",
-    "specialization": "Orthodontist",
-    "phone": "01733333333",
-    "email": "emily@dentalcare.com",
-    "location": "Sylhet, Bangladesh",
-    "qualification": "BDS, MDS",
-    "hospital": "DentalCare Clinic",
+    "doctorName": "Dr. Mohammad Rahman",
+    "doctorImage": "https://i.ibb.co.com/99DZS4YD/doctor2.png",
+    "specialization": "Cosmetic Dentist",
+    "phone": "+880 1812-456789",
+    "email": "mohammad.rahman@example.com",
+    "location": "Chattogram, Bangladesh",
+    "qualification": "BDS, FCPS",
+    "hospital": "Dental Health Center",
     "availableDays": [
-      "Saturday",
+      "Sunday",
       "Tuesday",
       "Thursday"
     ],
@@ -63,72 +39,90 @@
       "1:00 PM - 3:00 PM",
       "5:00 PM - 7:00 PM"
     ],
+    "experience": "10 Years"
+  },
+  {
+    "doctorName": "Dr. Nusrat Jahan",
+    "doctorImage": "https://i.ibb.co.com/VWZLv4Cr/doctor3.png",
+    "specialization": "Orthodontist",
+    "phone": "+880 1912-567890",
+    "email": "nusrat.jahan@example.com",
+    "location": "Dhaka, Bangladesh",
+    "qualification": "BDS, MS",
+    "hospital": "Bright Smile Dental Clinic",
+    "availableDays": [
+      "Saturday",
+      "Tuesday",
+      "Thursday"
+    ],
+    "availableTime": [
+      "10:00 AM - 12:00 PM",
+      "3:00 PM - 5:00 PM",
+      "6:00 PM - 8:00 PM"
+    ],
     "experience": "7 Years"
   },
   {
-    "_id": "doctor04",
     "doctorName": "Dr. Tanvir Hasan",
-    "doctorImage": "/doctors/doctor4.jpg",
+    "doctorImage": "https://i.ibb.co.com/qF1Fx960/doctor4.jpg",
     "specialization": "Dental Surgeon",
-    "phone": "01744444444",
-    "email": "michael@dentalcare.com",
-    "location": "Chittagong, Bangladesh",
-    "qualification": "BDS, MS",
-    "hospital": "DentalCare Clinic",
+    "phone": "+880 1612-678901",
+    "email": "tanvir.hasan@example.com",
+    "location": "Sylhet, Bangladesh",
+    "qualification": "BDS, FCPS",
+    "hospital": "City Dental Hospital",
     "availableDays": [
       "Sunday",
       "Monday",
       "Wednesday"
     ],
     "availableTime": [
-      "10:00 AM - 12:00 PM",
+      "9:00 AM - 11:00 AM",
       "2:00 PM - 4:00 PM",
       "6:00 PM - 8:00 PM"
     ],
-    "experience": "10 Years"
+    "experience": "12 Years"
   },
   {
-    "_id": "doctor05",
     "doctorName": "Dr. Farzana Akter",
-    "doctorImage": "/doctors/doctor5.jpg",
+    "doctorImage": "https://i.ibb.co.com/FLQvT3HL/doctor5.png",
     "specialization": "Pediatric Dentist",
-    "phone": "01755555555",
-    "email": "olivia@dentalcare.com",
-    "location": "Dhaka, Bangladesh",
+    "phone": "+880 1512-789012",
+    "email": "farzana.akter@example.com",
+    "location": "Rajshahi, Bangladesh",
     "qualification": "BDS, MDS",
-    "hospital": "DentalCare Clinic",
+    "hospital": "Kids Dental Care",
     "availableDays": [
       "Saturday",
       "Monday",
       "Thursday"
     ],
     "availableTime": [
-      "9:30 AM - 11:30 AM",
-      "2:30 PM - 4:30 PM",
-      "6:30 PM - 8:30 PM"
+      "10:00 AM - 12:00 PM",
+      "1:00 PM - 3:00 PM",
+      "5:00 PM - 7:00 PM"
     ],
     "experience": "6 Years"
   },
   {
-    "_id": "doctor06",
     "doctorName": "Dr. Imran Kabir",
-    "doctorImage": "/doctors/doctor6.jpg",
-    "specialization": "Periodontist",
-    "phone": "01766666666",
-    "email": "daniel@dentalcare.com",
-    "location": "Rajshahi, Bangladesh",
-    "qualification": "BDS, MDS",
-    "hospital": "DentalCare Clinic",
+    "doctorImage": "https://i.ibb.co.com/VWDY47gW/doctor6.png",
+    "specialization": "Dental Implant Specialist",
+    "phone": "+880 1312-890123",
+    "email": "imran.kabir@example.com",
+    "location": "Khulna, Bangladesh",
+    "qualification": "BDS, DDS",
+    "hospital": "Advanced Dental Clinic",
     "availableDays": [
       "Sunday",
       "Tuesday",
-      "Wednesday"
+      "Thursday"
     ],
     "availableTime": [
-      "9:00 AM - 11:00 AM",
-      "1:30 PM - 3:30 PM",
-      "5:30 PM - 7:30 PM"
+      "9:30 AM - 11:30 AM",
+      "2:00 PM - 4:00 PM",
+      "6:00 PM - 8:00 PM"
     ],
-    "experience": "8 Years"
+    "experience": "9 Years"
   }
 ]

@@ -1,6 +1,5 @@
 [
   {
-    "_id": "blog001",
     "blogImage": "https://i.ibb.co.com/9ky0nKYQ/blog-img1.jpg",
     "blogTitle": "Why Regular Dental Checkups Are Important",
     "category": "Dental Care",
@@ -17,7 +16,6 @@
     ]
   },
   {
-    "_id": "blog002",
     "blogImage": "https://i.ibb.co.com/pvMs6DZd/blog-img2.jpg",
     "blogTitle": "Simple Ways to Keep Your Teeth Naturally White",
     "category": "Cosmetic Dentistry",
@@ -34,7 +32,6 @@
     ]
   },
   {
-    "_id": "blog003",
     "blogImage": "https://i.ibb.co.com/tpcdfr8B/blog-img3.jpg",
     "blogTitle": "Everything You Need to Know About Dental Implants",
     "category": "Dental Implants",
@@ -51,7 +48,6 @@
     ]
   },
   {
-    "_id": "blog004",
     "blogImage": "https://i.ibb.co.com/9mNLw0R8/blog-img4.jpg",
     "blogTitle": "When Do You Need a Dental Filling?",
     "category": "Dental Filling",
@@ -68,7 +64,6 @@
     ]
   },
   {
-    "_id": "blog005",
     "blogImage": "https://i.ibb.co.com/9mZt2LHV/img.jpg",
     "blogTitle": "How to Keep Your Gums Healthy",
     "category": "Gum Care",
@@ -85,7 +80,6 @@
     ]
   },
   {
-    "_id": "blog006",
     "blogImage": "https://i.ibb.co.com/5hD9RydY/blog-img6.jpg",
     "blogTitle": "Essential Dental Care Tips for Children",
     "category": "Kids Dental Care",
@@ -102,7 +96,6 @@
     ]
   },
   {
-    "_id": "blog007",
     "blogImage": "https://i.ibb.co.com/mpskWYq/img.jpg",
     "blogTitle": "Benefits of Modern Cosmetic Dentistry",
     "category": "Cosmetic Dentistry",
@@ -119,7 +112,6 @@
     ]
   },
   {
-    "_id": "blog008",
     "blogImage": "https://i.ibb.co.com/ZpFvGBYF/blog-img8.jpg",
     "blogTitle": "Common Causes of Toothache",
     "category": "Dental Health",
@@ -136,7 +128,6 @@
     ]
   },
   {
-    "_id": "blog009",
     "blogImage": "https://i.ibb.co.com/rCSq1Kq/blog-img9.jpg",
     "blogTitle": "The Complete Guide to Better Oral Hygiene",
     "category": "Oral Hygiene",

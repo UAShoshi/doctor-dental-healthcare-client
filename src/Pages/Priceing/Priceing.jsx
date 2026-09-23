@@ -8,7 +8,7 @@ const Priceing = () => {
     const [priceing, setPriceing] = useState([]);
 
     useEffect(() => {
-        fetch('priceing.json')
+        fetch('http://localhost:5000/priceing')
             .then(res => res.json())
             .then(data => setPriceing(data));
     }, [])

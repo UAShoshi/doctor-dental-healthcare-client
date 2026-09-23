@@ -1,6 +1,5 @@
 [
   {
-    "_id": "doctor001",
     "doctorImage": "https://i.ibb.co.com/TqKF7Rzg/doctor1.png",
     "doctorName": "Sarah Ahmed",
     "specialization": "General Dentist",
@@ -33,7 +32,6 @@
     }
   },
   {
-    "_id": "doctor002",
     "doctorImage": "https://i.ibb.co.com/99DZS4YD/doctor2.png",
     "doctorName": "Mohammad Rahman",
     "specialization": "Cosmetic Dentist",
@@ -66,7 +64,6 @@
     }
   },
   {
-    "_id": "doctor003",
     "doctorImage": "https://i.ibb.co.com/VWZLv4Cr/doctor3.png",
     "doctorName": "Nusrat Jahan",
     "specialization": "Orthodontist",
@@ -99,7 +96,6 @@
     }
   },
   {
-    "_id": "doctor004",
     "doctorImage": "https://i.ibb.co.com/qF1Fx960/doctor4.jpg",
     "doctorName": "Tanvir Hasan",
     "specialization": "Dental Surgeon",
@@ -132,7 +128,6 @@
     }
   },
   {
-    "_id": "doctor005",
     "doctorImage": "https://i.ibb.co.com/FLQvT3HL/doctor5.png",
     "doctorName": "Farzana Akter",
     "specialization": "Pediatric Dentist",
@@ -165,7 +160,6 @@
     }
   },
   {
-    "_id": "doctor006",
     "doctorImage": "https://i.ibb.co.com/VWDY47gW/doctor6.png",
     "doctorName": "Imran Kabir",
     "specialization": "Dental Implant Specialist",

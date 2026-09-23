@@ -1,6 +1,5 @@
 [
   {
-    "_id": "service001",
     "serviceImage": "https://i.ibb.co.com/svM1qbLj/service-img1.jpg",
     "serviceName": "Dental Fixing Service",
      "serviceList": [
@@ -37,7 +36,6 @@
     ]
   },
   {
-    "_id": "service002",
     "serviceImage": "https://i.ibb.co.com/wNXZFLR9/service-img2.jpg",
     "serviceName": "Cosmetic Dentistry",
      "serviceList": [
@@ -74,7 +72,6 @@
     ]
   },
   {
-    "_id": "service003",
     "serviceImage": "https://i.ibb.co.com/TqtZLLFG/service-img3.jpg",
     "serviceName": "Dental Implants",
      "serviceList": [
@@ -111,7 +108,6 @@
     ]
   },
   {
-    "_id": "service004",
     "serviceImage": "https://i.ibb.co.com/mFJfVxB4/dental-exam.jpg",
     "serviceName": "Routine Dental Exam",
      "serviceList": [
@@ -148,7 +144,6 @@
     ]
   },
   {
-    "_id": "service005",
     "serviceImage": "https://i.ibb.co.com/FLg2JB1F/Teeth-Whitening.png",
     "serviceName": "Teeth Whitening",
     "serviceList": [
@@ -185,7 +180,6 @@
     ]
   },
   {
-    "_id": "service006",
     "serviceImage": "https://i.ibb.co.com/kCjqM6J/dental-filling.png",
     "serviceName": "Dental Fillings",
      "serviceList": [

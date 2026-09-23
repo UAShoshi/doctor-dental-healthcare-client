@@ -20,16 +20,33 @@ const SignUp = () => {
   const { createUser } = useContext(AuthContext)
 
   const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password)
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
+  console.log(data);
 
-        navigate("/login")
+  createUser(data.email, data.password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
 
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        role: "user",
+      };
+
+      fetch("http://localhost:5000/admin-users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
       })
-  };
+        .then(res => res.json())
+        .then(data => {
+          console.log("User saved to MongoDB:", data);
+          navigate("/login");
+        });
+    });
+};
 
   return (
     <div>
